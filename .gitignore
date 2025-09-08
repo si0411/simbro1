@@ -1,0 +1,102 @@
+# System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# macOS
+*.tmp
+.TemporaryItems
+.fseventsd
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# User specific files
+.bash_history
+.bash_sessions/
+.zsh_history
+.zsh_sessions/
+.viminfo
+.lesshst
+.CFUserTextEncoding
+.cups/
+.ssh/
+.claude.json*
+.claude/
+
+# Application data
+.adobe/
+.arduinoIDE/
+.aspnet/
+.config/
+.cursor/
+.dotnet/
+.homebridge/
+.hugindata/
+.idlerc/
+.jssc/
+.local/
+.matplotlib/
+.npm/
+.nuget/
+.oracle_jre_usage/
+.putty/
+.swiftpm/
+.vscode/
+.wdm/
+.ScreamingFrogSEOSpider/
+
+# Trash
+.Trash/
+
+# Logs
+log_imapsync/
+
+# Temporary files
+*TEMP*
+*.tmp
+
+# Build artifacts
+*.o
+*.so
+*.dylib
+*.class
+*.jar
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+
+# Node modules
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Keys and certificates
+*.pem
+key.pem
+pub.pem
+
+# Embedded git repositories
+Documents/GitHub/
+
+# System directories with permission issues
+Library/Application Support/EaseUS/
+Library/Saved Application State/
+Documents/Library/

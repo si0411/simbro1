@@ -1,0 +1,198 @@
+<?php
+/**
+* @file
+* how to use form api
+*
+* imlements hook_menu()
+*/
+function additional_accomodation_menu(){
+	$items['additional-trips/%'] = array(
+          'page callback' => 'drupal_get_form',
+          'title' => t('Additional Trips'),
+          'page arguments' => array('additional_accomodation'),
+          'access callback' => 'additional_accomodation_access_permissions', 
+          'type' => MENU_CALLBACK   
+	);
+    return $items;
+}
+
+function additional_accomodation_access_permissions(){
+	$url = drupal_get_query_parameters();
+		if(isset($url['nid'])){
+		$nid = $url['nid'];
+	}
+
+	if(isset($nid) && $nid != '') {
+		return TRUE;
+	}else{
+		return FALSE;
+	}
+}
+
+function additional_accomodation($form, &$form_state){	
+	$uid = arg(1);
+	$url = drupal_get_query_parameters();
+    $nid = $url['nid'];
+    $node = node_load($nid);
+	//echo "<pre>";print_r($_SESSION);echo "</pre>";exit;
+	$ppn = '';
+    foreach($node->attributes as $akey => $aval){
+    	if($aval->name == 'Nights'){
+    		foreach($aval->options as $opkey => $opval){
+    			if($opval->name == '(Price Per night)'){
+    				$ppn = str_replace('.00000', '', $opval->cost);
+    			}
+    		}
+    	}
+    }
+    if(isset($_SESSION['uc-multi-currency-'.$uid])){
+		$current_currency = $_SESSION['uc-multi-currency-'.$uid];
+	}else{
+		$current_currency = 'USD';
+	}
+	if($current_currency == 'USD' || $current_currency == 'NZD' || $current_currency == 'AUD' || $current_currency == 'CAD'){
+		$curr_symbol = '$';
+	}elseif($current_currency == 'EUR'){
+		$curr_symbol = '€';
+	}elseif($current_currency == 'GBP'){
+		$curr_symbol = '£';
+	}else{
+		$curr_symbol = '';
+	}
+
+	$oid1 = product_qty_uc_orders_by_user($uid, $status = 'payment_received');
+	if($oid1 == ''){$oid1 = array();}
+    $oid2 = product_qty_uc_orders_by_user($uid, $status = 'completed');
+    if($oid2 == ''){$oid2 = array();}
+    $oid = array_merge($oid1, $oid2);
+    $qty_before = "";
+	$qty_after = "";
+	if(!empty($oid)){ 
+		foreach($oid as $oids => $values){
+			foreach($values->products as $poid => $pvalue){
+				if(isset($pvalue->data['attributes']['Nights'])){
+					$qty_before = $order->field_extra_nights_before['und'][0]['value'];
+					$qty_after = $order->field_extra_nights_after['und'][0]['value'];
+				}		
+			}
+		}
+	}
+	
+	$form['#attributes'] = array('class' => array('week-tour-layer', 'additional-trips'));
+	$form['highlighted_text'] = array(
+		 '#markup' => '<h3 class="small-font-16">Additional Accomodation</h3><p>If you would like to arrive before the tour officially starts, or your flight departs a day or two later than the tour finishes, we offer additional accommodation. If another member of the tour (of the same gender) also arrives early or extends their stay, you may share a twin room. This cost includes airport transfer and breakfast.</p><p>Please note that you can likely find cheaper accommodation in the area of our hotel in Phnom Penh. However, this will not include airport transfer, which usually costs about $15-20 USD directly from the airport to our hotel.</p><span class="small-font-14">Additional accommodation is charged at <text>'.$curr_symbol.$ppn.' per person, per night
+		  </text></span>'
+
+	);
+    /*$form['quantity'] = array(
+    	 '#title' => '<span class="bold-text">'.t('Number of extra nights required:').'</span>',
+		 '#type' => 'textfield',
+		 '#size' => '1',
+		 '#prefix' => '<div class="main-layer"><div class="col-md-4 col-sm-6 week-tour-layer1"><div class="row">',
+		 '#suffix' => '</div></div>',
+		 '#default_value' => $qty,
+		 '#required' => TRUE,
+		 '#attributes' => array('class'=>array('two', 'small-font-14'),'placeholder' => '2')
+	);*/
+	$form['quantity'] = array(
+    	 '#title' => '<span class="bold-text">'.t('Extra nights required before tour:').'</span>',
+		 '#type' => 'select',
+		 '#options' => array(
+		 		'1' => '1',
+		 		'2' => '2',
+		 		'3' => '3',
+		 		'4' => '4',
+		 		'5' => '5',
+		 		'6' => '6',
+		 		'7' => '7',
+		 	),
+		 "#empty_option" => t('-'),
+		 '#prefix' => '<div class="main-layer"><div class="col-md-4 col-sm-6 week-tour-layer1"><div class="row">',
+		 '#suffix' => '</div></div></div>',
+		 //'#default_value' => $qty,
+		 //'#required' => TRUE,
+		 '#attributes' => array('class'=>array('two', 'small-font-14'))
+	);
+	$form['quantity_after'] = array(
+    	 '#title' => '<span class="bold-text">'.t('Extra nights required after tour:').'</span>',
+		 '#type' => 'select',
+		 '#options' => array(
+		 		'1' => '1',
+		 		'2' => '2',
+		 		'3' => '3',
+		 		'4' => '4',
+		 		'5' => '5',
+		 		'6' => '6',
+		 		'7' => '7',
+		 	),
+		 "#empty_option" => t('-'),
+		 '#prefix' => '<div class="main-layer"><div class="col-md-4 col-sm-6 week-tour-layer1"><div class="row">',
+		 '#suffix' => '</div></div>',
+		 //'#default_value' => $qty,
+		 //'#required' => TRUE,
+		 '#attributes' => array('class'=>array('two', 'small-font-14'))
+	);
+
+	$form['submit'] = array(
+	     '#type' => 'submit',
+	     '#value' => t('Book Now'),
+	     '#prefix' => '<div class="col-md-3 col-sm-6 book-now-btn pull-right"><div class="row">',
+		 '#suffix' => '</div></div></div>',
+	     '#attributes' => array('class'=>array('btn', 'btn-default'))	
+	);
+	return $form;
+}
+function additional_accomodation_validate($form, &$form_state){
+    if($form_state['values']['quantity'] == '' && $form_state['values']['quantity_after'] == ''){
+    	form_set_error('quantity', t('Please choose extra nights before or after tour.'));   
+    }
+}
+
+function additional_accomodation_submit($form, &$form_state){
+	global $user;
+	$nights_req = $form_state['input']['quantity'];
+	$nights_req_after = $form_state['input']['quantity_after'];
+	if(($nights_req > 0) && ($nights_req <= 7)){	
+		$qty_before = $nights_req;	
+	}else{
+		$qty_before = 0;
+	}
+	if(($nights_req_after > 0) && ($nights_req_after <= 7)){	
+		$qty_after = $nights_req_after;	
+	}else{
+		$qty_after = 0;
+	}
+	$qty = $qty_after + $qty_before;
+	$url = drupal_get_query_parameters();
+	//echo "<pre>";print_r($url);echo "</pre>";exit;
+    $nid = $url['nid'];
+    $doid = $url['doid'];
+    if(empty($qty)){	
+		form_set_error('quantity',t('You cannot request more than 7 nights.'));
+	}else{
+		$data = array('attributes' => array('4' => '11'),
+			'restrict_qty' => FALSE,
+			'quantity_before' => $qty_before,
+			'quantity_after' => $qty_after,
+		);	
+		uc_cart_add_item($nid, $qty, $data, $cid = NULL, $msg = FALSE, $check_redirect = TRUE, $rebuild = TRUE);
+		//$form_state['redirect'] = array('cart/checkout');
+		//drupal_redirect_form($form_state);
+		drupal_goto($path = 'cart/checkout', $options = array( 'query' => array( 'doid' => $doid)), $http_response_code = 302);
+	}	
+}
+function additional_accomodation_uc_orders_by_user($uid, $status) {
+	if ($results = db_query("SELECT order_id FROM {uc_orders} WHERE uid = :uid AND order_status = :status", array(':uid' => $uid, ':status' => $status))->fetchAll()) {
+	    $order_ids = array();
+	    foreach ($results as $result) {
+	      $order_ids[] = $result->order_id;
+	    }
+	    return uc_order_load_multiple($order_ids);
+	}
+}
+
+function additional_accomodation_user_logout($account){
+	session_destroy();
+	$options = array('query' => array('destination' => 'account-overview'));
+	drupal_goto('my_account', $options);
+}
