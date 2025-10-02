@@ -104,12 +104,12 @@
         }
 
         .date-search-btn {
-            padding: 0.6rem 1.5rem;
+            padding: 0.75rem 1.5rem;
             background: #007AFF;
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
             transition: background-color 0.2s;
@@ -120,9 +120,8 @@
         }
 
         .search-box {
-            flex: 1;
-            min-width: 250px;
-            max-width: 400px;
+            width: 100%;
+            max-width: 800px;
             padding: 0.75rem;
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -1197,7 +1196,6 @@
         </div>
 
         <div class="controls">
-            <input type="text" class="search-box" placeholder="Search tours..." id="searchInput">
             <div class="controls-row">
                 <div class="currency-selector">
                     <button class="currency-btn active" onclick="setCurrency('GBP')">GBP</button>
@@ -1214,6 +1212,7 @@
                     <span class="last-updated" id="lastUpdated">Last Updated: Loading...</span>
                 </div>
             </div>
+            <input type="text" class="search-box" placeholder="Search tours..." id="searchInput">
         </div>
 
         <div class="column-controls">
