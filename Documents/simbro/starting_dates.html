@@ -429,20 +429,39 @@
             return new Date(year, month, day);
         }
 
-        function formatDate(dateStr) {
-            // Convert ISO date to "DD MMM YYYY" format
-            const date = new Date(dateStr);
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            const day = date.getDate();
-            const month = months[date.getMonth()];
-            const year = date.getFullYear();
-            return `${day} ${month} ${year}`;
-        }
+        function parseTourDate(dateString) {
+            // Parse format: "6 Oct - 19 Oct 2025 - Book Now"
+            // Returns: { startDate: Date, endDate: Date, startDateStr: string, endDateStr: string, status: string }
 
-        function addDays(dateStr, days) {
-            const date = new Date(dateStr);
-            date.setDate(date.getDate() + days);
-            return date;
+            const parts = dateString.split(' - ');
+            if (parts.length < 3) return null;
+
+            const startPart = parts[0].trim(); // "6 Oct"
+            const endPart = parts[1].trim();   // "19 Oct 2025"
+            const status = parts[2].trim();    // "Book Now"
+
+            // Extract year from end date
+            const endDateParts = endPart.split(/\s+/);
+            if (endDateParts.length !== 3) return null;
+
+            const year = endDateParts[2];
+
+            // Parse start date (add year from end date)
+            const startDateStr = `${startPart} ${year}`;
+            const endDateStr = endPart;
+
+            const startDate = parseDate(startDateStr);
+            const endDate = parseDate(endDateStr);
+
+            if (!startDate || !endDate) return null;
+
+            return {
+                startDate: startDate,
+                endDate: endDate,
+                startDateStr: startDateStr,
+                endDateStr: endDateStr,
+                status: status
+            };
         }
 
         function searchDates() {
@@ -454,15 +473,15 @@
                 return;
             }
 
-            const startDate = parseDate(startDateInput);
-            const endDate = parseDate(endDateInput);
+            const searchStartDate = parseDate(startDateInput);
+            const searchEndDate = parseDate(endDateInput);
 
-            if (!startDate || !endDate) {
+            if (!searchStartDate || !searchEndDate) {
                 alert('Invalid date format. Please use DD MMM YYYY (e.g., 15 Jan 2025)');
                 return;
             }
 
-            if (startDate > endDate) {
+            if (searchStartDate > searchEndDate) {
                 alert('Start date must be before end date');
                 return;
             }
@@ -477,19 +496,14 @@
 
                 const matchingDates = [];
 
-                tour.starting_dates.forEach(startingDate => {
-                    const tourStartDate = new Date(startingDate);
+                tour.starting_dates.forEach(dateString => {
+                    const parsedDate = parseTourDate(dateString);
 
-                    if (tourStartDate >= startDate && tourStartDate <= endDate) {
-                        // Calculate end date
-                        const duration = tour.duration || 0;
-                        const endingDate = addDays(startingDate, duration);
+                    if (!parsedDate) return;
 
-                        matchingDates.push({
-                            startDate: startingDate,
-                            endDate: endingDate,
-                            duration: duration
-                        });
+                    // Check if tour start date falls within search range
+                    if (parsedDate.startDate >= searchStartDate && parsedDate.startDate <= searchEndDate) {
+                        matchingDates.push(parsedDate);
                     }
                 });
 
@@ -530,17 +544,19 @@
                         <div class="dates-list">`;
 
                 dates.forEach(dateInfo => {
-                    const durationText = dateInfo.duration ? `${dateInfo.duration} days` : '';
+                    // Calculate duration in days
+                    const duration = Math.round((dateInfo.endDate - dateInfo.startDate) / (1000 * 60 * 60 * 24));
+                    const durationText = `${duration} days`;
 
                     html += `
                         <div class="date-item">
                             <div>
                                 <div class="date-label">Start Date</div>
-                                <div class="date-value">${formatDate(dateInfo.startDate)}</div>
+                                <div class="date-value">${dateInfo.startDateStr}</div>
                             </div>
                             <div>
                                 <div class="date-label">End Date</div>
-                                <div class="date-value">${formatDate(dateInfo.endDate)}</div>
+                                <div class="date-value">${dateInfo.endDateStr}</div>
                             </div>
                             <div class="date-duration">${durationText}</div>
                         </div>`;
