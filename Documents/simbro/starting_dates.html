@@ -99,7 +99,7 @@
 
         .search-inputs {
             display: grid;
-            grid-template-columns: 200px 200px auto auto;
+            grid-template-columns: 200px 200px 120px 100px;
             gap: 1rem;
             align-items: end;
         }
@@ -664,6 +664,11 @@
             });
 
             resultsContainer.innerHTML = html;
+        }
+
+        function escapeQuotes(str) {
+            if (!str) return '';
+            return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
         }
 
         function clearSearch() {
