@@ -256,6 +256,7 @@
             cursor: pointer;
             transition: background-color 0.2s;
             white-space: nowrap;
+            height: fit-content;
         }
 
         .copy-name-btn:hover {
@@ -286,6 +287,7 @@
             white-space: nowrap;
             text-decoration: none;
             display: inline-block;
+            height: fit-content;
         }
 
         .url-btn:hover {
@@ -294,6 +296,25 @@
 
         .url-btn.copied {
             background: #28a745;
+        }
+
+        .view-url-btn {
+            padding: 0.4rem 0.8rem;
+            background: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+            height: fit-content;
+        }
+
+        .view-url-btn:hover {
+            background: #0056CC;
         }
 
         .dates-list {
@@ -398,7 +419,6 @@
     <div class="container">
         <div class="header">
             <img src="assets/tour_viewer.svg" alt="Backpacking Tours" class="logo">
-            <h1>Starting Date Search</h1>
             <p>Find tours by date range</p>
         </div>
 
@@ -624,14 +644,14 @@
                         <div class="tour-header">
                             <div class="tour-color" style="background-color: ${tourColor}"></div>
                             <div class="tour-name">${tourName}</div>
-                            <button class="copy-name-btn" onclick="copyText('${escapeQuotes(tourName)}', this)">Copy Name</button>
                         </div>`;
 
                 if (tourUrl) {
                     html += `
                         <div class="tour-url-section">
+                            <button class="copy-name-btn" onclick="copyText('${escapeQuotes(tourName)}', this)">Copy Name</button>
                             <button class="url-btn" onclick="copyText('${escapeQuotes(tourUrl)}', this)">Copy URL</button>
-                            <a href="${tourUrl}" target="_blank" class="url-btn">View URL</a>
+                            <a href="${tourUrl}" target="_blank" class="view-url-btn">View URL</a>
                         </div>`;
                 }
 
