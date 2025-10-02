@@ -1,0 +1,2454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/red_favicon.png">
+    <title>Backpacking Tours Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.4;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+        }
+
+        .logo {
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .tour-count {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .currency-selector {
+            display: flex;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .currency-btn {
+            padding: 0.5rem 0.75rem;
+            background: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 0.85rem;
+            border-right: 1px solid #ddd;
+        }
+
+        .currency-btn:last-child {
+            border-right: none;
+        }
+
+        .currency-btn:hover {
+            background: #f8f9fa;
+        }
+
+        .currency-btn.active {
+            background: #6c49ff;
+            color: white;
+        }
+
+        .last-updated {
+            font-size: 0.8rem;
+            color: #666;
+            margin-left: 0.5rem;
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: #007AFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .nav-link:hover {
+            background: #0056CC;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .date-filters {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .date-input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .download-json-btn {
+            padding: 0.25rem 0.5rem;
+            background: #0fba68;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .download-json-btn:hover {
+            background: #0da856;
+        }
+
+        .button-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .download-all-btn {
+            padding: 0.75rem 1.5rem;
+            background: #0fba68;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .download-all-btn:hover {
+            background: #0da856;
+        }
+
+        .download-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .download-modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .field-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .field-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .field-checkbox:hover {
+            background-color: #f8f9fa;
+        }
+
+        .field-checkbox input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+
+        .modal-btn.primary {
+            background: #6c49ff;
+            color: white;
+        }
+
+        .modal-btn.primary:hover {
+            background: #5a3de6;
+        }
+
+        .modal-btn.secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .modal-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        .update-btn {
+            padding: 0.75rem 1.5rem;
+            background: #6c49ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .update-btn:hover {
+            background: #5a3de6;
+        }
+
+        .update-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .column-controls {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1rem;
+        }
+
+        .column-controls h3 {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .column-toggles {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .column-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.85rem;
+        }
+
+        .column-toggle input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tours-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .tours-table th {
+            background: #f8f9fa;
+            padding: 1rem 0.75rem;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #e9ecef;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .tours-table th:hover {
+            background: #e9ecef;
+        }
+
+        .tours-table th .sort-indicator {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .tours-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: middle;
+        }
+
+
+        .tour-name {
+            font-weight: 600;
+            color: #007AFF;
+            max-width: 300px;
+            cursor: pointer;
+            transition: color 0.2s;
+            text-align: left;
+        }
+
+        .col-name {
+            text-align: left !important;
+        }
+
+        .tour-name:hover {
+            color: #0056CC;
+            text-decoration: underline;
+        }
+
+        .tour-details {
+            display: none;
+            background: transparent;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .tour-details.expanded {
+            display: table-row;
+        }
+
+        .tour-details-content {
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            margin: 1rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .first-row {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .second-row {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .details-section {
+            background: transparent;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .details-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .info-item.left-align {
+            justify-content: flex-start;
+            gap: 1rem;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #666;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        .list-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-items li {
+            padding: 0.3rem 0;
+            padding-left: 1rem;
+            position: relative;
+            text-align: left;
+        }
+
+        .list-items li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .excluded-items li:before {
+            content: "✗";
+            color: #dc3545;
+        }
+
+        .itinerary {
+            margin-top: 1rem;
+        }
+
+        .itinerary-day {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+
+        .itinerary-header {
+            background: transparent;
+            color: #333;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #e9ecef;
+            font-weight: 600;
+        }
+
+        .itinerary-header:hover {
+            background: #f8f9fa;
+        }
+
+        .itinerary-content {
+            display: none;
+            padding: 1rem;
+            background: white;
+            text-align: left;
+        }
+
+        .itinerary-content.expanded {
+            display: block;
+        }
+
+        .tour-dates {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tour-dates-header {
+            font-weight: 600;
+            color: #333;
+            padding: 0.5rem;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .date-item {
+            padding: 0.3rem 0.5rem;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.9rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .date-status {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-available {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-unavailable {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .close-details {
+            float: right;
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .close-details:hover {
+            background: #5a6268;
+        }
+
+        .color-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 1px #ddd;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .color-indicator:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 2px #007AFF;
+        }
+
+        .color-indicator.copied {
+            animation: colorCopied 0.5s ease-out;
+        }
+
+        @keyframes colorCopied {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .price {
+            font-weight: 600;
+            color: #0fba68;
+        }
+
+        .url-cell {
+            white-space: nowrap;
+        }
+
+        .url-buttons {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .view-btn {
+            padding: 0.25rem 0.5rem;
+            background: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .view-btn:hover {
+            background: #0056CC;
+        }
+
+        .copy-btn {
+            padding: 0.25rem 0.5rem;
+            background: #6c49ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: #5a3de6;
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+        }
+
+        .color-feedback {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .color-feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .status {
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .hidden-column {
+            display: none;
+        }
+
+        @media (max-width: 1200px) {
+            .tours-table {
+                font-size: 0.8rem;
+            }
+
+            .tours-table th,
+            .tours-table td {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: none;
+                margin: 0;
+                padding: 0.25rem;
+            }
+
+            .header {
+                margin-bottom: 1rem;
+                padding: 0.5rem;
+            }
+
+            .logo {
+                height: 60px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .column-controls {
+                margin-bottom: 0.5rem;
+                padding: 0.75rem;
+            }
+
+            .column-toggles {
+                gap: 0.25rem;
+                justify-content: center;
+            }
+
+            .column-toggle {
+                font-size: 0.75rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .search-box {
+                max-width: none;
+                font-size: 0.9rem;
+                padding: 0.6rem;
+            }
+
+            .currency-selector {
+                justify-content: center;
+            }
+
+            .currency-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.6rem;
+            }
+
+            .button-row {
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .download-all-btn, .update-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.25rem;
+            }
+
+            .last-updated {
+                text-align: center;
+                margin: 0.5rem 0 0 0;
+                font-size: 0.75rem;
+            }
+
+            .table-container {
+                margin: 0 -0.25rem;
+                border-radius: 8px;
+            }
+
+            .tours-table {
+                font-size: 0.75rem;
+            }
+
+            .tours-table th,
+            .tours-table td {
+                padding: 0.4rem 0.25rem;
+            }
+
+            .tours-table th {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+
+            .tour-name {
+                max-width: 200px;
+                font-size: 0.8rem;
+                line-height: 1.2;
+            }
+
+            .color-indicator {
+                width: 16px;
+                height: 16px;
+            }
+
+            .view-btn, .copy-btn, .download-json-btn {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.4rem;
+            }
+
+            .info-grid.two-column {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .info-row {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+                text-align: left;
+            }
+
+            .info-field-label {
+                font-weight: 700;
+                margin-bottom: 0.25rem;
+            }
+
+            .info-actions {
+                justify-content: flex-start;
+                margin-top: 0.25rem;
+            }
+
+            .tour-count {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Progress Bar Styles */
+        .progress-container {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .progress-container.active {
+            display: block;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .progress-percentage {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6c49ff;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6c49ff, #8b5cf6);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .progress-message {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-details {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .progress-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stop-btn {
+            padding: 0.5rem 1rem;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .stop-btn:hover {
+            background: #c82333;
+        }
+
+        /* New Redesigned Info Section Styles */
+        .info-section-redesign {
+            padding: 1rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-section-redesign h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            text-align: left !important;
+        }
+
+        .info-section-redesign {
+            text-align: left !important;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .info-grid.two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .info-row {
+            display: grid;
+            grid-template-columns: 140px max-content auto;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f7fafc;
+            gap: 1rem;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-field-label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .info-field-value {
+            color: #2d3748;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+        }
+
+        .info-field-value.multiline {
+            line-height: 1.4;
+            max-width: 350px;
+        }
+
+        .info-field-value {
+            overflow-wrap: break-word;
+            word-break: break-word;
+            max-width: 250px;
+        }
+
+        .info-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-self: start;
+        }
+
+        .copy-field-btn {
+            background: #6c49ff;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .copy-field-btn:hover {
+            background: #5a3de6;
+        }
+
+        .copy-field-btn.copied {
+            background: #38a169;
+        }
+
+        .view-field-btn {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .view-field-btn:hover {
+            background: #0056CC;
+        }
+
+        .color-swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+            border: 2px solid #e2e8f0;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .color-text {
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        .price-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .price-item {
+            background: #f7fafc;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        @media (max-width: 768px) {
+            .info-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                text-align: left;
+            }
+
+            .info-field-label {
+                font-weight: 700;
+            }
+
+            .info-actions {
+                justify-content: flex-start;
+            }
+        }
+
+        /* Tab Navigation Styles */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 2rem;
+            background: white;
+            color: #333;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            background: #f8f9fa;
+            border-color: #6c49ff;
+        }
+
+        .tab-btn.active {
+            background: #6c49ff;
+            color: white;
+            border-color: #6c49ff;
+        }
+
+        @media (max-width: 768px) {
+            .tab-navigation {
+                gap: 0.5rem;
+            }
+
+            .tab-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="assets/tour_viewer.svg" alt="Backpacking Tours" class="logo">
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+            <a href="starting_dates.html" class="nav-link">🗓️ Search by Starting Dates</a>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('group')" id="tab-group">Group</button>
+            <button class="tab-btn" onclick="switchTab('private')" id="tab-private">Private</button>
+            <button class="tab-btn" onclick="switchTab('volunteer')" id="tab-volunteer">Volunteering</button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-header">
+                <div class="progress-title" id="progressTitle">Scraping Tours</div>
+                <div class="progress-percentage" id="progressPercentage">0%</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-message" id="progressMessage">Initializing...</div>
+            <div class="progress-details" id="progressDetails"></div>
+            <div class="progress-actions">
+                <button class="stop-btn" onclick="stopScraping()" id="stopBtn">Stop Scraping</button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="Search tours..." id="searchInput">
+            <div class="currency-selector">
+                <button class="currency-btn active" onclick="setCurrency('GBP')">GBP</button>
+                <button class="currency-btn" onclick="setCurrency('USD')">USD</button>
+                <button class="currency-btn" onclick="setCurrency('EUR')">EUR</button>
+                <button class="currency-btn" onclick="setCurrency('AUD')">AUD</button>
+                <button class="currency-btn" onclick="setCurrency('CAD')">CAD</button>
+                <button class="currency-btn" onclick="setCurrency('NZD')">NZD</button>
+            </div>
+            <div class="button-row">
+                <button class="download-all-btn" onclick="showDownloadModal()" id="downloadAllBtn">Download</button>
+                <button class="update-btn" onclick="updateTours()" id="updateBtn">Update Tours</button>
+                <span class="last-updated" id="lastUpdated">Last Updated: Loading...</span>
+            </div>
+        </div>
+
+        <div class="column-controls">
+            <div class="column-toggles">
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-colour" checked> Colour
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-duration" checked> Duration
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-price" checked> Price
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-country" checked> Country
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-age"> Avg Age
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-meals" checked> Meals
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-activities" checked> Activities
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-reviews"> Reviews
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-starts" checked> Starts
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-ends" checked> Ends
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-url" checked> URL
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-json" checked> JSON
+                </label>
+                <label class="column-toggle">
+                    <input type="checkbox" id="col-images" checked> Images
+                </label>
+            </div>
+        </div>
+
+        <div id="status"></div>
+        <div class="tour-count" id="tourCount">Loading tours...</div>
+
+        <div id="tours-container" class="loading">
+            <div>🔄 Loading tour data...</div>
+        </div>
+
+        <!-- Color copy feedback notification -->
+        <div id="colorFeedback" class="color-feedback">
+            Color copied to clipboard!
+        </div>
+
+        <!-- Download Modal -->
+        <div id="downloadModal" class="download-modal">
+            <div class="download-modal-content">
+                <div class="modal-header">
+                    <h2>Download All Tours</h2>
+                    <button class="close-modal" onclick="closeDownloadModal()">&times;</button>
+                </div>
+                <p>Select which fields to include in the download:</p>
+                <div class="field-selection">
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_name" checked>
+                        <span>Tour Name</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="url" checked>
+                        <span>URL</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_id">
+                        <span>Tour ID</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="country">
+                        <span>Country</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_colour">
+                        <span>Tour Color</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.duration">
+                        <span>Duration</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.age_range">
+                        <span>Age Range</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.starting_point">
+                        <span>Starting Point</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.ending_point">
+                        <span>Ending Point</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.num_meals">
+                        <span>Number of Meals</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.num_activities">
+                        <span>Number of Activities</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.num_reviews">
+                        <span>Number of Reviews</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="price">
+                        <span>All Prices</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="starting_dates">
+                        <span>Starting Dates</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.included_items">
+                        <span>What's Included</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.excluded_items">
+                        <span>What's Not Included</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="tour_information.activities_incl">
+                        <span>Activities Included</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="itinerary">
+                        <span>Full Itinerary</span>
+                    </label>
+                    <label class="field-checkbox">
+                        <input type="checkbox" value="seo_data">
+                        <span>SEO Data</span>
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn secondary" onclick="closeDownloadModal()">Cancel</button>
+                    <button class="modal-btn primary" onclick="downloadAllTours()">Download JSON</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allTours = [];
+        let filteredTours = [];
+        let currentCurrency = 'GBP';
+        let currentSort = { column: null, direction: 'asc' };
+        let currentTab = 'group'; // Track which tab is active: 'group', 'private', or 'volunteer'
+
+        function switchTab(tabName) {
+            // Update active tab
+            currentTab = tabName;
+
+            // Update button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+
+            // Clear search state when switching tabs
+            filteredTours = [];
+            document.getElementById('searchInput').value = '';
+
+            // Load tours for the new tab
+            loadTours();
+        }
+
+        async function loadTours() {
+            try {
+                // Determine which JSON file to load based on current tab
+                let jsonFile;
+                let dataKey;
+
+                switch(currentTab) {
+                    case 'private':
+                        jsonFile = 'BT_scraping/private_tours_frontend.json';
+                        dataKey = 'tours';
+                        break;
+                    case 'volunteer':
+                        jsonFile = 'BT_scraping/volunteer_frontend.json';
+                        dataKey = 'programs';
+                        break;
+                    case 'group':
+                    default:
+                        jsonFile = 'BT_scraping/group_tours_frontend.json';
+                        dataKey = 'tours';
+                        break;
+                }
+
+                const response = await fetch(jsonFile + '?' + new Date().getTime());
+                if (!response.ok) {
+                    throw new Error('Failed to load tours data');
+                }
+                const data = await response.json();
+
+                // Handle new data structure with timestamp
+                let tours;
+                let dataTimestamp = null;
+
+                if (data[dataKey] && data.last_updated) {
+                    // New format with unified timestamp
+                    tours = data[dataKey];
+                    dataTimestamp = data.last_updated;
+                    console.log(`Using data from unified timestamp: ${data.last_updated}`);
+                } else if (Array.isArray(data)) {
+                    // Old format - array of tours
+                    tours = data;
+                    // Try to find the most recent last_updated from individual tours
+                    const tourDates = tours
+                        .map(tour => tour.last_updated)
+                        .filter(date => date)
+                        .sort()
+                        .reverse();
+                    dataTimestamp = tourDates[0] || null;
+                    console.log(`Using data from old format, most recent tour date: ${dataTimestamp}`);
+                } else {
+                    // Unknown format, try to use as-is
+                    tours = data;
+                }
+
+                // Store the timestamp globally for display
+                window.dataTimestamp = dataTimestamp;
+
+                // Ensure data is an array
+                if (Array.isArray(tours)) {
+                    allTours = tours;
+                } else if (data && typeof data === 'object') {
+                    // If it's a single object, wrap it in an array
+                    allTours = [data];
+                } else {
+                    allTours = [];
+                }
+
+                console.log(`Loaded ${allTours.length} tours from JSON`);
+                updateTourCount();
+                updateLastUpdated();
+                // Set default sort to color
+                sortTable('tour_colour');
+            } catch (error) {
+                console.error('Load tours error:', error);
+                allTours = []; // Ensure allTours is always an array
+                document.getElementById('tours-container').innerHTML = `
+                    <div class="status error">
+                        Failed to load tours: ${error.message}
+                    </div>
+                `;
+                document.getElementById('tourCount').textContent = 'Failed to load tour count';
+            }
+        }
+
+        function updateTourCount() {
+            const tabLabels = {
+                'group': 'Group Tours',
+                'private': 'Private Tours',
+                'volunteer': 'Volunteer Programs'
+            };
+            const label = tabLabels[currentTab] || 'tours';
+            const itemLabel = currentTab === 'volunteer' ? 'programs' : 'tours';
+            document.getElementById('tourCount').textContent = `${allTours.length} ${itemLabel} found`;
+        }
+
+        function updateLastUpdated() {
+            // Use the globally stored timestamp first, then fall back to individual tour timestamps
+            let lastUpdated = window.dataTimestamp;
+
+            // If no global timestamp, try to get from first tour (backwards compatibility)
+            if (!lastUpdated && allTours.length > 0) {
+                lastUpdated = allTours[0].last_updated;
+            }
+
+            if (lastUpdated) {
+                const date = new Date(lastUpdated);
+                const formattedDate = date.toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                });
+                document.getElementById('lastUpdated').textContent = `Last Updated: ${formattedDate}`;
+            } else {
+                document.getElementById('lastUpdated').textContent = 'Last Updated: Unknown';
+            }
+        }
+
+        function setCurrency(currency) {
+            currentCurrency = currency;
+
+            // Update active button
+            document.querySelectorAll('.currency-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Redisplay tours with new currency
+            displayTours(allTours);
+        }
+
+        function formatPrice(tour) {
+            const currencySymbols = {
+                'GBP': '£',
+                'USD': '$',
+                'EUR': '€',
+                'AUD': 'A$',
+                'CAD': 'C$',
+                'NZD': 'NZ$'
+            };
+
+            const priceField = `price_${currentCurrency}`;
+            const price = tour.price?.[priceField];
+
+            if (price) {
+                return `${currencySymbols[currentCurrency]}${price}`;
+            }
+
+            return 'Missing';
+        }
+
+        function displayTours(tours) {
+            const container = document.getElementById('tours-container');
+
+            if (!tours || tours.length === 0) {
+                container.innerHTML = '<div class="loading">No tours found</div>';
+                return;
+            }
+
+            const tableHTML = `
+                <div class="table-container">
+                    <table class="tours-table">
+                        <thead>
+                            <tr>
+                                <th class="col-name" onclick="sortTable('tour_name')">Tour Name <span class="sort-indicator" id="sort-tour_name"></span></th>
+                                <th class="col-colour" onclick="sortTable('tour_colour')">Colour <span class="sort-indicator" id="sort-tour_colour"></span></th>
+                                <th class="col-duration" onclick="sortTable('duration')">Duration <span class="sort-indicator" id="sort-duration"></span></th>
+                                <th class="col-price" onclick="sortTable('price')">Price <span class="sort-indicator" id="sort-price"></span></th>
+                                <th class="col-country" onclick="sortTable('country')">Country <span class="sort-indicator" id="sort-country"></span></th>
+                                <th class="col-age" onclick="sortTable('age_range')">Avg Age <span class="sort-indicator" id="sort-age_range"></span></th>
+                                <th class="col-meals" onclick="sortTable('num_meals')">Meals <span class="sort-indicator" id="sort-num_meals"></span></th>
+                                <th class="col-activities" onclick="sortTable('num_activities')">Activities <span class="sort-indicator" id="sort-num_activities"></span></th>
+                                <th class="col-reviews" onclick="sortTable('num_reviews')">Reviews <span class="sort-indicator" id="sort-num_reviews"></span></th>
+                                <th class="col-starts" onclick="sortTable('starting_point')">Starts <span class="sort-indicator" id="sort-starting_point"></span></th>
+                                <th class="col-ends" onclick="sortTable('ending_point')">Ends <span class="sort-indicator" id="sort-ending_point"></span></th>
+                                <th class="col-url" onclick="sortTable('url')">URL <span class="sort-indicator" id="sort-url"></span></th>
+                                <th class="col-json" onclick="sortTable('tour_name')">JSON <span class="sort-indicator" id="sort-json"></span></th>
+                                <th class="col-images">Images</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${tours.map(tour => `
+                                <tr>
+                                    <td class="col-name">
+                                        <div class="tour-name" onclick="toggleTourDetails('${tour.tour_id}')">${tour.tour_name || 'Untitled Tour'}</div>
+                                    </td>
+                                    <td class="col-colour">
+                                        <span class="color-indicator" style="background-color: ${tour.tour_colour || '#ccc'}" title="Click to copy: ${tour.tour_colour || 'No colour'}" onclick="copyColor('${tour.tour_colour || '#ccc'}', this)"></span>
+                                    </td>
+                                    <td class="col-duration">${tour.tour_information?.duration?.display || tour.tour_information?.duration?.days + ' Days' || 'N/A'}</td>
+                                    <td class="col-price">
+                                        <span class="price">${formatPrice(tour)}</span>
+                                    </td>
+                                    <td class="col-country">${tour.country ? tour.country.charAt(0).toUpperCase() + tour.country.slice(1) : 'N/A'}</td>
+                                    <td class="col-age">${tour.tour_information?.age_range?.display || 'N/A'}</td>
+                                    <td class="col-meals">${tour.tour_information?.num_meals || 'N/A'}</td>
+                                    <td class="col-activities">${tour.tour_information?.num_activities || 'N/A'}</td>
+                                    <td class="col-reviews">${tour.tour_information?.num_reviews || '0'}</td>
+                                    <td class="col-starts">${tour.tour_information?.starting_point || 'N/A'}</td>
+                                    <td class="col-ends">${tour.tour_information?.ending_point || 'N/A'}</td>
+                                    <td class="col-url">
+                                        <div class="url-cell">
+                                            ${tour.url ? `
+                                                <div class="url-buttons">
+                                                    <a href="${tour.url}" target="_blank" class="view-btn" title="View Tour">View</a>
+                                                    <button class="copy-btn" onclick="copyUrl('${tour.url}', this)" title="Copy URL">Copy</button>
+                                                </div>
+                                            ` : 'N/A'}
+                                        </div>
+                                    </td>
+                                    <td class="col-json">
+                                        <button class="download-json-btn" onclick="downloadTourJson('${tour.tour_id}')" title="Download JSON">Download</button>
+                                    </td>
+                                    <td class="col-images">
+                                        <button class="view-btn" onclick="scrapeImages('${tour.url}')" title="View Images">View</button>
+                                    </td>
+                                </tr>
+                                <tr class="tour-details" id="details-${tour.tour_id}">
+                                    <td colspan="14">
+                                        <div class="tour-details-content">
+                                            <button class="close-details" onclick="toggleTourDetails('${tour.tour_id}')">Close Details</button>
+                                            <div class="details-grid">
+                                                <div class="first-row">
+                                                    <div class="info-section-redesign">
+                                                        <h3>Basic Information</h3>
+                                                        <div class="info-grid two-column">
+                                                            <div class="info-column">
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Tour Name</div>
+                                                                    <div class="info-field-value">${tour.tour_name || 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_name || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Country</div>
+                                                                    <div class="info-field-value">${tour.country ? tour.country.charAt(0).toUpperCase() + tour.country.slice(1) : 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.country || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Duration</div>
+                                                                    <div class="info-field-value">${tour.tour_information?.duration?.display || 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.duration?.display || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Age Range</div>
+                                                                    <div class="info-field-value">${tour.tour_information?.age_range?.display || 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.age_range?.display || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Starting Point</div>
+                                                                    <div class="info-field-value">${tour.tour_information?.starting_point || 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.starting_point || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Ending Point</div>
+                                                                    <div class="info-field-value">${tour.tour_information?.ending_point || 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.ending_point || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Meals Included</div>
+                                                                    <div class="info-field-value">${tour.tour_information?.num_meals || 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.num_meals || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Activities</div>
+                                                                    <div class="info-field-value">${tour.tour_information?.num_activities || 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.num_activities || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info-column">
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Reviews</div>
+                                                                    <div class="info-field-value">${tour.tour_information?.num_reviews || '0'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.num_reviews || '0'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">URL</div>
+                                                                    <div class="info-field-value"></div>
+                                                                    <div class="info-actions">
+                                                                        ${tour.url ? `<a href="${tour.url}" target="_blank" class="view-field-btn">View</a>` : ''}
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.url || 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Color</div>
+                                                                    <div class="info-field-value">
+                                                                        <span class="color-swatch" style="background-color: ${tour.tour_colour || '#ccc'};"></span>
+                                                                        <span class="color-text">${tour.tour_colour || 'No color'}</span>
+                                                                    </div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_colour || 'No color'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Included</div>
+                                                                    <div class="info-field-value multiline">${tour.tour_information?.included_items ? tour.tour_information.included_items.slice(0, 3).join(', ') + (tour.tour_information.included_items.length > 3 ? '...' : '') : 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.included_items ? tour.tour_information.included_items.join(', ') : 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">Not Included</div>
+                                                                    <div class="info-field-value multiline">${tour.tour_information?.excluded_items ? tour.tour_information.excluded_items.slice(0, 2).join(', ') + (tour.tour_information.excluded_items.length > 2 ? '...' : '') : 'N/A'}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.tour_information?.excluded_items ? tour.tour_information.excluded_items.join(', ') : 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info-row">
+                                                                    <div class="info-field-label">All Prices</div>
+                                                                    <div class="info-field-value">
+                                                                        <div class="price-list">
+                                                                            ${tour.price ? Object.entries(tour.price).map(([currency, price]) => {
+                                                                                const symbols = { 'price_GBP': '£', 'price_USD': '$', 'price_EUR': '€', 'price_AUD': 'A$', 'price_CAD': 'C$', 'price_NZD': 'NZ$' };
+                                                                                const symbol = symbols[currency] || currency.replace('price_', '');
+                                                                                return `<span class="price-item">${symbol}${price}</span>`;
+                                                                            }).join('') : '<span class="price-item">N/A</span>'}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('${tour.price ? Object.entries(tour.price).map(([currency, price]) => {
+                                                                            const symbols = { 'price_GBP': '£', 'price_USD': '$', 'price_EUR': '€', 'price_AUD': 'A$', 'price_CAD': 'C$', 'price_NZD': 'NZ$' };
+                                                                            const symbol = symbols[currency] || currency.replace('price_', '');
+                                                                            return symbol + price;
+                                                                        }).join(' | ') : 'N/A'}', this)">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="second-row">
+                                                    <div class="info-section-redesign">
+                                                        <h3>Activities Included</h3>
+                                                        <div class="info-grid">
+                                                            ${tour.tour_information?.activities_incl ? tour.tour_information.activities_incl.map((activity, index) =>
+                                                                `<div class="info-row">
+                                                                    <div class="info-field-label">Activity ${index + 1}</div>
+                                                                    <div class="info-field-value">${activity}</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue(\`${activity}\`, this)">Copy</button>
+                                                                    </div>
+                                                                </div>`
+                                                            ).join('') :
+                                                                `<div class="info-row">
+                                                                    <div class="info-field-label">Activities</div>
+                                                                    <div class="info-field-value">No activities listed</div>
+                                                                    <div class="info-actions">
+                                                                        <button class="copy-field-btn" onclick="copyFieldValue('No activities listed', this)">Copy</button>
+                                                                    </div>
+                                                                </div>`}
+                                                            <div class="info-row">
+                                                                <div class="info-field-label">All Activities</div>
+                                                                <div class="info-field-value multiline">${tour.tour_information?.activities_incl ? tour.tour_information.activities_incl.join(', ') : 'No activities listed'}</div>
+                                                                <div class="info-actions">
+                                                                    <button class="copy-field-btn" onclick="copyFieldValue(\`${tour.tour_information?.activities_incl ? tour.tour_information.activities_incl.join(', ') : 'No activities listed'}\`, this)">Copy</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="info-section-redesign">
+                                                        <h3>SEO Information</h3>
+                                                        <div class="info-grid">
+                                                            <div class="info-row">
+                                                                <div class="info-field-label">Meta Title</div>
+                                                                <div class="info-field-value multiline">${tour.seo_data?.meta_title || 'N/A'}</div>
+                                                                <div class="info-actions">
+                                                                    <button class="copy-field-btn" onclick="copyFieldValue(\`${tour.seo_data?.meta_title || 'N/A'}\`, this)">Copy</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info-row">
+                                                                <div class="info-field-label">Meta Description</div>
+                                                                <div class="info-field-value multiline">${tour.seo_data?.meta_description || 'N/A'}</div>
+                                                                <div class="info-actions">
+                                                                    <button class="copy-field-btn" onclick="copyFieldValue(\`${tour.seo_data?.meta_description || 'N/A'}\`, this)">Copy</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info-row">
+                                                                <div class="info-field-label">Meta Keywords</div>
+                                                                <div class="info-field-value multiline">${tour.seo_data?.meta_keywords || 'N/A'}</div>
+                                                                <div class="info-actions">
+                                                                    <button class="copy-field-btn" onclick="copyFieldValue(\`${tour.seo_data?.meta_keywords || 'N/A'}\`, this)">Copy</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info-row">
+                                                                <div class="info-field-label">Open Graph Title</div>
+                                                                <div class="info-field-value multiline">${tour.seo_data?.open_graph?.title || 'N/A'}</div>
+                                                                <div class="info-actions">
+                                                                    <button class="copy-field-btn" onclick="copyFieldValue(\`${tour.seo_data?.open_graph?.title || 'N/A'}\`, this)">Copy</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info-row">
+                                                                <div class="info-field-label">Open Graph Description</div>
+                                                                <div class="info-field-value multiline">${tour.seo_data?.open_graph?.description || 'N/A'}</div>
+                                                                <div class="info-actions">
+                                                                    <button class="copy-field-btn" onclick="copyFieldValue(\`${tour.seo_data?.open_graph?.description || 'N/A'}\`, this)">Copy</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="details-section">
+                                                <h3>Itinerary</h3>
+                                                <div class="itinerary">
+                                                    ${tour.itinerary ? Object.entries(tour.itinerary).map(([day, dayInfo]) => `
+                                                        <div class="itinerary-day">
+                                                            <div class="itinerary-header" onclick="toggleItineraryDay('${tour.tour_id}-${day}')">
+                                                                <span>${day.replace('day', 'Day ')} - ${dayInfo.title}</span>
+                                                                <span>▼</span>
+                                                            </div>
+                                                            <div class="itinerary-content" id="itinerary-${tour.tour_id}-${day}">
+                                                                <p><strong>Description:</strong> ${dayInfo.desc || 'No description available'}</p>
+                                                                ${dayInfo.meals_incl && dayInfo.meals_incl.length > 0 ? `<p style="margin-top: 1rem;"><strong>Meals:</strong> ${dayInfo.meals_incl.join(', ')}</p>` : ''}
+                                                                ${dayInfo.roomtype ? `<p><strong>Accommodation:</strong> ${dayInfo.roomtype}</p>` : ''}
+                                                                ${dayInfo.activities_incl && dayInfo.activities_incl.length > 0 ? `<p><strong>Activities:</strong> ${dayInfo.activities_incl.join(', ')}</p>` : ''}
+                                                            </div>
+                                                        </div>
+                                                    `).join('') : '<p>No itinerary available</p>'}
+                                                </div>
+                                            </div>
+
+                                            <div class="details-section">
+                                                <h3>Tour Dates</h3>
+                                                <div class="tour-dates">
+                                                    <div class="tour-dates-header">Starting Date</div>
+                                                    <div class="tour-dates-header">Ending Date</div>
+                                                    <div class="tour-dates-header">Status</div>
+                                                    ${tour.starting_dates ? tour.starting_dates.map(dateString => {
+                                                        // Parse: "22 Sep - 5 Oct 2025 - Book Now"
+                                                        const parts = dateString.split(' - ');
+                                                        if (parts.length >= 3) {
+                                                            let startDate = parts[0];
+                                                            const endDate = parts[1];
+                                                            const status = parts.slice(2).join(' - ');
+
+                                                            // Calculate year for start date if missing
+                                                            if (!startDate.match(/\b20\d{2}\b/)) {
+                                                                // Extract year from end date
+                                                                const yearMatch = endDate.match(/\b(20\d{2})\b/);
+                                                                if (yearMatch) {
+                                                                    const endYear = parseInt(yearMatch[1]);
+                                                                    // Parse duration to calculate start year
+                                                                    const durationDays = tour.tour_information?.duration?.days || 0;
+                                                                    // If start date is in December and end date is in January, start year is previous year
+                                                                    const startMonth = startDate.split(' ')[1];
+                                                                    const endMonth = endDate.split(' ')[1];
+                                                                    let startYear = endYear;
+                                                                    if ((startMonth === 'Dec' || startMonth === 'November' || startMonth === 'Nov') &&
+                                                                        (endMonth === 'Jan' || endMonth === 'Feb' || endMonth === 'Mar')) {
+                                                                        startYear = endYear - 1;
+                                                                    }
+                                                                    startDate = `${startDate} ${startYear}`;
+                                                                }
+                                                            }
+
+
+                                                            const statusClass = (status && typeof status === 'string' && status.includes('No Availability')) ? 'status-unavailable' : 'status-available';
+                                                            return `
+                                                                <div class="date-item">${startDate}</div>
+                                                                <div class="date-item">${endDate}</div>
+                                                                <div class="date-item"><span class="date-status ${statusClass}">${status}</span></div>
+                                                            `;
+                                                        } else {
+                                                            return `
+                                                                <div class="date-item">${dateString}</div>
+                                                                <div class="date-item">-</div>
+                                                                <div class="date-item">-</div>
+                                                            `;
+                                                        }
+                                                    }).join('') : '<div colspan="3">No dates available</div>'}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            container.innerHTML = tableHTML;
+            updateColumnVisibility();
+        }
+
+        function searchTours() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredTours = allTours.filter(tour => {
+                if (!tour) return false;
+
+                // Text search only
+                return !searchTerm ||
+                    (tour.tour_name && typeof tour.tour_name === 'string' && tour.tour_name.toLowerCase().includes(searchTerm)) ||
+                    (tour.title && typeof tour.title === 'string' && tour.title.toLowerCase().includes(searchTerm)) ||
+                    (tour.tour_information?.description && typeof tour.tour_information.description === 'string' && tour.tour_information.description.toLowerCase().includes(searchTerm)) ||
+                    (tour.url && typeof tour.url === 'string' && tour.url.toLowerCase().includes(searchTerm));
+            });
+
+            displayTours(filteredTours);
+        }
+
+        function sortTable(column) {
+            if (currentSort.column === column) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.column = column;
+                currentSort.direction = 'asc';
+            }
+
+            // Update sort indicators
+            document.querySelectorAll('.sort-indicator').forEach(el => el.textContent = '');
+            const indicator = document.getElementById(`sort-${column}`);
+            if (indicator) {
+                indicator.textContent = currentSort.direction === 'asc' ? '↑' : '↓';
+            }
+
+            // Sort the filtered tours
+            const toursToSort = filteredTours.length > 0 ? filteredTours : allTours;
+            const sortedTours = [...toursToSort].sort((a, b) => {
+                let aVal, bVal;
+
+                switch (column) {
+                    case 'tour_name':
+                        aVal = a.tour_name || '';
+                        bVal = b.tour_name || '';
+                        break;
+                    case 'tour_colour':
+                        aVal = a.tour_colour || '';
+                        bVal = b.tour_colour || '';
+                        break;
+                    case 'duration':
+                        aVal = a.tour_information?.duration?.days || 0;
+                        bVal = b.tour_information?.duration?.days || 0;
+                        break;
+                    case 'price':
+                        const priceField = `price_${currentCurrency}`;
+                        aVal = a.price?.[priceField] || 0;
+                        bVal = b.price?.[priceField] || 0;
+                        break;
+                    case 'country':
+                        aVal = a.country || '';
+                        bVal = b.country || '';
+                        break;
+                    case 'age_range':
+                        aVal = a.tour_information?.age_range?.display || '';
+                        bVal = b.tour_information?.age_range?.display || '';
+                        break;
+                    case 'num_meals':
+                        aVal = parseInt(a.tour_information?.num_meals) || 0;
+                        bVal = parseInt(b.tour_information?.num_meals) || 0;
+                        break;
+                    case 'num_activities':
+                        aVal = parseInt(a.tour_information?.num_activities) || 0;
+                        bVal = parseInt(b.tour_information?.num_activities) || 0;
+                        break;
+                    case 'num_reviews':
+                        aVal = parseInt(a.tour_information?.num_reviews) || 0;
+                        bVal = parseInt(b.tour_information?.num_reviews) || 0;
+                        break;
+                    case 'starting_point':
+                        aVal = a.tour_information?.starting_point || '';
+                        bVal = b.tour_information?.starting_point || '';
+                        break;
+                    case 'ending_point':
+                        aVal = a.tour_information?.ending_point || '';
+                        bVal = b.tour_information?.ending_point || '';
+                        break;
+                    case 'url':
+                        aVal = a.url || '';
+                        bVal = b.url || '';
+                        break;
+                    default:
+                        return 0;
+                }
+
+                // Handle numeric vs string comparison
+                if (typeof aVal === 'number' && typeof bVal === 'number') {
+                    return currentSort.direction === 'asc' ? aVal - bVal : bVal - aVal;
+                } else {
+                    aVal = String(aVal).toLowerCase();
+                    bVal = String(bVal).toLowerCase();
+                    if (currentSort.direction === 'asc') {
+                        return aVal.localeCompare(bVal);
+                    } else {
+                        return bVal.localeCompare(aVal);
+                    }
+                }
+            });
+
+            displayTours(sortedTours);
+        }
+
+        // Progress tracking variables
+        let progressInterval = null;
+        let scrapingStartTime = null;
+
+        async function updateTours() {
+            const updateBtn = document.getElementById('updateBtn');
+            const progressContainer = document.getElementById('progressContainer');
+
+            try {
+                // Determine which PHP script to call based on current tab
+                let phpScript;
+                switch(currentTab) {
+                    case 'private':
+                        phpScript = 'BT_scraping/scrape_private_tours.php';
+                        break;
+                    case 'volunteer':
+                        phpScript = 'BT_scraping/scrape_volunteer_tours.php';
+                        break;
+                    case 'group':
+                    default:
+                        phpScript = 'BT_scraping/scrape_full_tours.php';
+                        break;
+                }
+
+                // Start the scraping process
+                const response = await fetch(phpScript, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'start' })
+                });
+
+                const result = await response.json();
+                if (!result.success) {
+                    throw new Error(result.message || 'Failed to start scraping');
+                }
+
+                // Show progress bar and start tracking
+                showProgressBar();
+                startProgressTracking();
+
+                updateBtn.disabled = true;
+                updateBtn.textContent = 'Scraping...';
+
+            } catch (error) {
+                console.error('Error starting scraping:', error);
+                alert(`Failed to start scraping: ${error.message}`);
+            }
+        }
+
+        function showProgressBar() {
+            const progressContainer = document.getElementById('progressContainer');
+            progressContainer.classList.add('active');
+            scrapingStartTime = Date.now();
+        }
+
+        function hideProgressBar() {
+            const progressContainer = document.getElementById('progressContainer');
+            progressContainer.classList.remove('active');
+
+            const updateBtn = document.getElementById('updateBtn');
+            updateBtn.disabled = false;
+            updateBtn.textContent = 'Update Tours';
+        }
+
+        function startProgressTracking() {
+            // Clear any existing interval
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+
+            // Start tracking progress every 2 seconds
+            progressInterval = setInterval(checkProgress, 2000);
+            checkProgress(); // Check immediately
+        }
+
+        async function checkProgress() {
+            try {
+                // Determine which PHP script to check based on current tab
+                let phpScript;
+                switch(currentTab) {
+                    case 'private':
+                        phpScript = 'BT_scraping/scrape_private_tours.php?action=status';
+                        break;
+                    case 'volunteer':
+                        phpScript = 'BT_scraping/scrape_volunteer_tours.php?action=status';
+                        break;
+                    case 'group':
+                    default:
+                        phpScript = 'BT_scraping/scrape_full_tours.php?action=status';
+                        break;
+                }
+
+                const response = await fetch(phpScript);
+                const status = await response.json();
+
+                updateProgressDisplay(status);
+
+                if (status.status === 'completed' || status.status === 'error' || status.status === 'stopped') {
+                    clearInterval(progressInterval);
+                    progressInterval = null;
+
+                    setTimeout(() => {
+                        hideProgressBar();
+                        if (status.status === 'completed') {
+                            loadTours(); // Refresh the tour data
+                        }
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Error checking progress:', error);
+            }
+        }
+
+        function updateProgressDisplay(status) {
+            const progressFill = document.getElementById('progressFill');
+            const progressPercentage = document.getElementById('progressPercentage');
+            const progressMessage = document.getElementById('progressMessage');
+            const progressDetails = document.getElementById('progressDetails');
+
+            // Calculate time-based progress if real progress is low
+            const elapsedMinutes = scrapingStartTime ? (Date.now() - scrapingStartTime) / (1000 * 60) : 0;
+            const timeBasedProgress = Math.min(95, (elapsedMinutes / 15) * 100); // 95% max for time-based
+
+            // Use the higher of real progress or time-based progress
+            const displayProgress = Math.max(status.progress || 0, timeBasedProgress);
+
+            progressFill.style.width = displayProgress + '%';
+            progressPercentage.textContent = Math.round(displayProgress) + '%';
+            progressMessage.textContent = status.message || 'Processing...';
+
+            let details = '';
+            if (status.total_urls > 0) {
+                details += `Tours: ${status.completed_urls}/${status.total_urls} • `;
+            }
+            if (elapsedMinutes >= 1) {
+                details += `Time: ${Math.round(elapsedMinutes)}min • `;
+            }
+            details += `Status: ${status.status}`;
+
+            progressDetails.textContent = details;
+        }
+
+        async function stopScraping() {
+            try {
+                // Determine which PHP script to call based on current tab
+                let phpScript;
+                switch(currentTab) {
+                    case 'private':
+                        phpScript = 'BT_scraping/scrape_private_tours.php';
+                        break;
+                    case 'volunteer':
+                        phpScript = 'BT_scraping/scrape_volunteer_tours.php';
+                        break;
+                    case 'group':
+                    default:
+                        phpScript = 'BT_scraping/scrape_full_tours.php';
+                        break;
+                }
+
+                const response = await fetch(phpScript, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'stop' })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    if (progressInterval) {
+                        clearInterval(progressInterval);
+                        progressInterval = null;
+                    }
+                    hideProgressBar();
+                }
+            } catch (error) {
+                console.error('Error stopping scraping:', error);
+            }
+        }
+
+        function downloadTourJson(tourId) {
+            const tour = allTours.find(t => t.tour_id === tourId);
+            if (tour) {
+                const jsonString = JSON.stringify(tour, null, 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${tour.tour_name || tourId}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        function updateColumnVisibility() {
+            const columns = ['name', 'colour', 'duration', 'price', 'country', 'age', 'meals', 'activities', 'reviews', 'starts', 'ends', 'url', 'json'];
+
+            columns.forEach(col => {
+                const checkbox = document.getElementById(`col-${col}`);
+                const elements = document.querySelectorAll(`.col-${col}`);
+
+                elements.forEach(el => {
+                    if (checkbox && checkbox.checked) {
+                        el.classList.remove('hidden-column');
+                    } else if (checkbox) {
+                        el.classList.add('hidden-column');
+                    }
+                });
+            });
+        }
+
+        async function copyUrl(url, button) {
+            try {
+                await navigator.clipboard.writeText(url);
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (error) {
+                console.error('Failed to copy:', error);
+            }
+        }
+
+        function toggleTourDetails(tourId) {
+            const detailsRow = document.getElementById(`details-${tourId}`);
+            if (detailsRow.classList.contains('expanded')) {
+                detailsRow.classList.remove('expanded');
+            } else {
+                // Close all other expanded details
+                document.querySelectorAll('.tour-details.expanded').forEach(row => {
+                    row.classList.remove('expanded');
+                });
+                detailsRow.classList.add('expanded');
+            }
+        }
+
+        function toggleItineraryDay(dayId) {
+            const dayContent = document.getElementById(`itinerary-${dayId}`);
+            if (dayContent.classList.contains('expanded')) {
+                dayContent.classList.remove('expanded');
+            } else {
+                dayContent.classList.add('expanded');
+            }
+        }
+
+        async function copyColor(color, element) {
+            try {
+                await navigator.clipboard.writeText(color);
+                element.classList.add('copied');
+
+                // Show feedback notification
+                const feedback = document.getElementById('colorFeedback');
+                feedback.classList.add('show');
+
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 2000);
+
+                // Update tooltip temporarily
+                const originalTitle = element.title;
+                element.title = `Copied: ${color}`;
+
+                setTimeout(() => {
+                    element.classList.remove('copied');
+                    element.title = originalTitle;
+                }, 2000);
+            } catch (error) {
+                console.error('Failed to copy color:', error);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = color;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                element.classList.add('copied');
+                // Show feedback notification even for fallback
+                const feedback = document.getElementById('colorFeedback');
+                feedback.classList.add('show');
+
+                setTimeout(() => {
+                    element.classList.remove('copied');
+                    feedback.classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        // Copy field value function for redesigned sections
+        async function copyFieldValue(value, button) {
+            try {
+                await navigator.clipboard.writeText(value);
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 1500);
+            } catch (error) {
+                console.error('Failed to copy field value:', error);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = value;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 1500);
+            }
+        }
+
+
+        // Image scraping function
+        function scrapeImages(url) {
+            // Open the image viewer in a new window with the tour URL as parameter
+            const imageViewerUrl = `image_viewer.html?url=${encodeURIComponent(url)}`;
+            window.open(imageViewerUrl, '_blank', 'width=1400,height=900,scrollbars=yes,resizable=yes');
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', searchTours);
+
+        // Column visibility toggles
+        ['colour', 'duration', 'price', 'country', 'age', 'meals', 'activities', 'reviews', 'starts', 'ends', 'url', 'json', 'images'].forEach(col => {
+            const checkbox = document.getElementById(`col-${col}`);
+            if (checkbox) {
+                checkbox.addEventListener('change', updateColumnVisibility);
+            }
+        });
+
+        function showDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'block';
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+
+        function downloadAllTours() {
+            const checkboxes = document.querySelectorAll('#downloadModal input[type="checkbox"]:checked');
+            const selectedFields = Array.from(checkboxes).map(cb => cb.value);
+
+            if (selectedFields.length === 0) {
+                alert('Please select at least one field to download.');
+                return;
+            }
+
+            const toursToExport = (filteredTours.length > 0 ? filteredTours : allTours).map(tour => {
+                const exportTour = {};
+                selectedFields.forEach(field => {
+                    if (field.includes('.')) {
+                        const [parent, child] = field.split('.');
+                        if (tour[parent] && tour[parent][child] !== undefined) {
+                            if (!exportTour[parent]) exportTour[parent] = {};
+                            exportTour[parent][child] = tour[parent][child];
+                        }
+                    } else {
+                        if (tour[field] !== undefined) {
+                            exportTour[field] = tour[field];
+                        }
+                    }
+                });
+                return exportTour;
+            });
+
+            const jsonString = JSON.stringify(toursToExport, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `backpacking-tours-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            closeDownloadModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('downloadModal');
+            if (event.target === modal) {
+                closeDownloadModal();
+            }
+        }
+
+        // Mobile detection and default column setup
+        function isMobile() {
+            return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        function setupMobileDefaults() {
+            if (isMobile()) {
+                // Set mobile-specific default columns (name, colour, duration, price, URL)
+                const mobileColumns = ['colour', 'duration', 'price', 'url'];
+                const desktopOnlyColumns = ['age', 'meals', 'activities', 'reviews', 'starts', 'ends', 'json', 'images', 'country'];
+
+                // Enable mobile-friendly columns
+                mobileColumns.forEach(col => {
+                    const checkbox = document.getElementById(`col-${col}`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
+
+                // Disable desktop-heavy columns on mobile
+                desktopOnlyColumns.forEach(col => {
+                    const checkbox = document.getElementById(`col-${col}`);
+                    if (checkbox) {
+                        checkbox.checked = false;
+                    }
+                });
+
+                // Update the visibility immediately
+                updateColumnVisibility();
+
+                // Add mobile-optimized styling to table container
+                const tableContainer = document.querySelector('.table-container');
+                if (tableContainer) {
+                    tableContainer.style.width = '100vw';
+                    tableContainer.style.marginLeft = 'calc(-50vw + 50%)';
+                    tableContainer.style.marginRight = 'calc(-50vw + 50%)';
+                }
+            }
+        }
+
+        // Run setup on page load and window resize
+        window.addEventListener('resize', setupMobileDefaults);
+
+        // Load tours on page load
+        loadTours();
+
+        // Setup mobile defaults after a short delay to ensure DOM is ready
+        setTimeout(setupMobileDefaults, 100);
+    </script>
+</body>
+</html>

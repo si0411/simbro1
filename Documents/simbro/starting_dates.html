@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting Date Search - Backpacking Tours</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .nav-links a {
+            color: #007AFF;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: #f0f0f0;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 0.75rem 2rem;
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .toggle-btn.active {
+            background: #007AFF;
+            color: white;
+            border-color: #007AFF;
+        }
+
+        .search-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .search-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .search-btn {
+            padding: 0.75rem 2rem;
+            background: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            height: fit-content;
+        }
+
+        .search-btn:hover {
+            background: #0056CC;
+        }
+
+        .search-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .clear-btn {
+            padding: 0.75rem 1.5rem;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .clear-btn:hover {
+            background: #5a6268;
+        }
+
+        .format-hint {
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 0.25rem;
+        }
+
+        .results-section {
+            margin-top: 2rem;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #007AFF;
+        }
+
+        .results-header h2 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .results-count {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .tour-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .tour-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .tour-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .tour-url {
+            font-size: 0.85rem;
+            color: #007AFF;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+
+        .tour-url a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .tour-url a:hover {
+            text-decoration: underline;
+        }
+
+        .dates-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .date-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            align-items: center;
+        }
+
+        .date-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .date-value {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .date-duration {
+            font-size: 0.85rem;
+            color: #007AFF;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .search-inputs {
+                grid-template-columns: 1fr;
+            }
+
+            .date-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .date-duration {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗓️ Starting Date Search</h1>
+            <p>Find tours by date range</p>
+        </div>
+
+        <div class="nav-links">
+            <a href="bt_tour_viewer.html">← Back to Tour Viewer</a>
+        </div>
+
+        <div class="toggle-buttons">
+            <button class="toggle-btn active" data-type="group" onclick="switchTourType('group')">
+                Group Tours
+            </button>
+            <button class="toggle-btn" data-type="private" onclick="switchTourType('private')">
+                Private Tours
+            </button>
+            <button class="toggle-btn" data-type="volunteer" onclick="switchTourType('volunteer')">
+                Volunteer Programs
+            </button>
+        </div>
+
+        <div class="search-section">
+            <div class="search-inputs">
+                <div class="input-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="text"
+                           id="startDate"
+                           placeholder="15 Jan 2025"
+                           autocomplete="off">
+                    <div class="format-hint">Format: DD MMM YYYY</div>
+                </div>
+                <div class="input-group">
+                    <label for="endDate">End Date</label>
+                    <input type="text"
+                           id="endDate"
+                           placeholder="31 Dec 2025"
+                           autocomplete="off">
+                    <div class="format-hint">Format: DD MMM YYYY</div>
+                </div>
+                <button class="search-btn" onclick="searchDates()">Search</button>
+                <button class="clear-btn" onclick="clearSearch()">Clear</button>
+            </div>
+        </div>
+
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <div class="results-header">
+                <h2>Search Results</h2>
+                <span class="results-count" id="resultsCount">0 tours found</span>
+            </div>
+            <div id="resultsContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentTourType = 'group';
+        let tourData = null;
+
+        // Load tour data on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadTourData();
+        });
+
+        function switchTourType(type) {
+            currentTourType = type;
+
+            // Update button states
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.toggle-btn[data-type="${type}"]`).classList.add('active');
+
+            // Load new data
+            loadTourData();
+
+            // Clear results
+            document.getElementById('resultsSection').style.display = 'none';
+        }
+
+        async function loadTourData() {
+            try {
+                const filePaths = {
+                    'group': 'BT_scraping/group_tours_frontend.json',
+                    'private': 'BT_scraping/private_tours_frontend.json',
+                    'volunteer': 'BT_scraping/volunteer_frontend.json'
+                };
+
+                const response = await fetch(filePaths[currentTourType]);
+                if (!response.ok) {
+                    throw new Error('Failed to load tour data');
+                }
+
+                const data = await response.json();
+                tourData = data.tours || data.programs || [];
+
+            } catch (error) {
+                console.error('Error loading tour data:', error);
+                tourData = [];
+            }
+        }
+
+        function parseDate(dateStr) {
+            // Parse "DD MMM YYYY" format (e.g., "15 Jan 2025")
+            const months = {
+                'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3, 'may': 4, 'jun': 5,
+                'jul': 6, 'aug': 7, 'sep': 8, 'oct': 9, 'nov': 10, 'dec': 11
+            };
+
+            const parts = dateStr.trim().toLowerCase().split(/\s+/);
+            if (parts.length !== 3) return null;
+
+            const day = parseInt(parts[0]);
+            const month = months[parts[1].substring(0, 3)];
+            const year = parseInt(parts[2]);
+
+            if (isNaN(day) || month === undefined || isNaN(year)) return null;
+
+            return new Date(year, month, day);
+        }
+
+        function formatDate(dateStr) {
+            // Convert ISO date to "DD MMM YYYY" format
+            const date = new Date(dateStr);
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const day = date.getDate();
+            const month = months[date.getMonth()];
+            const year = date.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
+
+        function addDays(dateStr, days) {
+            const date = new Date(dateStr);
+            date.setDate(date.getDate() + days);
+            return date;
+        }
+
+        function searchDates() {
+            const startDateInput = document.getElementById('startDate').value;
+            const endDateInput = document.getElementById('endDate').value;
+
+            if (!startDateInput || !endDateInput) {
+                alert('Please enter both start and end dates');
+                return;
+            }
+
+            const startDate = parseDate(startDateInput);
+            const endDate = parseDate(endDateInput);
+
+            if (!startDate || !endDate) {
+                alert('Invalid date format. Please use DD MMM YYYY (e.g., 15 Jan 2025)');
+                return;
+            }
+
+            if (startDate > endDate) {
+                alert('Start date must be before end date');
+                return;
+            }
+
+            // Filter tours
+            const results = [];
+
+            tourData.forEach(tour => {
+                if (!tour.starting_dates || !Array.isArray(tour.starting_dates)) {
+                    return;
+                }
+
+                const matchingDates = [];
+
+                tour.starting_dates.forEach(startingDate => {
+                    const tourStartDate = new Date(startingDate);
+
+                    if (tourStartDate >= startDate && tourStartDate <= endDate) {
+                        // Calculate end date
+                        const duration = tour.duration || 0;
+                        const endingDate = addDays(startingDate, duration);
+
+                        matchingDates.push({
+                            startDate: startingDate,
+                            endDate: endingDate,
+                            duration: duration
+                        });
+                    }
+                });
+
+                if (matchingDates.length > 0) {
+                    results.push({
+                        tour: tour,
+                        dates: matchingDates
+                    });
+                }
+            });
+
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsCount = document.getElementById('resultsCount');
+
+            resultsSection.style.display = 'block';
+            resultsCount.textContent = `${results.length} tour${results.length !== 1 ? 's' : ''} found`;
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No tours found in this date range</div>';
+                return;
+            }
+
+            let html = '';
+
+            results.forEach(result => {
+                const tour = result.tour;
+                const dates = result.dates;
+
+                html += `
+                    <div class="tour-card">
+                        <div class="tour-name">${tour.tour_name || 'Unnamed Tour'}</div>
+                        ${tour.url ? `<div class="tour-url"><a href="${tour.url}" target="_blank">${tour.url}</a></div>` : ''}
+                        <div class="dates-list">`;
+
+                dates.forEach(dateInfo => {
+                    const durationText = dateInfo.duration ? `${dateInfo.duration} days` : '';
+
+                    html += `
+                        <div class="date-item">
+                            <div>
+                                <div class="date-label">Start Date</div>
+                                <div class="date-value">${formatDate(dateInfo.startDate)}</div>
+                            </div>
+                            <div>
+                                <div class="date-label">End Date</div>
+                                <div class="date-value">${formatDate(dateInfo.endDate)}</div>
+                            </div>
+                            <div class="date-duration">${durationText}</div>
+                        </div>`;
+                });
+
+                html += `
+                        </div>
+                    </div>`;
+            });
+
+            resultsContainer.innerHTML = html;
+        }
+
+        function clearSearch() {
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
+            document.getElementById('resultsSection').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
