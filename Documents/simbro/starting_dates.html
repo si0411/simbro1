@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/red_favicon.png">
     <title>Starting Date Search - Backpacking Tours</title>
     <style>
         * {
@@ -27,6 +28,12 @@
         .header {
             text-align: center;
             margin-bottom: 2rem;
+            padding: 1rem;
+        }
+
+        .logo {
+            height: 80px;
+            margin-bottom: 1rem;
         }
 
         .header h1 {
@@ -241,7 +248,7 @@
 
         .copy-name-btn {
             padding: 0.4rem 0.8rem;
-            background: #6c757d;
+            background: #6c49ff;
             color: white;
             border: none;
             border-radius: 6px;
@@ -252,7 +259,7 @@
         }
 
         .copy-name-btn:hover {
-            background: #5a6268;
+            background: #5a3dd9;
         }
 
         .copy-name-btn.copied {
@@ -267,16 +274,9 @@
             flex-wrap: wrap;
         }
 
-        .tour-url {
-            font-size: 0.85rem;
-            color: #007AFF;
-            word-break: break-all;
-            flex: 1;
-        }
-
         .url-btn {
             padding: 0.4rem 0.8rem;
-            background: #007AFF;
+            background: #6c49ff;
             color: white;
             border: none;
             border-radius: 6px;
@@ -289,7 +289,7 @@
         }
 
         .url-btn:hover {
-            background: #0056CC;
+            background: #5a3dd9;
         }
 
         .url-btn.copied {
@@ -313,7 +313,7 @@
 
         .copy-date-btn {
             padding: 0.4rem 0.8rem;
-            background: #6c757d;
+            background: #6c49ff;
             color: white;
             border: none;
             border-radius: 6px;
@@ -324,7 +324,7 @@
         }
 
         .copy-date-btn:hover {
-            background: #5a6268;
+            background: #5a3dd9;
         }
 
         .copy-date-btn.copied {
@@ -397,6 +397,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <img src="assets/tour_viewer.svg" alt="Backpacking Tours" class="logo">
             <h1>Starting Date Search</h1>
             <p>Find tours by date range</p>
         </div>
@@ -629,7 +630,6 @@
                 if (tourUrl) {
                     html += `
                         <div class="tour-url-section">
-                            <div class="tour-url">${tourUrl}</div>
                             <button class="url-btn" onclick="copyText('${escapeQuotes(tourUrl)}', this)">Copy URL</button>
                             <a href="${tourUrl}" target="_blank" class="url-btn">View URL</a>
                         </div>`;
