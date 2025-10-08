@@ -1,0 +1,66 @@
+name: Daily Tour Data Scraping
+
+on:
+  schedule:
+    # Run daily at 3 AM UTC (10 AM Thailand time)
+    - cron: '0 3 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  scrape-tours:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Run URL discovery
+      run: |
+        echo "🔍 Discovering tour URLs..."
+        python get_grouptour_urls.py
+        
+    - name: Run tour scraping
+      run: |
+        echo "🕷️ Scraping tour data..."
+        python scrape_grouptours.py
+
+    - name: Merge CSV data for available spaces
+      run: |
+        echo "📊 Merging CSV data for available spaces..."
+        python merge_csv_data.py
+
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit and push changes
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add group_tour_urls.json group_tours_frontend.json group_tours_frontend_enhanced.json
+        git commit -m "🤖 Daily tour data update - $(date +'%Y-%m-%d %H:%M UTC')"
+        git push
+        
+    - name: Summary
+      run: |
+        echo "✅ Daily scraping completed!"
+        if [ -f "group_tours_frontend.json" ]; then
+          tour_count=$(python -c "import json; data=json.load(open('group_tours_frontend.json')); print(len([t for t in data if 'error' not in t]))")
+          echo "📊 Successfully scraped: $tour_count tours"
+        fi
