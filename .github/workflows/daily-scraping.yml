@@ -35,6 +35,8 @@ jobs:
         cd Documents/simbro/BT_scraping && python scrape_grouptours.py
 
     - name: Merge CSV data for available spaces
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo "📊 Merging CSV data for available spaces..."
         cd Documents/simbro/BT_scraping && python merge_csv_data.py
