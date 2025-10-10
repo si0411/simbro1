@@ -94,6 +94,52 @@ def extract_dates_from_json_string(date_string):
         return None
 
 
+def load_global_prices(global_prices_dir):
+    """
+    Load global pricing data from CSV files
+    Returns dict: {tour_name: {price_GBP: X, price_USD: Y, ...}}
+    """
+    global_prices = {}
+
+    if not os.path.exists(global_prices_dir):
+        print(f"⚠️ Global prices directory not found: {global_prices_dir}")
+        return global_prices
+
+    csv_files = list(Path(global_prices_dir).glob("*.csv"))
+    print(f"💰 Found {len(csv_files)} global pricing CSV files")
+
+    for csv_file in csv_files:
+        try:
+            with open(csv_file, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+
+                for row in reader:
+                    tour_name = row.get('Tour Name', '').strip()
+                    if not tour_name:
+                        continue
+
+                    # Extract main prices (not deposit)
+                    prices = {}
+                    for currency in ['USD', 'NZD', 'GBP', 'EUR', 'CAD', 'AUD']:
+                        price_val = row.get(f'Main Price {currency}', '')
+                        try:
+                            prices[f'price_{currency}'] = int(price_val) if price_val else None
+                        except:
+                            prices[f'price_{currency}'] = None
+
+                    # Store with both original and normalized names
+                    global_prices[tour_name] = prices
+                    normalized_name = normalize_tour_name(tour_name)
+                    if normalized_name != tour_name:
+                        global_prices[normalized_name] = prices
+
+            print(f"  ✅ Loaded prices from {csv_file.name}")
+        except Exception as e:
+            print(f"  ❌ Error loading {csv_file.name}: {e}")
+
+    return global_prices
+
+
 def load_csv_data(csv_dir):
     """
     Load all CSV files from tourism_api csv/tour_dates directory
@@ -106,7 +152,7 @@ def load_csv_data(csv_dir):
         return csv_data
 
     csv_files = list(Path(csv_dir).glob("*.csv"))
-    print(f"📁 Found {len(csv_files)} CSV files")
+    print(f"📁 Found {len(csv_files)} tour dates CSV files")
 
     for csv_file in csv_files:
         # Extract tour name from filename
@@ -202,13 +248,14 @@ def match_dates(json_date_str, csv_dates):
     return None
 
 
-def enhance_json_with_csv_data(json_file, csv_dir, output_file):
+def enhance_json_with_csv_data(json_file, csv_dir, global_prices_dir, output_file):
     """
-    Enhance group_tours_frontend.json with CSV data
+    Enhance group_tours_frontend.json with CSV data (dates and global prices)
     """
     print(f"\n🚀 Starting data merge...")
     print(f"   JSON input: {json_file}")
-    print(f"   CSV directory: {csv_dir}")
+    print(f"   Tour dates CSV directory: {csv_dir}")
+    print(f"   Global prices CSV directory: {global_prices_dir}")
     print(f"   Output: {output_file}")
 
     # Load JSON data
@@ -226,21 +273,39 @@ def enhance_json_with_csv_data(json_file, csv_dir, output_file):
         tours = json_data.get('tours', [])
     print(f"📊 Loaded {len(tours)} tours from JSON")
 
-    # Load CSV data
+    # Load global prices
+    global_prices = load_global_prices(global_prices_dir)
+
+    # Load CSV data for dates
     csv_data = load_csv_data(csv_dir)
 
     # Enhance tours with CSV data
     enhanced_count = 0
     matched_dates_count = 0
+    global_prices_count = 0
 
     for tour in tours:
         tour_name = tour.get('tour_name', '')
         starting_dates = tour.get('starting_dates', [])
 
-        if not tour_name or not starting_dates:
+        if not tour_name:
             continue
 
-        # Try to find matching CSV data
+        # Add global prices to tour level
+        tour_prices = global_prices.get(tour_name)
+        if not tour_prices:
+            # Try normalized name
+            normalized_name = normalize_tour_name(tour_name)
+            tour_prices = global_prices.get(normalized_name)
+
+        if tour_prices:
+            tour['price'] = tour_prices
+            global_prices_count += 1
+
+        if not starting_dates:
+            continue
+
+        # Try to find matching CSV data for dates
         csv_tour_dates = csv_data.get(tour_name)
 
         # If no exact match, try normalized name
@@ -298,7 +363,8 @@ def enhance_json_with_csv_data(json_file, csv_dir, output_file):
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=2)
         print(f"\n✅ Successfully created enhanced JSON")
-        print(f"   Enhanced {enhanced_count} tours")
+        print(f"   Added global prices to {global_prices_count} tours")
+        print(f"   Enhanced {enhanced_count} tours with date-specific data")
         print(f"   Matched {matched_dates_count} dates with CSV data")
         print(f"   Output: {output_file}")
         return True
@@ -310,7 +376,7 @@ def enhance_json_with_csv_data(json_file, csv_dir, output_file):
 def sync_tourism_api_repo():
     """
     Clone or update tourism_api repository from GitHub
-    Returns: Path to csv/tour_dates directory
+    Returns: Tuple of (tour_dates_path, global_prices_path)
     Raises: Exception if sync fails
     """
     # Use authenticated URL for private repository access
@@ -321,7 +387,8 @@ def sync_tourism_api_repo():
     else:
         repo_url = "https://github.com/si0411/tourism_api.git"
     repo_path = Path("/tmp/tourism_api")
-    csv_path = repo_path / "csv" / "tour_dates"
+    tour_dates_path = repo_path / "csv" / "tour_dates"
+    global_prices_path = repo_path / "csv" / "global_prices"
 
     try:
         if repo_path.exists():
@@ -345,11 +412,13 @@ def sync_tourism_api_repo():
             )
             print(f"✅ Cloned successfully")
 
-        # Verify CSV directory exists
-        if not csv_path.exists():
-            raise Exception(f"CSV directory not found at {csv_path}")
+        # Verify CSV directories exist
+        if not tour_dates_path.exists():
+            print(f"⚠️ Tour dates directory not found at {tour_dates_path}")
+        if not global_prices_path.exists():
+            print(f"⚠️ Global prices directory not found at {global_prices_path}")
 
-        return csv_path
+        return tour_dates_path, global_prices_path
 
     except subprocess.CalledProcessError as e:
         raise Exception(f"Git operation failed: {e.stderr}")
@@ -366,13 +435,13 @@ def main():
 
     # Sync tourism_api repository from GitHub
     try:
-        csv_dir = sync_tourism_api_repo()
+        tour_dates_dir, global_prices_dir = sync_tourism_api_repo()
     except Exception as e:
         print(f"❌ {e}")
         return 1
 
     # Run the merge
-    success = enhance_json_with_csv_data(json_file, csv_dir, output_file)
+    success = enhance_json_with_csv_data(json_file, tour_dates_dir, global_prices_dir, output_file)
 
     return 0 if success else 1
 
