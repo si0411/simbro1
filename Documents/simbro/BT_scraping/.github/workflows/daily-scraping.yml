@@ -1,4 +1,4 @@
-name: Daily Tour Data Scraping
+name: Daily CSV Data Merge
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
-  scrape-tours:
+  merge-csv-data:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,16 +23,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Run URL discovery
-      run: |
-        echo "🔍 Discovering tour URLs..."
-        python get_grouptour_urls.py
-
-    - name: Run tour scraping
-      run: |
-        echo "🕷️ Scraping tour data..."
-        python scrape_grouptours.py
 
     - name: Merge CSV data (available spaces and prices)
       env:
@@ -55,8 +45,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add group_tour_urls.json group_tours_frontend.json group_tours_frontend_enhanced.json
-        git commit -m "🤖 Daily tour data update - $(date +'%Y-%m-%d %H:%M UTC')"
+        git add group_tours_frontend_enhanced.json
+        git commit -m "🤖 Daily CSV merge update - $(date +'%Y-%m-%d %H:%M UTC')"
         git push
 
     - name: Deploy to simbro.app server
@@ -66,14 +56,14 @@ jobs:
         echo "🚀 Deploying updated files to simbro.app..."
         sudo apt-get update && sudo apt-get install -y sshpass
         sshpass -p "$SERVER_PASSWORD" scp -o StrictHostKeyChecking=no \
-          group_tours_frontend_enhanced.json \
+          group_tours_frontend.json group_tours_frontend_enhanced.json \
           root@72.60.107.156:/var/www/html/BT_scraping/
-        echo "✅ Deployed enhanced JSON to server"
+        echo "✅ Deployed both base and enhanced JSON files to server"
 
     - name: Summary
       run: |
-        echo "✅ Daily scraping completed!"
+        echo "✅ Daily CSV merge completed!"
         if [ -f "group_tours_frontend.json" ]; then
           tour_count=$(python -c "import json; data=json.load(open('group_tours_frontend.json')); tours=data if isinstance(data, list) else data.get('tours', []); print(len(tours))")
-          echo "📊 Successfully scraped: $tour_count tours"
+          echo "📊 Updated: $tour_count tours"
         fi
