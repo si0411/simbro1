@@ -1,4 +1,4 @@
-name: Daily Tour Data Scraping
+name: Daily CSV Data Merge
 
 on:
   schedule:
@@ -7,39 +7,29 @@ on:
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
-  scrape-tours:
+  merge-csv-data:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-        
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        cd Documents/simbro/BT_scraping && pip install -r requirements.txt
+        pip install -r requirements.txt
 
-    - name: Run URL discovery
-      run: |
-        echo "🔍 Discovering tour URLs..."
-        cd Documents/simbro/BT_scraping && python get_grouptour_urls.py
-
-    - name: Run tour scraping
-      run: |
-        echo "🕷️ Scraping tour data..."
-        cd Documents/simbro/BT_scraping && python scrape_grouptours.py
-
-    - name: Merge CSV data for available spaces
+    - name: Merge CSV data (available spaces and prices)
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOURISM_API_TOKEN }}
       run: |
-        echo "📊 Merging CSV data for available spaces..."
-        cd Documents/simbro/BT_scraping && python merge_csv_data.py
+        echo "📊 Merging CSV data for available spaces and global prices..."
+        python merge_csv_data.py
 
     - name: Check for changes
       id: verify-changed-files
@@ -55,8 +45,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add Documents/simbro/BT_scraping/group_tour_urls.json Documents/simbro/BT_scraping/group_tours_frontend.json Documents/simbro/BT_scraping/group_tours_frontend_enhanced.json
-        git commit -m "🤖 Daily tour data update - $(date +'%Y-%m-%d %H:%M UTC')"
+        git add group_tours_frontend_enhanced.json
+        git commit -m "🤖 Daily CSV merge update - $(date +'%Y-%m-%d %H:%M UTC')"
         git push
 
     - name: Deploy to simbro.app server
@@ -66,14 +56,14 @@ jobs:
         echo "🚀 Deploying updated files to simbro.app..."
         sudo apt-get update && sudo apt-get install -y sshpass
         sshpass -p "$SERVER_PASSWORD" scp -o StrictHostKeyChecking=no \
-          Documents/simbro/BT_scraping/group_tours_frontend_enhanced.json \
-          root@simbro.app:/var/www/html/BT_scraping/
-        echo "✅ Deployed enhanced JSON to server"
+          group_tours_frontend.json group_tours_frontend_enhanced.json \
+          root@72.60.107.156:/var/www/html/BT_scraping/
+        echo "✅ Deployed both base and enhanced JSON files to server"
 
     - name: Summary
       run: |
-        echo "✅ Daily scraping completed!"
-        if [ -f "Documents/simbro/BT_scraping/group_tours_frontend.json" ]; then
-          tour_count=$(python -c "import json; data=json.load(open('Documents/simbro/BT_scraping/group_tours_frontend.json')); print(len([t for t in data if 'error' not in t]))")
-          echo "📊 Successfully scraped: $tour_count tours"
+        echo "✅ Daily CSV merge completed!"
+        if [ -f "group_tours_frontend.json" ]; then
+          tour_count=$(python -c "import json; data=json.load(open('group_tours_frontend.json')); tours=data if isinstance(data, list) else data.get('tours', []); print(len(tours))")
+          echo "📊 Updated: $tour_count tours"
         fi
