@@ -36,7 +36,7 @@ jobs:
 
     - name: Merge CSV data (available spaces and prices)
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOURISM_API_TOKEN }}
       run: |
         echo "📊 Merging CSV data for available spaces and global prices..."
         python merge_csv_data.py
