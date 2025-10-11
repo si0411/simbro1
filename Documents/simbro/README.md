@@ -151,79 +151,78 @@ The system maps CSS class names to hex colors from the main stylesheet:
 
 ## Automated Tasks
 
-### Daily CSV Data Merge (GitHub Actions) 🤖
+### Daily CSV Data Merge (Server Cron) 🤖
 
-**Location**: `.github/workflows/daily-scraping.yml` in BT_scraping repo (`si0411/simbro1`)
+**Location**: Server cron on simbro.app
 
 - **Schedule**: Daily at 10:00 AM Thailand time (3:00 AM UTC)
-- **Repository**: https://github.com/si0411/simbro1
-- **Purpose**: Merge CSV data (available spaces & prices) with existing tour data and deploy to server
-- **Cron Expression**: `0 3 * * *`
+- **Script**: `/var/www/html/BT_scraping/daily_update.sh`
+- **Log File**: `/var/log/tour_data_update.log`
+- **Cron Entry**: `0 3 * * * /var/www/html/BT_scraping/daily_update.sh >> /var/log/tour_data_update.log 2>&1`
 
 **What it does:**
-1. Pulls latest CSV data from `tourism_api` repository (private repo)
-2. Reads existing `group_tours_frontend.json` from repository
+1. Pulls latest CSV data from `tourism_api` GitHub repository (private repo with available spaces & prices)
+2. Reads existing `group_tours_frontend.json` from server
 3. Merges CSV data (available spaces, prices) with existing tour dates
 4. Creates `group_tours_frontend_enhanced.json` with merged data
-5. Commits enhanced JSON to repository (git history)
-6. Deploys BOTH files to simbro.app server
+5. Deploys enhanced JSON to `/var/www/html/BT_scraping/` directory
 
 **Important Notes:**
 - ✅ Does NOT scrape new tours (manual control maintained)
 - ✅ Does NOT add new dates from CSV (only matches existing dates)
-- ✅ Only updates available spaces and pricing info
-- ✅ Deploys both base and enhanced JSON files
+- ✅ Only updates available spaces and pricing info for existing tour dates
+- ✅ Runs entirely on server - no GitHub Actions dependency
+- ✅ Simple, reliable, and all files already in place
 
-**Configuration:**
-- Requires `TOURISM_API_TOKEN` secret (GitHub PAT with repo access)
-- Requires `SERVER_PASSWORD` secret (for SCP deployment)
-
-**View workflow runs:**
+**View cron tasks:**
 ```bash
-# Via GitHub web interface
-https://github.com/si0411/simbro1/actions
-
-# Via GitHub API
-curl -s "https://api.github.com/repos/si0411/simbro1/actions/runs?per_page=5"
+ssh root@72.60.107.156
+crontab -l
 ```
 
-**Manual trigger:**
+**Check the update log:**
 ```bash
-curl -X POST \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  https://api.github.com/repos/si0411/simbro1/actions/workflows/daily-scraping.yml/dispatches \
-  -d '{"ref":"master"}'
+ssh root@72.60.107.156
+tail -100 /var/log/tour_data_update.log
+```
+
+**Manually trigger the update:**
+```bash
+ssh root@72.60.107.156
+/var/www/html/BT_scraping/daily_update.sh
 ```
 
 ### Manual Tour Updates
 
-When you need to scrape fresh tour data (new tours, updated itineraries, etc.):
+When you need to scrape fresh tour data (new tours, updated itineraries, dates, etc.):
 
-1. **Run scraping locally or via server:**
-   ```bash
-   cd BT_scraping
-   python get_grouptour_urls.py
-   python scrape_grouptours.py
-   ```
+**Option 1: Run locally and deploy**
+```bash
+cd BT_scraping
+python3 get_grouptour_urls.py      # Discover URLs
+python3 scrape_grouptours.py        # Scrape data
+scp group_tours_frontend.json root@72.60.107.156:/var/www/html/BT_scraping/
+```
 
-2. **Deploy to server:**
-   ```bash
-   scp group_tours_frontend.json root@72.60.107.156:/var/www/html/BT_scraping/
-   ```
+**Option 2: Run directly on server**
+```bash
+ssh root@72.60.107.156
+cd /var/www/html/BT_scraping
+python3 get_grouptour_urls.py
+python3 scrape_grouptours.py
+```
 
-3. **Commit to repository:**
-   ```bash
-   git add group_tours_frontend.json
-   git commit -m "Update tour data"
-   git push
-   ```
-
-The daily automated merge will then update available spaces and prices.
+After manual updates, the next daily automated merge (10 AM Thailand time) will update available spaces and prices.
 
 ### Troubleshooting
 
-**If GitHub Actions workflow fails:**
-1. Check workflow runs at https://github.com/si0411/simbro1/actions
-2. Verify `TOURISM_API_TOKEN` secret has repo access to `tourism_api` repository
-3. Check if `tourism_api` repository is accessible
-4. Verify base file `group_tours_frontend.json` exists in repository
+**If automated merge fails:**
+1. Check the log file: `ssh root@72.60.107.156 'tail -100 /var/log/tour_data_update.log'`
+2. Verify `tourism_api` repository is accessible from server
+3. Check Python dependencies are installed: `ssh root@72.60.107.156 'pip3 list | grep -E "requests|beautifulsoup4"'`
+4. Manually run the script to see detailed error output
+
+**Common issues:**
+- Git credentials expired: Update GitHub token in merge_csv_data.py
+- Missing files: Ensure group_tours_frontend.json exists on server
+- Python errors: Check Python version and dependencies
