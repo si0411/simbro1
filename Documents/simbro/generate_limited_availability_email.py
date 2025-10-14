@@ -10,6 +10,7 @@ from typing import List, Dict, Optional
 
 # Configuration
 TOUR_DATA_FILE = 'BT_scraping/group_tours_frontend_enhanced.json'
+TOUR_IMAGES_FILE = 'BT_scraping/listing_images/grouptour_main_images.json'
 LIMITED_SPACES_THRESHOLD = 5  # Tours with 5 or fewer spaces are considered "limited"
 
 
@@ -57,6 +58,16 @@ def get_limited_availability_tours() -> List[Dict]:
     with open(TOUR_DATA_FILE, 'r') as f:
         data = json.load(f)
 
+    # Load tour images
+    tour_images = {}
+    try:
+        with open(TOUR_IMAGES_FILE, 'r') as f:
+            images_data = json.load(f)
+            for item in images_data:
+                tour_images[item['tour_name']] = item['image_url']
+    except FileNotFoundError:
+        print("Warning: Tour images file not found")
+
     tours = data.get('tours', [])
     today = datetime.now()
 
@@ -68,7 +79,12 @@ def get_limited_availability_tours() -> List[Dict]:
         tour_name = tour.get('tour_name', 'Unknown Tour')
         tour_url = tour.get('url', '')
         tour_color = tour.get('tour_colour', '#6c49ff')
-        tour_image = tour.get('image_url', '')  # Get tour image if available
+
+        # Get tour image from images JSON, with imgix optimization for email (600x337 for 20:11.23 ratio)
+        tour_image = tour_images.get(tour_name, '')
+        if tour_image:
+            tour_image = f"{tour_image}?w=600&h=337&fit=crop&auto=format"
+
         starting_dates = tour.get('starting_dates', [])
 
         limited_dates = []
@@ -78,8 +94,8 @@ def get_limited_availability_tours() -> List[Dict]:
                 date_string = date_info.get('date', '')
                 available_spaces = date_info.get('available_spaces')
 
-                # Skip if spaces is None or > threshold
-                if available_spaces is None or available_spaces > LIMITED_SPACES_THRESHOLD:
+                # Skip if spaces is None, 0, or > threshold
+                if available_spaces is None or available_spaces == 0 or available_spaces > LIMITED_SPACES_THRESHOLD:
                     continue
 
                 # Parse date
@@ -116,20 +132,24 @@ def generate_email_html(tours: List[Dict]) -> str:
     if not tours:
         return "<p>No tours with limited availability found.</p>"
 
+    # Determine server URL for assets (will work both locally and on server)
+    base_url = "https://simbro.app"
+
     # Email-safe HTML with inline styles and table-based layout
-    html = """<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    html = f"""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Don't Miss Out – Last Seats Available!</title>
     <style type="text/css">
-        @media only screen and (max-width: 600px) {
-            .tour-image { width: 100% !important; height: auto !important; }
-            .tour-content { padding: 15px !important; }
-            .header-title { font-size: 24px !important; }
-            .tour-name { font-size: 18px !important; }
-        }
+        @media only screen and (max-width: 600px) {{
+            .tour-image {{ width: 100% !important; height: auto !important; }}
+            .tour-content {{ padding: 15px !important; }}
+            .header-title {{ font-size: 22px !important; }}
+            .tour-name {{ font-size: 18px !important; }}
+            .logo {{ max-width: 200px !important; }}
+        }}
     </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">
@@ -137,15 +157,22 @@ def generate_email_html(tours: List[Dict]) -> str:
         <tr>
             <td align="center" style="padding: 20px 10px;">
                 <!-- Main Container -->
-                <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; max-width: 600px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; max-width: 600px;">
 
-                    <!-- Header -->
+                    <!-- Header with Logo -->
                     <tr>
-                        <td align="center" style="padding: 40px 30px 30px 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <h1 class="header-title" style="color: #ffffff; font-size: 28px; margin: 0 0 10px 0; font-weight: 700; line-height: 1.2;">
+                        <td align="center" style="padding: 30px 30px 20px 30px; background-color: #6c49ff;">
+                            <img src="{base_url}/assets/bt_logo.jpg" alt="Backpacking Tours" class="logo" width="250" style="display: block; max-width: 250px; height: auto; margin: 0 auto;" />
+                        </td>
+                    </tr>
+
+                    <!-- Header Text -->
+                    <tr>
+                        <td align="center" style="padding: 20px 30px 30px 30px; background-color: #6c49ff;">
+                            <h1 class="header-title" style="color: #ffffff; font-size: 26px; margin: 0 0 12px 0; font-weight: 700; line-height: 1.2;">
                                 🔥 Don't Miss Out – Last Seats Available
                             </h1>
-                            <p style="color: #ffffff; font-size: 16px; margin: 0; line-height: 1.5; opacity: 0.95;">
+                            <p style="color: #ffffff; font-size: 15px; margin: 0; line-height: 1.6;">
                                 Don't miss your chance to explore with us! Our next tours are filling up fast, and there are only a few spaces remaining. Check out the list below to see which trips still have availability and secure your spot before they're gone.
                             </p>
                         </td>
@@ -165,28 +192,30 @@ def generate_email_html(tours: List[Dict]) -> str:
         dates = tour['dates']
 
         # Use a placeholder image if no tour image available
-        image_url = tour_image if tour_image else 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=300&fit=crop'
+        image_url = tour_image if tour_image else 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=337&fit=crop'
 
         html += f"""
                             <!-- Tour Card -->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 25px; border-radius: 8px; overflow: hidden; border: 1px solid #e0e0e0;">
-                                <!-- Tour Image -->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 25px; border: 1px solid #e0e0e0;">
+                                <!-- Tour Image with Color Bar -->
                                 <tr>
                                     <td style="padding: 0;">
                                         <a href="{tour_url}" style="display: block; text-decoration: none;">
-                                            <img class="tour-image" src="{image_url}" alt="{tour_name}" width="560" style="display: block; width: 100%; max-width: 560px; height: auto; border: none; border-bottom: 4px solid {tour_color};" />
+                                            <img class="tour-image" src="{image_url}" alt="{tour_name}" width="560" style="display: block; width: 100%; max-width: 560px; height: auto; border: none;" />
                                         </a>
+                                        <!-- Color hint bar under image -->
+                                        <div style="height: 4px; background-color: {tour_color};"></div>
                                     </td>
                                 </tr>
 
                                 <!-- Tour Content -->
                                 <tr>
                                     <td class="tour-content" style="padding: 20px; background-color: #ffffff;">
-                                        <!-- Tour Name with Color Bar -->
+                                        <!-- Tour Name with Color Dot -->
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                 <td style="padding-bottom: 15px;">
-                                                    <h2 class="tour-name" style="margin: 0; font-size: 22px; color: #1a1a1a; font-weight: 700; line-height: 1.3;">
+                                                    <h2 class="tour-name" style="margin: 0; font-size: 20px; color: #1a1a1a; font-weight: 700; line-height: 1.3;">
                                                         <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: {tour_color}; margin-right: 8px; vertical-align: middle;"></span>
                                                         {tour_name}
                                                     </h2>
@@ -205,11 +234,11 @@ def generate_email_html(tours: List[Dict]) -> str:
             html += f"""
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 8px;">
                                             <tr>
-                                                <td style="padding: 12px; background-color: #f8f9fa; border-radius: 6px; border-left: 3px solid {tour_color};">
+                                                <td style="padding: 12px; background-color: #f8f9fa; border-left: 3px solid {tour_color};">
                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                         <tr>
                                                             <td style="font-size: 15px; color: #333333; font-weight: 500;">
-                                                                📅 {date['start_str']} - {date['end_str']}
+                                                                {date['start_str']} - {date['end_str']}
                                                             </td>
                                                             <td align="right" style="padding-left: 10px;">
                                                                 <span style="background-color: {badge_color}; color: #ffffff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-block;">
@@ -228,7 +257,7 @@ def generate_email_html(tours: List[Dict]) -> str:
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 15px;">
                                             <tr>
                                                 <td align="center">
-                                                    <a href="{tour_url}" style="display: inline-block; background-color: {tour_color}; color: #ffffff; text-decoration: none; padding: 14px 35px; border-radius: 6px; font-weight: 700; font-size: 16px;">
+                                                    <a href="{tour_url}" style="display: inline-block; background-color: {tour_color}; color: #ffffff; text-decoration: none; padding: 14px 35px; font-weight: 700; font-size: 16px;">
                                                         Book Now →
                                                     </a>
                                                 </td>
@@ -239,20 +268,41 @@ def generate_email_html(tours: List[Dict]) -> str:
                             </table>
 """
 
-    # Footer
-    html += """
+    # Footer with social media icons
+    html += f"""
                         </td>
                     </tr>
 
                     <!-- Footer -->
                     <tr>
                         <td style="padding: 30px 20px; background-color: #f8f9fa; text-align: center; border-top: 1px solid #e0e0e0;">
-                            <p style="margin: 0 0 5px 0; font-size: 16px; color: #1a1a1a; font-weight: 700;">
+                            <p style="margin: 0 0 15px 0; font-size: 16px; color: #1a1a1a; font-weight: 700;">
                                 Backpacking Tours
                             </p>
-                            <p style="margin: 0; font-size: 14px; color: #666666;">
+                            <p style="margin: 0 0 20px 0; font-size: 14px; color: #666666;">
                                 Creating unforgettable adventures around the world
                             </p>
+
+                            <!-- Social Media Icons -->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                <tr>
+                                    <td style="padding: 0 10px;">
+                                        <a href="https://www.facebook.com/backpackingtours" target="_blank">
+                                            <img src="{base_url}/assets/fb_icon.png" alt="Facebook" width="32" height="32" style="display: block; border: none;" />
+                                        </a>
+                                    </td>
+                                    <td style="padding: 0 10px;">
+                                        <a href="https://www.instagram.com/backpackingtours" target="_blank">
+                                            <img src="{base_url}/assets/ig_icon.png" alt="Instagram" width="32" height="32" style="display: block; border: none;" />
+                                        </a>
+                                    </td>
+                                    <td style="padding: 0 10px;">
+                                        <a href="https://www.tiktok.com/@backpackingtours?lang=en" target="_blank">
+                                            <img src="{base_url}/assets/tiktok_icon.png" alt="TikTok" width="32" height="32" style="display: block; border: none;" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
 
