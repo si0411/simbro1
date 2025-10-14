@@ -97,6 +97,30 @@
             border-color: #6c49ff;
         }
 
+        .spaces-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .spaces-available {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .spaces-limited {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .spaces-sold-out {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
         .search-section {
             background: white;
             padding: 2rem;
@@ -105,11 +129,92 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
+        .tour-autocomplete-wrapper {
+            position: relative;
+            flex: 1;
+        }
+
+        #tourInput {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            transition: border-color 0.2s;
+        }
+
+        #tourInput:hover {
+            border-color: #6c49ff;
+        }
+
+        #tourInput:focus {
+            outline: none;
+            border-color: #6c49ff;
+        }
+
+        #tourSuggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #6c49ff;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .suggestion-item {
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover {
+            background: #f8f9fa;
+        }
+
+        .suggestion-item.active {
+            background: #e9ecef;
+        }
+
+        .no-suggestions {
+            padding: 0.75rem;
+            color: #999;
+            text-align: center;
+        }
+
         .search-inputs {
             display: grid;
-            grid-template-columns: 200px 200px 120px 100px;
+            grid-template-columns: 200px 200px 1fr 120px 120px 100px;
             gap: 1rem;
             align-items: end;
+        }
+
+        .currency-select {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            cursor: pointer;
+        }
+
+        .currency-select:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
         }
 
         .input-group {
@@ -325,12 +430,44 @@
 
         .date-item {
             display: grid;
-            grid-template-columns: 1fr 1fr auto auto;
+            grid-template-columns: 1fr 1fr auto auto auto auto auto;
             gap: 1rem;
             padding: 0.75rem;
             background: #f7f8fa;
             border-radius: 6px;
             align-items: center;
+        }
+
+        .price-value {
+            font-size: 1rem;
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .price-value-different {
+            font-size: 1rem;
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .copy-price-btn {
+            padding: 0.4rem 0.8rem;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .copy-price-btn:hover {
+            background: #218838;
+        }
+
+        .copy-price-btn.copied {
+            background: #1e7e34;
         }
 
         .copy-date-btn {
@@ -425,6 +562,7 @@
 
         <div class="nav-links">
             <a href="bt_tour_viewer.html">← Back to Tour Viewer</a>
+            <a href="generate_availability_email.php" target="_blank">Create Availability Email</a>
         </div>
 
         <div class="toggle-buttons">
@@ -453,6 +591,30 @@
                            id="endDate"
                            autocomplete="off">
                 </div>
+                <div class="input-group">
+                    <label for="tourInput">Or Select Tour</label>
+                    <div class="tour-autocomplete-wrapper">
+                        <input type="text"
+                               id="tourInput"
+                               placeholder="Type to search tours..."
+                               autocomplete="off"
+                               oninput="handleTourInput()"
+                               onfocus="handleTourInput()"
+                               onkeydown="handleTourKeydown(event)">
+                        <div id="tourSuggestions"></div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="currencySelect">Currency</label>
+                    <select id="currencySelect" class="currency-select" onchange="handleCurrencyChange()">
+                        <option value="GBP">GBP (£)</option>
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="NZD">NZD ($)</option>
+                        <option value="CAD">CAD ($)</option>
+                        <option value="AUD">AUD ($)</option>
+                    </select>
+                </div>
                 <button class="search-btn" onclick="searchDates()">Search</button>
                 <button class="clear-btn" onclick="clearSearch()">Clear</button>
             </div>
@@ -470,9 +632,17 @@
     <script>
         let currentTourType = 'group';
         let tourData = null;
+        let currentCurrency = 'GBP';
+        let lastDisplayedResults = null;
 
         // Load tour data on page load
         window.addEventListener('DOMContentLoaded', () => {
+            // Load saved currency from localStorage
+            const savedCurrency = localStorage.getItem('selectedCurrency');
+            if (savedCurrency) {
+                currentCurrency = savedCurrency;
+                document.getElementById('currencySelect').value = savedCurrency;
+            }
             loadTourData();
         });
 
@@ -488,14 +658,18 @@
             // Load new data
             loadTourData();
 
-            // Clear results
+            // Clear results and reset selectors
             document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('tourInput').value = '';
+            document.getElementById('tourSuggestions').style.display = 'none';
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
         }
 
         async function loadTourData() {
             try {
                 const filePaths = {
-                    'group': 'BT_scraping/group_tours_frontend.json',
+                    'group': 'BT_scraping/group_tours_frontend_enhanced.json',
                     'private': 'BT_scraping/private_tours_frontend.json',
                     'volunteer': 'BT_scraping/volunteer_frontend.json'
                 };
@@ -511,6 +685,148 @@
             } catch (error) {
                 console.error('Error loading tour data:', error);
                 tourData = [];
+            }
+        }
+
+        let currentSuggestionIndex = -1;
+
+        function handleTourInput() {
+            const input = document.getElementById('tourInput');
+            const suggestionsDiv = document.getElementById('tourSuggestions');
+            const searchTerm = input.value.toLowerCase().trim();
+
+            if (!searchTerm || !tourData || tourData.length === 0) {
+                suggestionsDiv.style.display = 'none';
+                return;
+            }
+
+            // Filter tours that match the search term
+            const matches = tourData.filter(tour => {
+                const name = (tour.tour_name || tour.program_name || '').toLowerCase();
+                return name.includes(searchTerm);
+            });
+
+            if (matches.length === 0) {
+                suggestionsDiv.innerHTML = '<div class="no-suggestions">No tours found</div>';
+                suggestionsDiv.style.display = 'block';
+                return;
+            }
+
+            // Sort matches alphabetically
+            matches.sort((a, b) => {
+                const nameA = a.tour_name || a.program_name || '';
+                const nameB = b.tour_name || b.program_name || '';
+                return nameA.localeCompare(nameB);
+            });
+
+            // Display suggestions
+            let html = '';
+            matches.forEach((tour, index) => {
+                const name = tour.tour_name || tour.program_name || 'Unnamed Tour';
+                html += `<div class="suggestion-item" onclick="selectTour('${escapeQuotes(name)}')" data-index="${index}">${name}</div>`;
+            });
+
+            suggestionsDiv.innerHTML = html;
+            suggestionsDiv.style.display = 'block';
+            currentSuggestionIndex = -1;
+        }
+
+        function handleTourKeydown(event) {
+            const suggestionsDiv = document.getElementById('tourSuggestions');
+            const items = suggestionsDiv.querySelectorAll('.suggestion-item');
+
+            if (items.length === 0) return;
+
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                currentSuggestionIndex = (currentSuggestionIndex + 1) % items.length;
+                updateSuggestionHighlight(items);
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                currentSuggestionIndex = currentSuggestionIndex <= 0 ? items.length - 1 : currentSuggestionIndex - 1;
+                updateSuggestionHighlight(items);
+            } else if (event.key === 'Enter') {
+                event.preventDefault();
+                if (currentSuggestionIndex >= 0 && currentSuggestionIndex < items.length) {
+                    items[currentSuggestionIndex].click();
+                }
+            } else if (event.key === 'Escape') {
+                suggestionsDiv.style.display = 'none';
+            }
+        }
+
+        function updateSuggestionHighlight(items) {
+            items.forEach((item, index) => {
+                if (index === currentSuggestionIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        function selectTour(tourName) {
+            const input = document.getElementById('tourInput');
+            const suggestionsDiv = document.getElementById('tourSuggestions');
+
+            input.value = tourName;
+            suggestionsDiv.style.display = 'none';
+
+            // Find and display this tour
+            const tour = tourData.find(t => (t.tour_name || t.program_name) === tourName);
+            if (tour) {
+                viewTourDates(tour);
+            }
+        }
+
+        function viewTourDates(tour) {
+            if (!tour || !tour.starting_dates || !Array.isArray(tour.starting_dates)) {
+                return;
+            }
+
+            // Parse all dates for this tour
+            const parsedDates = [];
+            tour.starting_dates.forEach(dateData => {
+                const parsed = parseTourDate(dateData);
+                if (parsed) {
+                    parsedDates.push(parsed);
+                }
+            });
+
+            if (parsedDates.length === 0) {
+                alert('No dates available for this tour');
+                return;
+            }
+
+            // Display results in the same format as date search
+            const results = [{
+                tour: tour,
+                dates: parsedDates
+            }];
+
+            displayResults(results, `All Dates for ${tour.tour_name || tour.program_name}`);
+        }
+
+        // Close suggestions when clicking outside
+        document.addEventListener('click', function(event) {
+            const input = document.getElementById('tourInput');
+            const suggestionsDiv = document.getElementById('tourSuggestions');
+            if (input && suggestionsDiv && !input.contains(event.target) && !suggestionsDiv.contains(event.target)) {
+                suggestionsDiv.style.display = 'none';
+            }
+        });
+
+        function getSpacesIndicator(spaces) {
+            if (spaces === null || spaces === undefined) {
+                return '<span class="spaces-indicator spaces-limited">Check</span>';
+            }
+
+            if (spaces === 0) {
+                return '<span class="spaces-indicator spaces-sold-out">0 spaces</span>';
+            } else if (spaces <= 5) {
+                return `<span class="spaces-indicator spaces-limited">${spaces} ${spaces === 1 ? 'space' : 'spaces'}</span>`;
+            } else {
+                return `<span class="spaces-indicator spaces-available">${spaces} spaces</span>`;
             }
         }
 
@@ -533,9 +849,27 @@
             return new Date(year, month, day);
         }
 
-        function parseTourDate(dateString) {
+        function parseTourDate(dateData) {
+            // Handle both string and object formats
+            // String format: "6 Oct - 19 Oct 2025 - Book Now"
+            // Object format: { date: "...", status: "...", available_spaces: N, prices: {...} }
+
+            let dateString, available_spaces, prices;
+
+            if (typeof dateData === 'string') {
+                dateString = dateData;
+                available_spaces = null;
+                prices = null;
+            } else if (typeof dateData === 'object') {
+                dateString = dateData.date;
+                available_spaces = dateData.available_spaces;
+                prices = dateData.prices;
+            } else {
+                return null;
+            }
+
             // Parse format: "6 Oct - 19 Oct 2025 - Book Now"
-            // Returns: { startDate: Date, endDate: Date, startDateStr: string, endDateStr: string, status: string }
+            // Returns: { startDate: Date, endDate: Date, startDateStr: string, endDateStr: string, status: string, available_spaces, prices }
 
             const parts = dateString.split(' - ');
             if (parts.length < 3) return null;
@@ -564,7 +898,9 @@
                 endDate: endDate,
                 startDateStr: startDateStr,
                 endDateStr: endDateStr,
-                status: status
+                status: status,
+                available_spaces: available_spaces,
+                prices: prices
             };
         }
 
@@ -596,8 +932,8 @@
 
                 const matchingDates = [];
 
-                tour.starting_dates.forEach(dateString => {
-                    const parsedDate = parseTourDate(dateString);
+                tour.starting_dates.forEach(dateData => {
+                    const parsedDate = parseTourDate(dateData);
 
                     if (!parsedDate) return;
 
@@ -618,13 +954,28 @@
             displayResults(results);
         }
 
-        function displayResults(results) {
+        function displayResults(results, customTitle = null) {
             const resultsSection = document.getElementById('resultsSection');
             const resultsContainer = document.getElementById('resultsContainer');
             const resultsCount = document.getElementById('resultsCount');
+            const resultsHeader = document.querySelector('.results-header h2');
+
+            // Save results for currency change re-rendering
+            lastDisplayedResults = {
+                results: results,
+                customTitle: customTitle
+            };
 
             resultsSection.style.display = 'block';
-            resultsCount.textContent = `${results.length} tour${results.length !== 1 ? 's' : ''} found`;
+
+            // Set custom title if provided, otherwise use default
+            if (customTitle) {
+                resultsHeader.textContent = customTitle;
+                resultsCount.textContent = '';
+            } else {
+                resultsHeader.textContent = 'Search Results';
+                resultsCount.textContent = `${results.length} tour${results.length !== 1 ? 's' : ''} found`;
+            }
 
             if (results.length === 0) {
                 resultsContainer.innerHTML = '<div class="no-results">No tours found in this date range</div>';
@@ -634,8 +985,8 @@
             let html = '';
 
             results.forEach(result => {
-                const tour = result.tour;
-                const dates = result.dates;
+                const tour = result.tour || result;
+                const dates = result.dates || result.starting_dates || [];
                 const tourColor = tour.tour_colour || '#cccccc';
                 const tourName = tour.tour_name || 'Unnamed Tour';
                 const tourUrl = tour.url || '';
@@ -660,9 +1011,41 @@
 
                 dates.forEach((dateInfo, index) => {
                     // Calculate duration in days
-                    const duration = Math.round((dateInfo.endDate - dateInfo.startDate) / (1000 * 60 * 60 * 24));
+                    const duration = Math.round((dateInfo.endDate - dateInfo.startDate) / (1000 * 60 * 60 * 24)) + 1;
                     const durationText = `${duration} days`;
                     const dateText = `${dateInfo.startDateStr} - ${dateInfo.endDateStr}`;
+
+                    // Get spaces indicator
+                    const spacesHtml = getSpacesIndicator(dateInfo.available_spaces);
+
+                    // Get price - prefer date-specific price if it exists and differs from tour price
+                    let priceHtml = '';
+                    let priceCopyButton = '';
+
+                    // Get tour-level price
+                    const tourPrice = tour.price && tour.price[`price_${currentCurrency}`] ? tour.price[`price_${currentCurrency}`] : null;
+
+                    // Check for date-specific price
+                    const datePrice = dateInfo.prices && dateInfo.prices.main && dateInfo.prices.main[currentCurrency] ? dateInfo.prices.main[currentCurrency] : null;
+
+                    // Use date-specific price if it exists and differs, otherwise use tour price
+                    let priceToDisplay = null;
+                    let isDifferentPrice = false;
+                    if (datePrice !== null && datePrice !== tourPrice) {
+                        priceToDisplay = datePrice;
+                        isDifferentPrice = true;
+                    } else if (tourPrice !== null) {
+                        priceToDisplay = tourPrice;
+                    }
+
+                    if (priceToDisplay !== null) {
+                        const formattedPrice = formatPrice(priceToDisplay, currentCurrency);
+                        if (formattedPrice) {
+                            const priceClass = isDifferentPrice ? 'price-value-different' : 'price-value';
+                            priceHtml = `<div class="${priceClass}">${formattedPrice}</div>`;
+                            priceCopyButton = `<button class="copy-price-btn" onclick="copyText('${priceToDisplay}', this)">Copy Price</button>`;
+                        }
+                    }
 
                     html += `
                         <div class="date-item">
@@ -675,6 +1058,9 @@
                                 <div class="date-value">${dateInfo.endDateStr}</div>
                             </div>
                             <div class="date-duration">${durationText}</div>
+                            <div>${spacesHtml}</div>
+                            ${priceHtml}
+                            ${priceCopyButton}
                             <button class="copy-date-btn" onclick="copyText('${escapeQuotes(dateText)}', this)">Copy Dates</button>
                         </div>`;
                 });
@@ -695,7 +1081,40 @@
         function clearSearch() {
             document.getElementById('startDate').value = '';
             document.getElementById('endDate').value = '';
+            document.getElementById('tourInput').value = '';
+            document.getElementById('tourSuggestions').style.display = 'none';
             document.getElementById('resultsSection').style.display = 'none';
+        }
+
+        function handleCurrencyChange() {
+            const select = document.getElementById('currencySelect');
+            currentCurrency = select.value;
+            localStorage.setItem('selectedCurrency', currentCurrency);
+
+            // Re-display results if they exist
+            if (lastDisplayedResults) {
+                displayResults(lastDisplayedResults.results, lastDisplayedResults.customTitle);
+            }
+        }
+
+        function formatPrice(price, currency) {
+            if (!price || price === null) {
+                return null;
+            }
+
+            const symbols = {
+                'GBP': '£',
+                'USD': '$',
+                'EUR': '€',
+                'NZD': '$',
+                'CAD': '$',
+                'AUD': '$'
+            };
+
+            const symbol = symbols[currency] || '';
+            const formattedNumber = price.toLocaleString('en-US');
+
+            return `${symbol}${formattedNumber}`;
         }
 
         async function copyText(text, button) {
