@@ -45,19 +45,14 @@ def parse_tour_date(date_string: str) -> Optional[Dict]:
 
 
 def get_limited_availability_tours() -> List[Dict]:
-    """Get tours with limited availability starting in the next month"""
+    """Get all tours with limited availability (upcoming tours only)"""
     with open(TOUR_DATA_FILE, 'r') as f:
         data = json.load(f)
 
     tours = data.get('tours', [])
-
     today = datetime.now()
-    next_month_start = today.replace(day=1) + timedelta(days=32)
-    next_month_start = next_month_start.replace(day=1)
-    next_month_end = next_month_start.replace(day=1) + timedelta(days=60)
-    next_month_end = next_month_end.replace(day=1) - timedelta(days=1)
 
-    print(f"📅 Searching: {next_month_start.strftime('%Y-%m-%d')} to {next_month_end.strftime('%Y-%m-%d')}")
+    print(f"📅 Searching for all upcoming tours with limited availability...")
 
     limited_tours = []
 
@@ -82,7 +77,8 @@ def get_limited_availability_tours() -> List[Dict]:
                 if not parsed:
                     continue
 
-                if next_month_start <= parsed['start_date'] <= next_month_end:
+                # Only include future tours (no date range restriction)
+                if parsed['start_date'] >= today:
                     limited_dates.append({
                         'start_str': parsed['start_str'],
                         'end_str': parsed['end_str'],
