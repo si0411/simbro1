@@ -1836,7 +1836,10 @@
                                                     <div class="tour-dates-header">Starting Date</div>
                                                     <div class="tour-dates-header">Ending Date</div>
                                                     <div class="tour-dates-header">Status</div>
-                                                    ${tour.starting_dates ? tour.starting_dates.map(dateString => {
+                                                    ${tour.starting_dates ? tour.starting_dates.map(dateInfo => {
+                                                        // Handle both string format and object format
+                                                        const dateString = typeof dateInfo === 'string' ? dateInfo : (dateInfo.date || '');
+
                                                         // Parse: "22 Sep - 5 Oct 2025 - Book Now"
                                                         const parts = dateString.split(' - ');
                                                         if (parts.length >= 3) {
