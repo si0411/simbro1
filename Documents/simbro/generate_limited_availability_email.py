@@ -201,7 +201,7 @@ def generate_email_html(tours: List[Dict]) -> str:
 
                     <!-- Tours Section -->
                     <tr>
-                        <td style="padding: 30px 0;">
+                        <td style="padding-top: 30px; padding-bottom: 0; padding-left: 0; padding-right: 0;">
 """
 
     # Generate tour cards
@@ -223,14 +223,23 @@ def generate_email_html(tours: List[Dict]) -> str:
         html += f"""
                             <!-- Tour Card -->
                             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 25px;">
-                                <!-- Tour Image with Color Bar -->
+                                <!-- Tour Image -->
                                 <tr>
-                                    <td style="padding: 0;">
-                                        <a href="{tour_url_with_utm}" style="display: block; text-decoration: none;">
-                                            <img class="tour-image" src="{image_url}" alt="{tour_name}" width="600" style="display: block; width: 100%; max-width: 600px; height: auto; border: none;" />
+                                    <td style="padding: 0; line-height: 0;">
+                                        <a href="{tour_url_with_utm}" style="text-decoration: none;">
+                                            <img class="tour-image" src="{image_url}" alt="{tour_name}" width="600" height="337" style="display: block; height: auto; border: none;" />
                                         </a>
-                                        <!-- Color hint bar under image -->
-                                        <div style="height: 4px; background-color: {tour_color};"></div>
+                                    </td>
+                                </tr>
+
+                                <!-- Color Bar -->
+                                <tr>
+                                    <td style="padding: 0; line-height: 0;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+                                            <tr>
+                                                <td height="4" style="background-color: {tour_color}; font-size: 0; line-height: 0;">&nbsp;</td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
 
