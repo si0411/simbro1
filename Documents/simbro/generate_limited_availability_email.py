@@ -7,6 +7,7 @@ import json
 import os
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
+from urllib.parse import quote
 
 # Configuration
 TOUR_DATA_FILE = 'BT_scraping/group_tours_frontend_enhanced.json'
@@ -148,7 +149,7 @@ def generate_email_html(tours: List[Dict]) -> str:
             .tour-content {{ padding: 15px !important; }}
             .header-title {{ font-size: 22px !important; }}
             .tour-name {{ font-size: 18px !important; }}
-            .logo {{ max-width: 200px !important; }}
+            .logo {{ max-width: 150px !important; }}
         }}
     </style>
 </head>
@@ -162,7 +163,9 @@ def generate_email_html(tours: List[Dict]) -> str:
                     <!-- Header with Logo -->
                     <tr>
                         <td align="center" style="padding: 30px 30px 20px 30px; background-color: #6c49ff;">
-                            <img src="{base_url}/assets/BT_Logo_White.png" alt="Backpacking Tours" class="logo" width="250" style="display: block; max-width: 250px; height: auto; margin: 0 auto;" />
+                            <a href="https://www.backpackingtours.com/?utm_medium=email&utm_campaign=lastfewspaces&utm_content=logo" style="display: block; text-decoration: none;">
+                                <img src="{base_url}/assets/BT_Logo_White.png" alt="Backpacking Tours" class="logo" width="180" style="display: block; max-width: 180px; height: auto; margin: 0 auto;" />
+                            </a>
                         </td>
                     </tr>
 
@@ -172,15 +175,18 @@ def generate_email_html(tours: List[Dict]) -> str:
                             <h1 class="header-title" style="color: #ffffff; font-size: 26px; margin: 0 0 12px 0; font-weight: 700; line-height: 1.2;">
                                 🔥 Don't Miss Out – Last Seats Available
                             </h1>
-                            <p style="color: #ffffff; font-size: 15px; margin: 0; line-height: 1.6;">
+                            <p style="color: #ffffff; font-size: 15px; margin: 0 0 12px 0; line-height: 1.6;">
                                 Don't miss your chance to explore with us! Our next tours are filling up fast, and there are only a few spaces remaining. Check out the list below to see which trips still have availability and secure your spot before they're gone.
+                            </p>
+                            <p style="color: #ffffff; font-size: 15px; margin: 0; line-height: 1.6;">
+                                Check out all our tours over at <a href="https://www.backpackingtours.com/?utm_medium=email&utm_campaign=lastfewspaces&utm_content=header_text" style="color: #ffffff; text-decoration: underline;">Backpacking Tours</a> and our latest <a href="https://www.backpackingtours.com/tour-deals?utm_medium=email&utm_campaign=lastfewspaces&utm_content=special_offers" style="color: #ffffff; text-decoration: underline;">special offers</a>.
                             </p>
                         </td>
                     </tr>
 
                     <!-- Tours Section -->
                     <tr>
-                        <td style="padding: 30px 20px;">
+                        <td style="padding: 30px 0;">
 """
 
     # Generate tour cards
@@ -191,6 +197,11 @@ def generate_email_html(tours: List[Dict]) -> str:
         tour_image = tour.get('tour_image', '')
         dates = tour['dates']
 
+        # Add UTM parameters to tour URL
+        utm_content = quote(tour_name)
+        separator = '&' if '?' in tour_url else '?'
+        tour_url_with_utm = f"{tour_url}{separator}utm_medium=email&utm_campaign=lastfewspaces&utm_content={utm_content}"
+
         # Use a placeholder image if no tour image available
         image_url = tour_image if tour_image else 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=337&fit=crop'
 
@@ -200,8 +211,8 @@ def generate_email_html(tours: List[Dict]) -> str:
                                 <!-- Tour Image with Color Bar -->
                                 <tr>
                                     <td style="padding: 0;">
-                                        <a href="{tour_url}" style="display: block; text-decoration: none;">
-                                            <img class="tour-image" src="{image_url}" alt="{tour_name}" width="560" style="display: block; width: 100%; max-width: 560px; height: auto; border: none;" />
+                                        <a href="{tour_url_with_utm}" style="display: block; text-decoration: none;">
+                                            <img class="tour-image" src="{image_url}" alt="{tour_name}" width="600" style="display: block; width: 100%; max-width: 600px; height: auto; border: none;" />
                                         </a>
                                         <!-- Color hint bar under image -->
                                         <div style="height: 4px; background-color: {tour_color};"></div>
@@ -234,7 +245,7 @@ def generate_email_html(tours: List[Dict]) -> str:
             html += f"""
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 8px;">
                                             <tr>
-                                                <td style="padding: 12px; background-color: #f8f9fa; border-left: 3px solid {tour_color};">
+                                                <td style="padding: 12px; background-color: #f8f9fa;">
                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                         <tr>
                                                             <td style="font-size: 15px; color: #333333; font-weight: 500;">
@@ -257,7 +268,7 @@ def generate_email_html(tours: List[Dict]) -> str:
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 15px;">
                                             <tr>
                                                 <td align="center">
-                                                    <a href="{tour_url}" style="display: inline-block; background-color: {tour_color}; color: #ffffff; text-decoration: none; padding: 14px 35px; font-weight: 700; font-size: 16px;">
+                                                    <a href="{tour_url_with_utm}" style="display: inline-block; background-color: {tour_color}; color: #ffffff; text-decoration: none; padding: 14px 35px; font-weight: 700; font-size: 16px;">
                                                         Book Now →
                                                     </a>
                                                 </td>
@@ -277,7 +288,7 @@ def generate_email_html(tours: List[Dict]) -> str:
                     <tr>
                         <td style="padding: 30px 20px; background-color: #f8f9fa; text-align: center; border-top: 1px solid #e0e0e0;">
                             <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a1a; font-weight: 700;">
-                                Backpacking Tours
+                                <a href="https://www.backpackingtours.com/?utm_medium=email&utm_campaign=lastfewspaces&utm_content=footer" style="color: #1a1a1a; text-decoration: none;">Backpacking Tours</a>
                             </p>
 
                             <!-- Social Media Icons -->
