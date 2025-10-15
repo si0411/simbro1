@@ -5,14 +5,29 @@ Generate HTML email for tours with limited availability
 
 import json
 import os
+import re
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional
-from urllib.parse import quote
 
 # Configuration
 TOUR_DATA_FILE = 'BT_scraping/group_tours_frontend_enhanced.json'
 TOUR_IMAGES_FILE = 'BT_scraping/listing_images/grouptour_main_images.json'
 LIMITED_SPACES_THRESHOLD = 5  # Tours with 5 or fewer spaces are considered "limited"
+
+
+def clean_tour_name_for_utm(tour_name: str) -> str:
+    """
+    Clean tour name for UTM parameter - replace spaces and special characters with underscores
+    """
+    # Convert to lowercase
+    cleaned = tour_name.lower()
+    # Replace spaces and special characters with underscores
+    cleaned = re.sub(r'[^a-z0-9]+', '_', cleaned)
+    # Remove leading/trailing underscores
+    cleaned = cleaned.strip('_')
+    # Remove consecutive underscores
+    cleaned = re.sub(r'_+', '_', cleaned)
+    return cleaned
 
 
 def parse_tour_date(date_string: str) -> Optional[Dict]:
@@ -197,8 +212,8 @@ def generate_email_html(tours: List[Dict]) -> str:
         tour_image = tour.get('tour_image', '')
         dates = tour['dates']
 
-        # Add UTM parameters to tour URL
-        utm_content = quote(tour_name)
+        # Add UTM parameters to tour URL (clean tour name for utm_content)
+        utm_content = clean_tour_name_for_utm(tour_name)
         separator = '&' if '?' in tour_url else '?'
         tour_url_with_utm = f"{tour_url}{separator}utm_medium=email&utm_campaign=lastfewspaces&utm_content={utm_content}"
 
