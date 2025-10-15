@@ -94,8 +94,8 @@ def get_limited_availability_tours() -> List[Dict]:
                 date_string = date_info.get('date', '')
                 available_spaces = date_info.get('available_spaces')
 
-                # Skip if spaces is None, 0, or > threshold
-                if available_spaces is None or available_spaces == 0 or available_spaces > LIMITED_SPACES_THRESHOLD:
+                # Skip if spaces is None, 0, negative, or > threshold
+                if available_spaces is None or available_spaces <= 0 or available_spaces > LIMITED_SPACES_THRESHOLD:
                     continue
 
                 # Parse date
@@ -162,7 +162,7 @@ def generate_email_html(tours: List[Dict]) -> str:
                     <!-- Header with Logo -->
                     <tr>
                         <td align="center" style="padding: 30px 30px 20px 30px; background-color: #6c49ff;">
-                            <img src="{base_url}/assets/bt_logo.jpg" alt="Backpacking Tours" class="logo" width="250" style="display: block; max-width: 250px; height: auto; margin: 0 auto;" />
+                            <img src="{base_url}/assets/BT_Logo_White.png" alt="Backpacking Tours" class="logo" width="250" style="display: block; max-width: 250px; height: auto; margin: 0 auto;" />
                         </td>
                     </tr>
 
@@ -196,7 +196,7 @@ def generate_email_html(tours: List[Dict]) -> str:
 
         html += f"""
                             <!-- Tour Card -->
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 25px; border: 1px solid #e0e0e0;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 25px;">
                                 <!-- Tour Image with Color Bar -->
                                 <tr>
                                     <td style="padding: 0;">
@@ -276,15 +276,12 @@ def generate_email_html(tours: List[Dict]) -> str:
                     <!-- Footer -->
                     <tr>
                         <td style="padding: 30px 20px; background-color: #f8f9fa; text-align: center; border-top: 1px solid #e0e0e0;">
-                            <p style="margin: 0 0 15px 0; font-size: 16px; color: #1a1a1a; font-weight: 700;">
+                            <p style="margin: 0 0 20px 0; font-size: 16px; color: #1a1a1a; font-weight: 700;">
                                 Backpacking Tours
-                            </p>
-                            <p style="margin: 0 0 20px 0; font-size: 14px; color: #666666;">
-                                Creating unforgettable adventures around the world
                             </p>
 
                             <!-- Social Media Icons -->
-                            <table border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto 20px auto;">
                                 <tr>
                                     <td style="padding: 0 10px;">
                                         <a href="https://www.facebook.com/backpackingtours" target="_blank">
@@ -303,6 +300,14 @@ def generate_email_html(tours: List[Dict]) -> str:
                                     </td>
                                 </tr>
                             </table>
+
+                            <!-- Unsubscribe and Sender Info -->
+                            <p style="margin: 0 0 10px 0; font-size: 12px; color: #999999;">
+                                <a href="{{{{UnsubscribeURL}}}}" style="color: #999999; text-decoration: underline;">Unsubscribe</a>
+                            </p>
+                            <p style="margin: 0; font-size: 12px; color: #999999;">
+                                {{{{SenderInfo}}}}
+                            </p>
                         </td>
                     </tr>
 
