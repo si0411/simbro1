@@ -244,76 +244,25 @@
         {
           "date": "27 Oct - 9 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "3 Nov - 16 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "10 Nov - 23 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "17 Nov - 30 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -336,30 +285,13 @@
         {
           "date": "24 Nov - 7 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "1 Dec - 14 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -382,25 +314,8 @@
         {
           "date": "8 Dec - 21 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "15 Dec - 28 Dec 2025 - Book Now",
@@ -526,7 +441,7 @@
         {
           "date": "2 Mar - 15 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -548,11 +463,11 @@
         }
       ],
       "price": {
-        "price_USD": 1489,
+        "price_USD": 1479,
         "price_NZD": 2579,
         "price_GBP": 1099,
-        "price_EUR": 1279,
-        "price_CAD": 2079,
+        "price_EUR": 1269,
+        "price_CAD": 2069,
         "price_AUD": 2259
       }
     },
@@ -907,29 +822,18 @@
         {
           "date": "3 Nov - 22 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "17 Nov - 6 Dec 2025 - Book Now",
           "status": "Book Now",
+          "available_spaces": null,
+          "prices": null
+        },
+        {
+          "date": "1 Dec - 20 Dec 2025 - Book Now",
+          "status": "Book Now",
           "available_spaces": 0,
           "prices": {
             "deposit": {
@@ -941,35 +845,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "1 Dec - 20 Dec 2025 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 11,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2399,
+              "NZD": 4159,
+              "GBP": 1799,
+              "EUR": 2059,
+              "CAD": 3349,
+              "AUD": 3649
             }
           }
         },
@@ -982,30 +863,13 @@
         {
           "date": "5 Jan - 24 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "19 Jan - 7 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -1119,12 +983,12 @@
         }
       ],
       "price": {
-        "price_USD": 2399,
-        "price_NZD": 4159,
-        "price_GBP": 1789,
-        "price_EUR": 2069,
-        "price_CAD": 3349,
-        "price_AUD": 3649
+        "price_USD": 2429,
+        "price_NZD": 4219,
+        "price_GBP": 1819,
+        "price_EUR": 2079,
+        "price_CAD": 3389,
+        "price_AUD": 3699
       }
     },
     {
@@ -1380,122 +1244,37 @@
         {
           "date": "25 Oct - 7 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "30 Oct - 12 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "1 Nov - 14 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "6 Nov - 19 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "8 Nov - 21 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "13 Nov - 26 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
+          "available_spaces": -2,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -1506,12 +1285,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 3249,
+              "NZD": 5629,
+              "GBP": 2449,
+              "EUR": 2789,
+              "CAD": 4529,
+              "AUD": 4939
             }
           }
         },
@@ -1541,6 +1320,12 @@
         {
           "date": "20 Nov - 3 Dec 2025 - Book Now",
           "status": "Book Now",
+          "available_spaces": null,
+          "prices": null
+        },
+        {
+          "date": "27 Nov - 10 Dec 2025 - Book Now",
+          "status": "Book Now",
           "available_spaces": 0,
           "prices": {
             "deposit": {
@@ -1552,35 +1337,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "27 Nov - 10 Dec 2025 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 6,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 3249,
+              "NZD": 5629,
+              "GBP": 2449,
+              "EUR": 2789,
+              "CAD": 4529,
+              "AUD": 4939
             }
           }
         },
@@ -1598,12 +1360,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 3249,
+              "NZD": 5629,
+              "GBP": 2449,
+              "EUR": 2789,
+              "CAD": 4529,
+              "AUD": 4939
             }
           }
         },
@@ -1633,7 +1395,7 @@
         {
           "date": "16 Feb - 1 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -1679,7 +1441,7 @@
         {
           "date": "2 Mar - 15 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 9,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -1690,12 +1452,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": 3579,
+              "NZD": 6219,
+              "GBP": 2699,
+              "EUR": 3079,
+              "CAD": 4999,
+              "AUD": 5449
             }
           }
         },
@@ -1713,12 +1475,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
@@ -1736,19 +1498,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": 3579,
+              "NZD": 6219,
+              "GBP": 2699,
+              "EUR": 3079,
+              "CAD": 4999,
+              "AUD": 5449
             }
           }
         },
         {
           "date": "23 Mar - 5 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -1759,19 +1521,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": 3579,
+              "NZD": 6219,
+              "GBP": 2699,
+              "EUR": 3079,
+              "CAD": 4999,
+              "AUD": 5449
             }
           }
         },
         {
           "date": "30 Mar - 12 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -1782,12 +1544,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": 3579,
+              "NZD": 6219,
+              "GBP": 2699,
+              "EUR": 3079,
+              "CAD": 4999,
+              "AUD": 5449
             }
           }
         },
@@ -1805,12 +1567,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": 3579,
+              "NZD": 6219,
+              "GBP": 2699,
+              "EUR": 3079,
+              "CAD": 4999,
+              "AUD": 5449
             }
           }
         },
@@ -1828,12 +1590,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": 3579,
+              "NZD": 6219,
+              "GBP": 2699,
+              "EUR": 3079,
+              "CAD": 4999,
+              "AUD": 5449
             }
           }
         },
@@ -1851,19 +1613,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": 3579,
+              "NZD": 6219,
+              "GBP": 2699,
+              "EUR": 3079,
+              "CAD": 4999,
+              "AUD": 5449
             }
           }
         },
         {
           "date": "27 Apr - 10 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -1874,12 +1636,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3519,
-              "NZD": 6099,
-              "GBP": 2639,
-              "EUR": 3029,
-              "CAD": 4919,
-              "AUD": 5349
+              "USD": 3579,
+              "NZD": 6219,
+              "GBP": 2699,
+              "EUR": 3079,
+              "CAD": 4999,
+              "AUD": 5449
             }
           }
         },
@@ -1932,7 +1694,7 @@
         {
           "date": "18 May - 31 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -1978,7 +1740,7 @@
         {
           "date": "8 Jun - 21 Jun 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 11,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -2277,7 +2039,7 @@
         {
           "date": "7 Sep - 20 Sep 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 11,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -2461,7 +2223,7 @@
         {
           "date": "2 Nov - 15 Nov 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 11,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -2598,12 +2360,12 @@
         }
       ],
       "price": {
-        "price_USD": 3249,
-        "price_NZD": 5629,
-        "price_GBP": 2429,
-        "price_EUR": 2799,
-        "price_CAD": 4529,
-        "price_AUD": 4939
+        "price_USD": 3299,
+        "price_NZD": 5749,
+        "price_GBP": 2479,
+        "price_EUR": 2839,
+        "price_CAD": 4619,
+        "price_AUD": 5039
       }
     },
     {
@@ -2828,71 +2590,20 @@
         {
           "date": "25 Oct - 4 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "1 Nov - 11 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "8 Nov - 18 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "15 Nov - 25 Nov 2025 - Book Now",
@@ -2908,19 +2619,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1519,
+              "NZD": 2639,
+              "GBP": 1149,
+              "EUR": 1299,
+              "CAD": 2119,
+              "AUD": 2299
             }
           }
         },
         {
           "date": "20 Nov - 30 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -2931,12 +2642,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1519,
+              "NZD": 2639,
+              "GBP": 1149,
+              "EUR": 1299,
+              "CAD": 2119,
+              "AUD": 2299
             }
           }
         },
@@ -2966,71 +2677,20 @@
         {
           "date": "29 Nov - 9 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "6 Dec - 16 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "13 Dec - 23 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "20 Dec - 30 Dec 2025 - Book Now",
@@ -3225,7 +2885,7 @@
         {
           "date": "21 Feb - 3 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -3386,7 +3046,7 @@
         {
           "date": "11 Apr - 21 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -3432,7 +3092,7 @@
         {
           "date": "25 Apr - 5 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -3524,7 +3184,7 @@
         {
           "date": "23 May - 2 Jun 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -4242,12 +3902,12 @@
         }
       ],
       "price": {
-        "price_USD": 1519,
-        "price_NZD": 2639,
-        "price_GBP": 1139,
-        "price_EUR": 1299,
-        "price_CAD": 2119,
-        "price_AUD": 2299
+        "price_USD": 1619,
+        "price_NZD": 2799,
+        "price_GBP": 1199,
+        "price_EUR": 1389,
+        "price_CAD": 2259,
+        "price_AUD": 2469
       }
     },
     {
@@ -4456,30 +4116,13 @@
         {
           "date": "6 Nov - 19 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "13 Nov - 26 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 3,
+          "available_spaces": 2,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -4490,12 +4133,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2029,
+              "NZD": 3519,
+              "GBP": 1529,
+              "EUR": 1739,
+              "CAD": 2829,
+              "AUD": 3089
             }
           }
         },
@@ -4513,12 +4156,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2029,
+              "NZD": 3519,
+              "GBP": 1529,
+              "EUR": 1739,
+              "CAD": 2829,
+              "AUD": 3089
             }
           }
         },
@@ -4548,7 +4191,7 @@
         {
           "date": "4 Dec - 17 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
+          "available_spaces": 3,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -4559,12 +4202,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2029,
+              "NZD": 3519,
+              "GBP": 1529,
+              "EUR": 1739,
+              "CAD": 2829,
+              "AUD": 3089
             }
           }
         },
@@ -4582,40 +4225,17 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2029,
+              "NZD": 3519,
+              "GBP": 1529,
+              "EUR": 1739,
+              "CAD": 2829,
+              "AUD": 3089
             }
           }
         },
         {
           "date": "18 Dec - 31 Dec 2025 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 1,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "1 Jan - 14 Jan 2026 - Book Now",
           "status": "Book Now",
           "available_spaces": 0,
           "prices": {
@@ -4628,19 +4248,25 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2029,
+              "NZD": 3519,
+              "GBP": 1529,
+              "EUR": 1739,
+              "CAD": 2829,
+              "AUD": 3089
             }
           }
         },
         {
+          "date": "1 Jan - 14 Jan 2026 - Book Now",
+          "status": "Book Now",
+          "available_spaces": null,
+          "prices": null
+        },
+        {
           "date": "8 Jan - 21 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -4709,7 +4335,7 @@
         {
           "date": "29 Jan - 11 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -4801,7 +4427,7 @@
         {
           "date": "26 Feb - 11 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -4847,7 +4473,7 @@
         {
           "date": "12 Mar - 25 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -5473,12 +5099,12 @@
         }
       ],
       "price": {
-        "price_USD": 2029,
-        "price_NZD": 3519,
-        "price_GBP": 1519,
-        "price_EUR": 1749,
-        "price_CAD": 2829,
-        "price_AUD": 3089
+        "price_USD": 2089,
+        "price_NZD": 3639,
+        "price_GBP": 1569,
+        "price_EUR": 1799,
+        "price_CAD": 2919,
+        "price_AUD": 3189
       }
     },
     {
@@ -5804,48 +5430,14 @@
         {
           "date": "6 Nov - 28 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "20 Nov - 12 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "4 Dec - 26 Dec 2025 - Book Now",
@@ -5879,7 +5471,7 @@
         {
           "date": "8 Jan - 30 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -5902,7 +5494,7 @@
         {
           "date": "29 Jan - 20 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 1,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -6350,12 +5942,12 @@
         }
       ],
       "price": {
-        "price_USD": 3119,
-        "price_NZD": 5399,
-        "price_GBP": 2319,
-        "price_EUR": 2679,
-        "price_CAD": 4349,
-        "price_AUD": 4729
+        "price_USD": 3299,
+        "price_NZD": 5749,
+        "price_GBP": 2479,
+        "price_EUR": 2839,
+        "price_CAD": 4619,
+        "price_AUD": 5039
       }
     },
     {
@@ -6607,25 +6199,8 @@
         {
           "date": "21 Nov - 3 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 1,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "5 Dec - 17 Dec 2025 - Book Now",
@@ -6814,7 +6389,7 @@
         {
           "date": "24 Apr - 6 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
+          "available_spaces": 3,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -7366,7 +6941,7 @@
         {
           "date": "9 Oct - 21 Oct 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
+          "available_spaces": 5,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -7572,12 +7147,12 @@
         }
       ],
       "price": {
-        "price_USD": 2569,
-        "price_NZD": 4459,
-        "price_GBP": 1919,
-        "price_EUR": 2199,
-        "price_CAD": 3589,
-        "price_AUD": 3899
+        "price_USD": 2699,
+        "price_NZD": 4689,
+        "price_GBP": 2019,
+        "price_EUR": 2319,
+        "price_CAD": 3769,
+        "price_AUD": 4119
       }
     },
     {
@@ -7856,122 +7431,37 @@
         {
           "date": "15 Oct - 1 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "19 Oct - 5 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "21 Oct - 7 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 4,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "25 Oct - 11 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "27 Oct - 13 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "31 Oct - 17 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8017,7 +7507,7 @@
         {
           "date": "4 Nov - 21 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8074,19 +7564,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2375,
-              "NZD": 4115,
-              "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
         {
           "date": "12 Nov - 29 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8097,19 +7587,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2375,
-              "NZD": 4115,
-              "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
         {
           "date": "14 Nov - 1 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8132,7 +7622,7 @@
         {
           "date": "16 Nov - 3 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8155,7 +7645,7 @@
         {
           "date": "18 Nov - 5 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8201,7 +7691,7 @@
         {
           "date": "24 Nov - 11 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8247,7 +7737,7 @@
         {
           "date": "30 Nov - 17 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8270,7 +7760,7 @@
         {
           "date": "2 Dec - 19 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8293,7 +7783,7 @@
         {
           "date": "4 Dec - 21 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8316,7 +7806,7 @@
         {
           "date": "4 Jan - 21 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8328,39 +7818,16 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
         {
           "date": "10 Jan - 27 Jan 2026 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 18,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "12 Jan - 29 Jan 2026 - Book Now",
           "status": "Book Now",
           "available_spaces": 3,
           "prices": {
@@ -8374,18 +7841,41 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
+            }
+          }
+        },
+        {
+          "date": "12 Jan - 29 Jan 2026 - Book Now",
+          "status": "Book Now",
+          "available_spaces": 4,
+          "prices": {
+            "deposit": {
+              "USD": 350,
+              "NZD": 600,
+              "GBP": 250,
+              "EUR": 300,
+              "CAD": 500,
+              "AUD": 550
+            },
+            "main": {
+              "USD": 2375,
+              "NZD": 4105,
+              "GBP": 1735,
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
         {
           "date": "18 Jan - 4 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8408,7 +7898,7 @@
         {
           "date": "22 Jan - 8 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 15,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8460,7 +7950,7 @@
         {
           "date": "28 Jan - 14 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8472,11 +7962,11 @@
             },
             "main": {
               "USD": 2095,
-              "NZD": 3645,
+              "NZD": 3635,
               "GBP": 1535,
-              "EUR": 1815,
-              "CAD": 2955,
-              "AUD": 3205
+              "EUR": 1795,
+              "CAD": 2925,
+              "AUD": 3185
             }
           }
         },
@@ -8495,18 +7985,18 @@
             },
             "main": {
               "USD": 2095,
-              "NZD": 3645,
+              "NZD": 3635,
               "GBP": 1535,
-              "EUR": 1815,
-              "CAD": 2955,
-              "AUD": 3205
+              "EUR": 1795,
+              "CAD": 2925,
+              "AUD": 3185
             }
           }
         },
         {
           "date": "3 Feb - 20 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8517,12 +8007,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2095,
-              "NZD": 3645,
-              "GBP": 1535,
-              "EUR": 1815,
-              "CAD": 2955,
-              "AUD": 3205
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
@@ -8552,7 +8042,7 @@
         {
           "date": "9 Feb - 26 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8563,12 +8053,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2095,
-              "NZD": 3645,
-              "GBP": 1535,
-              "EUR": 1815,
-              "CAD": 2955,
-              "AUD": 3205
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
@@ -8587,11 +8077,11 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
@@ -8610,18 +8100,18 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
         {
           "date": "15 Feb - 4 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8713,7 +8203,7 @@
         {
           "date": "27 Feb - 16 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 15,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8736,7 +8226,7 @@
         {
           "date": "1 Mar - 18 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 15,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8759,7 +8249,7 @@
         {
           "date": "5 Mar - 22 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8771,18 +8261,18 @@
             },
             "main": {
               "USD": 2095,
-              "NZD": 3645,
+              "NZD": 3635,
               "GBP": 1535,
-              "EUR": 1815,
-              "CAD": 2955,
-              "AUD": 3205
+              "EUR": 1795,
+              "CAD": 2925,
+              "AUD": 3185
             }
           }
         },
         {
           "date": "7 Mar - 24 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8793,12 +8283,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2375,
+              "NZD": 4105,
+              "GBP": 1735,
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
@@ -8828,7 +8318,7 @@
         {
           "date": "13 Mar - 30 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8839,12 +8329,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2095,
+              "NZD": 3635,
+              "GBP": 1535,
+              "EUR": 1795,
+              "CAD": 2925,
+              "AUD": 3185
             }
           }
         },
@@ -8862,19 +8352,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2095,
+              "NZD": 3635,
+              "GBP": 1535,
+              "EUR": 1795,
+              "CAD": 2925,
+              "AUD": 3185
             }
           }
         },
         {
           "date": "19 Mar - 5 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8885,12 +8375,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2095,
+              "NZD": 3635,
+              "GBP": 1535,
+              "EUR": 1795,
+              "CAD": 2925,
+              "AUD": 3185
             }
           }
         },
@@ -8931,19 +8421,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2095,
+              "NZD": 3635,
+              "GBP": 1535,
+              "EUR": 1795,
+              "CAD": 2925,
+              "AUD": 3185
             }
           }
         },
         {
           "date": "29 Mar - 15 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -8989,7 +8479,7 @@
         {
           "date": "4 Apr - 21 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 18,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9012,7 +8502,7 @@
         {
           "date": "6 Apr - 23 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9104,7 +8594,7 @@
         {
           "date": "18 Apr - 5 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9449,7 +8939,7 @@
         {
           "date": "5 Jun - 22 Jun 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9472,7 +8962,7 @@
         {
           "date": "9 Jun - 26 Jun 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9518,7 +9008,7 @@
         {
           "date": "17 Jun - 4 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 19,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9541,7 +9031,7 @@
         {
           "date": "21 Jun - 8 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9587,7 +9077,7 @@
         {
           "date": "27 Jun - 14 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9610,7 +9100,7 @@
         {
           "date": "29 Jun - 16 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -9679,7 +9169,7 @@
         {
           "date": "9 Jul - 26 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -10553,7 +10043,7 @@
         {
           "date": "12 Nov - 29 Nov 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 18,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -10782,12 +10272,12 @@
         }
       ],
       "price": {
-        "price_USD": 2249,
-        "price_NZD": 3899,
+        "price_USD": 2239,
+        "price_NZD": 3889,
         "price_GBP": 1639,
         "price_EUR": 1929,
         "price_CAD": 3149,
-        "price_AUD": 3429
+        "price_AUD": 3399
       }
     },
     {
@@ -11571,74 +11061,29 @@
         {
           "date": "15 Oct - 24 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "19 Oct - 28 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "22 Oct - 31 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 14,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "26 Oct - 4 Nov 2025 - Book Now",
+          "status": "Book Now",
+          "available_spaces": null,
+          "prices": null
+        },
+        {
+          "date": "29 Oct - 7 Nov 2025 - Book Now",
           "status": "Book Now",
           "available_spaces": 13,
           "prices": {
@@ -11661,32 +11106,9 @@
           }
         },
         {
-          "date": "29 Oct - 7 Nov 2025 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 14,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
           "date": "2 Nov - 11 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11732,7 +11154,7 @@
         {
           "date": "9 Nov - 18 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 3,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11743,19 +11165,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 1285,
-              "NZD": 2235,
-              "GBP": 945,
-              "EUR": 1115,
-              "CAD": 1805,
-              "AUD": 1965
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
         {
           "date": "12 Nov - 21 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11778,7 +11200,7 @@
         {
           "date": "16 Nov - 25 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11801,7 +11223,7 @@
         {
           "date": "19 Nov - 28 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11824,7 +11246,7 @@
         {
           "date": "4 Jan - 13 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 4,
+          "available_spaces": 3,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11836,11 +11258,11 @@
             },
             "main": {
               "USD": 1285,
-              "NZD": 2235,
+              "NZD": 2225,
               "GBP": 945,
-              "EUR": 1115,
-              "CAD": 1805,
-              "AUD": 1965
+              "EUR": 1105,
+              "CAD": 1785,
+              "AUD": 1955
             }
           }
         },
@@ -11870,7 +11292,7 @@
         {
           "date": "9 Jan - 18 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 2,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11881,19 +11303,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1285,
+              "NZD": 2225,
+              "GBP": 945,
+              "EUR": 1105,
+              "CAD": 1785,
+              "AUD": 1955
             }
           }
         },
         {
           "date": "14 Jan - 23 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 9,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11916,7 +11338,7 @@
         {
           "date": "16 Jan - 25 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11939,7 +11361,7 @@
         {
           "date": "21 Jan - 30 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11962,7 +11384,7 @@
         {
           "date": "23 Jan - 1 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -11985,7 +11407,7 @@
         {
           "date": "28 Jan - 6 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -12008,7 +11430,7 @@
         {
           "date": "4 Feb - 13 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -12019,19 +11441,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1285,
+              "NZD": 2225,
+              "GBP": 945,
+              "EUR": 1105,
+              "CAD": 1785,
+              "AUD": 1955
             }
           }
         },
         {
           "date": "6 Feb - 15 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -12054,7 +11476,7 @@
         {
           "date": "11 Feb - 20 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -12123,7 +11545,7 @@
         {
           "date": "4 Mar - 13 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -12146,7 +11568,7 @@
         {
           "date": "11 Mar - 20 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -12169,7 +11591,7 @@
         {
           "date": "18 Mar - 27 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 19,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -12215,7 +11637,7 @@
         {
           "date": "1 Apr - 10 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 19,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -12238,7 +11660,7 @@
         {
           "date": "8 Apr - 17 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13180,12 +12602,12 @@
         }
       ],
       "price": {
-        "price_USD": 1159,
+        "price_USD": 1149,
         "price_NZD": 1999,
         "price_GBP": 849,
         "price_EUR": 999,
         "price_CAD": 1619,
-        "price_AUD": 1769
+        "price_AUD": 1759
       }
     },
     {
@@ -13479,166 +12901,29 @@
         {
           "date": "15 Oct - 11 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "19 Oct - 15 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "22 Oct - 18 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "26 Oct - 22 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "29 Oct - 25 Nov 2025 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 7,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "2 Nov - 29 Nov 2025 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 2,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "9 Nov - 6 Dec 2025 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 1,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": 3935,
-              "NZD": 6825,
-              "GBP": 2885,
-              "EUR": 3395,
-              "CAD": 5525,
-              "AUD": 6005
-            }
-          }
-        },
-        {
-          "date": "12 Nov - 9 Dec 2025 - Book Now",
           "status": "Book Now",
           "available_spaces": 6,
           "prices": {
@@ -13661,9 +12946,44 @@
           }
         },
         {
+          "date": "2 Nov - 29 Nov 2025 - Book Now",
+          "status": "Book Now",
+          "available_spaces": null,
+          "prices": null
+        },
+        {
+          "date": "9 Nov - 6 Dec 2025 - Book Now",
+          "status": "Book Now",
+          "available_spaces": null,
+          "prices": null
+        },
+        {
+          "date": "12 Nov - 9 Dec 2025 - Book Now",
+          "status": "Book Now",
+          "available_spaces": 4,
+          "prices": {
+            "deposit": {
+              "USD": 350,
+              "NZD": 600,
+              "GBP": 250,
+              "EUR": 300,
+              "CAD": 500,
+              "AUD": 550
+            },
+            "main": {
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
+            }
+          }
+        },
+        {
           "date": "16 Nov - 13 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13686,30 +13006,13 @@
         {
           "date": "9 Jan - 5 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "14 Jan - 10 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 5,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13732,7 +13035,7 @@
         {
           "date": "16 Jan - 12 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13755,7 +13058,7 @@
         {
           "date": "21 Jan - 17 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13778,7 +13081,7 @@
         {
           "date": "23 Jan - 19 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13801,7 +13104,7 @@
         {
           "date": "28 Jan - 24 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 12,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13824,7 +13127,7 @@
         {
           "date": "4 Feb - 3 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 3,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13835,19 +13138,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 3935,
+              "NZD": 6795,
+              "GBP": 2885,
+              "EUR": 3365,
+              "CAD": 5465,
+              "AUD": 5975
             }
           }
         },
         {
           "date": "6 Feb - 5 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 19,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13870,7 +13173,7 @@
         {
           "date": "11 Feb - 10 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13916,7 +13219,7 @@
         {
           "date": "25 Feb - 24 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 4,
+          "available_spaces": 2,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13939,7 +13242,7 @@
         {
           "date": "4 Mar - 31 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13962,7 +13265,7 @@
         {
           "date": "11 Mar - 7 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -13985,7 +13288,7 @@
         {
           "date": "18 Mar - 14 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 19,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -14031,7 +13334,7 @@
         {
           "date": "1 Apr - 28 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -14054,7 +13357,7 @@
         {
           "date": "8 Apr - 5 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -14215,7 +13518,7 @@
         {
           "date": "27 May - 23 Jun 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -14859,7 +14162,7 @@
         {
           "date": "6 Nov - 3 Dec 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -14996,12 +14299,12 @@
         }
       ],
       "price": {
-        "price_USD": 3829,
-        "price_NZD": 6619,
+        "price_USD": 3799,
+        "price_NZD": 6599,
         "price_GBP": 2789,
         "price_EUR": 3279,
         "price_CAD": 5339,
-        "price_AUD": 5819
+        "price_AUD": 5799
       }
     },
     {
@@ -15557,48 +14860,14 @@
         {
           "date": "27 Oct - 7 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "10 Nov - 21 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "24 Nov - 5 Dec 2025 - Book Now",
@@ -15626,7 +14895,7 @@
         {
           "date": "8 Dec - 19 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -15637,12 +14906,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1349,
+              "NZD": 2339,
+              "GBP": 1019,
+              "EUR": 1159,
+              "CAD": 1889,
+              "AUD": 2059
             }
           }
         },
@@ -15816,7 +15085,7 @@
         {
           "date": "6 Apr - 17 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -16563,12 +15832,12 @@
         }
       ],
       "price": {
-        "price_USD": 1349,
-        "price_NZD": 2339,
-        "price_GBP": 999,
-        "price_EUR": 1159,
-        "price_CAD": 1889,
-        "price_AUD": 2059
+        "price_USD": 1449,
+        "price_NZD": 2519,
+        "price_GBP": 1089,
+        "price_EUR": 1239,
+        "price_CAD": 2029,
+        "price_AUD": 2199
       }
     },
     {
@@ -16759,94 +16028,26 @@
         {
           "date": "13 Oct - 22 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "17 Oct - 26 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "23 Oct - 1 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "25 Oct - 3 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "29 Oct - 7 Nov 2025 - Book Now",
@@ -16920,7 +16121,7 @@
         {
           "date": "12 Nov - 21 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -16989,7 +16190,7 @@
         {
           "date": "22 Nov - 1 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 12,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17012,7 +16213,7 @@
         {
           "date": "24 Nov - 3 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 14,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17104,7 +16305,7 @@
         {
           "date": "4 Dec - 13 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 9,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17127,7 +16328,7 @@
         {
           "date": "10 Dec - 19 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17150,7 +16351,7 @@
         {
           "date": "12 Dec - 21 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17162,18 +16363,18 @@
             },
             "main": {
               "USD": 1285,
-              "NZD": 2235,
+              "NZD": 2225,
               "GBP": 945,
-              "EUR": 1115,
-              "CAD": 1805,
-              "AUD": 1965
+              "EUR": 1105,
+              "CAD": 1785,
+              "AUD": 1955
             }
           }
         },
         {
           "date": "16 Jan - 25 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17231,18 +16432,18 @@
             },
             "main": {
               "USD": 1085,
-              "NZD": 1885,
+              "NZD": 1875,
               "GBP": 795,
               "EUR": 935,
-              "CAD": 1525,
-              "AUD": 1655
+              "CAD": 1515,
+              "AUD": 1645
             }
           }
         },
         {
           "date": "28 Jan - 6 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 15,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17253,19 +16454,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 1085,
-              "NZD": 1885,
-              "GBP": 795,
-              "EUR": 935,
-              "CAD": 1525,
-              "AUD": 1655
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
         {
           "date": "1 Feb - 10 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17300,39 +16501,16 @@
             },
             "main": {
               "USD": 1285,
-              "NZD": 2235,
+              "NZD": 2225,
               "GBP": 945,
-              "EUR": 1115,
-              "CAD": 1805,
-              "AUD": 1965
+              "EUR": 1105,
+              "CAD": 1785,
+              "AUD": 1955
             }
           }
         },
         {
           "date": "7 Feb - 16 Feb 2026 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 3,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": 1285,
-              "NZD": 2235,
-              "GBP": 945,
-              "EUR": 1115,
-              "CAD": 1805,
-              "AUD": 1965
-            }
-          }
-        },
-        {
-          "date": "11 Mar - 20 Mar 2026 - Book Now",
           "status": "Book Now",
           "available_spaces": 4,
           "prices": {
@@ -17346,11 +16524,34 @@
             },
             "main": {
               "USD": 1285,
-              "NZD": 2235,
+              "NZD": 2225,
               "GBP": 945,
-              "EUR": 1115,
-              "CAD": 1805,
-              "AUD": 1965
+              "EUR": 1105,
+              "CAD": 1785,
+              "AUD": 1955
+            }
+          }
+        },
+        {
+          "date": "11 Mar - 20 Mar 2026 - Book Now",
+          "status": "Book Now",
+          "available_spaces": 3,
+          "prices": {
+            "deposit": {
+              "USD": 350,
+              "NZD": 600,
+              "GBP": 250,
+              "EUR": 300,
+              "CAD": 500,
+              "AUD": 550
+            },
+            "main": {
+              "USD": 1285,
+              "NZD": 2225,
+              "GBP": 945,
+              "EUR": 1105,
+              "CAD": 1785,
+              "AUD": 1955
             }
           }
         },
@@ -17368,19 +16569,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1085,
+              "NZD": 1875,
+              "GBP": 795,
+              "EUR": 935,
+              "CAD": 1515,
+              "AUD": 1645
             }
           }
         },
         {
           "date": "15 Mar - 24 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17414,12 +16615,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1085,
+              "NZD": 1875,
+              "GBP": 795,
+              "EUR": 935,
+              "CAD": 1515,
+              "AUD": 1645
             }
           }
         },
@@ -17437,12 +16638,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1085,
+              "NZD": 1875,
+              "GBP": 795,
+              "EUR": 935,
+              "CAD": 1515,
+              "AUD": 1645
             }
           }
         },
@@ -17518,7 +16719,7 @@
         {
           "date": "2 Apr - 11 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17541,7 +16742,7 @@
         {
           "date": "4 Apr - 13 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 12,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -17564,7 +16765,7 @@
         {
           "date": "8 Apr - 17 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -18047,7 +17248,7 @@
         {
           "date": "25 Jul - 3 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 19,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -18438,7 +17639,7 @@
         {
           "date": "4 Nov - 13 Nov 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -18667,12 +17868,12 @@
         }
       ],
       "price": {
-        "price_USD": 1159,
+        "price_USD": 1149,
         "price_NZD": 1999,
         "price_GBP": 849,
         "price_EUR": 999,
         "price_CAD": 1619,
-        "price_AUD": 1769
+        "price_AUD": 1759
       }
     },
     {
@@ -18943,25 +18144,8 @@
         {
           "date": "27 Oct - 13 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 1,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "2 Dec - 19 Dec 2025 - Book Now",
@@ -18989,7 +18173,7 @@
         {
           "date": "13 Jan - 30 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -19012,7 +18196,7 @@
         {
           "date": "2 Feb - 19 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -19035,30 +18219,7 @@
         {
           "date": "21 Feb - 10 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": 3045,
-              "NZD": 5305,
-              "GBP": 2245,
-              "EUR": 2645,
-              "CAD": 4285,
-              "AUD": 4655
-            }
-          }
-        },
-        {
-          "date": "10 Mar - 27 Mar 2026 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -19079,9 +18240,32 @@
           }
         },
         {
+          "date": "10 Mar - 27 Mar 2026 - Book Now",
+          "status": "Book Now",
+          "available_spaces": 12,
+          "prices": {
+            "deposit": {
+              "USD": 350,
+              "NZD": 600,
+              "GBP": 250,
+              "EUR": 300,
+              "CAD": 500,
+              "AUD": 550
+            },
+            "main": {
+              "USD": 3045,
+              "NZD": 5275,
+              "GBP": 2245,
+              "EUR": 2615,
+              "CAD": 4245,
+              "AUD": 4635
+            }
+          }
+        },
+        {
           "date": "2 Apr - 19 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -19127,7 +18311,7 @@
         {
           "date": "8 May - 25 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -19196,7 +18380,7 @@
         {
           "date": "4 Jul - 21 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -19219,7 +18403,7 @@
         {
           "date": "21 Jul - 7 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 19,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -19402,12 +18586,12 @@
         }
       ],
       "price": {
-        "price_USD": 3419,
-        "price_NZD": 5899,
+        "price_USD": 3389,
+        "price_NZD": 5889,
         "price_GBP": 2489,
         "price_EUR": 2929,
         "price_CAD": 4769,
-        "price_AUD": 5199
+        "price_AUD": 5169
       }
     },
     {
@@ -19605,7 +18789,7 @@
         {
           "date": "2 Nov - 13 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 5,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -19651,7 +18835,7 @@
         {
           "date": "7 Dec - 18 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -20001,12 +19185,12 @@
         }
       ],
       "price": {
-        "price_USD": 2419,
-        "price_NZD": 4179,
+        "price_USD": 2399,
+        "price_NZD": 4159,
         "price_GBP": 1729,
         "price_EUR": 2069,
         "price_CAD": 3369,
-        "price_AUD": 3679
+        "price_AUD": 3659
       }
     },
     {
@@ -20251,7 +19435,7 @@
         {
           "date": "1 Dec - 13 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -20263,18 +19447,18 @@
             },
             "main": {
               "USD": 2305,
-              "NZD": 4005,
+              "NZD": 3985,
               "GBP": 1685,
-              "EUR": 1995,
-              "CAD": 3235,
-              "AUD": 3525
+              "EUR": 1975,
+              "CAD": 3205,
+              "AUD": 3495
             }
           }
         },
         {
           "date": "4 Jan - 16 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -20297,7 +19481,7 @@
         {
           "date": "13 Jan - 25 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 14,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -20309,11 +19493,11 @@
             },
             "main": {
               "USD": 2305,
-              "NZD": 4005,
+              "NZD": 3985,
               "GBP": 1685,
-              "EUR": 1995,
-              "CAD": 3235,
-              "AUD": 3525
+              "EUR": 1975,
+              "CAD": 3205,
+              "AUD": 3495
             }
           }
         },
@@ -20332,11 +19516,11 @@
             },
             "main": {
               "USD": 2305,
-              "NZD": 4005,
+              "NZD": 3985,
               "GBP": 1685,
-              "EUR": 1995,
-              "CAD": 3235,
-              "AUD": 3525
+              "EUR": 1975,
+              "CAD": 3205,
+              "AUD": 3495
             }
           }
         },
@@ -20355,18 +19539,18 @@
             },
             "main": {
               "USD": 2305,
-              "NZD": 4005,
+              "NZD": 3985,
               "GBP": 1685,
-              "EUR": 1995,
-              "CAD": 3235,
-              "AUD": 3525
+              "EUR": 1975,
+              "CAD": 3205,
+              "AUD": 3495
             }
           }
         },
         {
           "date": "9 Feb - 21 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -20378,18 +19562,18 @@
             },
             "main": {
               "USD": 2305,
-              "NZD": 4005,
+              "NZD": 3985,
               "GBP": 1685,
-              "EUR": 1995,
-              "CAD": 3235,
-              "AUD": 3525
+              "EUR": 1975,
+              "CAD": 3205,
+              "AUD": 3495
             }
           }
         },
         {
           "date": "19 Feb - 3 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -20400,19 +19584,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2305,
-              "NZD": 4005,
-              "GBP": 1685,
-              "EUR": 1995,
-              "CAD": 3235,
-              "AUD": 3525
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
         {
           "date": "26 Feb - 10 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -20424,11 +19608,11 @@
             },
             "main": {
               "USD": 2305,
-              "NZD": 4005,
+              "NZD": 3985,
               "GBP": 1685,
-              "EUR": 1995,
-              "CAD": 3235,
-              "AUD": 3525
+              "EUR": 1975,
+              "CAD": 3205,
+              "AUD": 3495
             }
           }
         },
@@ -20446,12 +19630,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2305,
+              "NZD": 3985,
+              "GBP": 1685,
+              "EUR": 1975,
+              "CAD": 3205,
+              "AUD": 3495
             }
           }
         },
@@ -20469,12 +19653,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2305,
+              "NZD": 3985,
+              "GBP": 1685,
+              "EUR": 1975,
+              "CAD": 3205,
+              "AUD": 3495
             }
           }
         },
@@ -20504,7 +19688,7 @@
         {
           "date": "19 Apr - 1 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 9,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -20780,7 +19964,7 @@
         {
           "date": "7 Aug - 19 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -21101,12 +20285,12 @@
         }
       ],
       "price": {
-        "price_USD": 2599,
-        "price_NZD": 4489,
+        "price_USD": 2579,
+        "price_NZD": 4469,
         "price_GBP": 1889,
         "price_EUR": 2229,
         "price_CAD": 3619,
-        "price_AUD": 3949
+        "price_AUD": 3929
       }
     },
     {
@@ -21301,11 +20485,11 @@
             },
             "main": {
               "USD": 2575,
-              "NZD": 4475,
+              "NZD": 4455,
               "GBP": 1885,
-              "EUR": 2235,
-              "CAD": 3615,
-              "AUD": 3925
+              "EUR": 2215,
+              "CAD": 3585,
+              "AUD": 3915
             }
           }
         },
@@ -21335,7 +20519,7 @@
         {
           "date": "26 Jun - 5 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 15,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -21358,7 +20542,7 @@
         {
           "date": "10 Jul - 19 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 21,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -21404,7 +20588,7 @@
         {
           "date": "7 Aug - 16 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 18,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -21495,12 +20679,12 @@
         }
       ],
       "price": {
-        "price_USD": 2729,
-        "price_NZD": 4729,
+        "price_USD": 2699,
+        "price_NZD": 4699,
         "price_GBP": 1989,
         "price_EUR": 2349,
         "price_CAD": 3799,
-        "price_AUD": 4159
+        "price_AUD": 4139
       }
     },
     {
@@ -21731,29 +20915,6 @@
         {
           "date": "9 Nov - 21 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "16 Nov - 28 Nov 2025 - Book Now",
-          "status": "Book Now",
           "available_spaces": 0,
           "prices": {
             "deposit": {
@@ -21765,14 +20926,20 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2299,
+              "NZD": 3989,
+              "GBP": 1729,
+              "EUR": 1969,
+              "CAD": 3199,
+              "AUD": 3499
             }
           }
+        },
+        {
+          "date": "16 Nov - 28 Nov 2025 - Book Now",
+          "status": "Book Now",
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "23 Nov - 5 Dec 2025 - Book Now",
@@ -21788,106 +20955,38 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2299,
+              "NZD": 3989,
+              "GBP": 1729,
+              "EUR": 1969,
+              "CAD": 3199,
+              "AUD": 3499
             }
           }
         },
         {
           "date": "30 Nov - 12 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "7 Dec - 19 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "1 Mar - 13 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": 2569,
-              "NZD": 4459,
-              "GBP": 1929,
-              "EUR": 2219,
-              "CAD": 3589,
-              "AUD": 3899
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "8 Mar - 20 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "15 Mar - 27 Mar 2026 - Book Now",
@@ -21903,12 +21002,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2569,
-              "NZD": 4459,
-              "GBP": 1929,
-              "EUR": 2219,
-              "CAD": 3589,
-              "AUD": 3899
+              "USD": 2599,
+              "NZD": 4519,
+              "GBP": 1959,
+              "EUR": 2229,
+              "CAD": 3639,
+              "AUD": 3959
             }
           }
         },
@@ -21926,19 +21025,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2569,
-              "NZD": 4459,
-              "GBP": 1929,
-              "EUR": 2219,
-              "CAD": 3589,
-              "AUD": 3899
+              "USD": 2599,
+              "NZD": 4519,
+              "GBP": 1959,
+              "EUR": 2229,
+              "CAD": 3639,
+              "AUD": 3959
             }
           }
         },
         {
           "date": "29 Mar - 10 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
+          "available_spaces": 5,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -21949,12 +21048,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2569,
-              "NZD": 4459,
-              "GBP": 1929,
-              "EUR": 2219,
-              "CAD": 3589,
-              "AUD": 3899
+              "USD": 2599,
+              "NZD": 4519,
+              "GBP": 1959,
+              "EUR": 2229,
+              "CAD": 3639,
+              "AUD": 3959
             }
           }
         },
@@ -21972,12 +21071,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2569,
-              "NZD": 4459,
-              "GBP": 1929,
-              "EUR": 2219,
-              "CAD": 3589,
-              "AUD": 3899
+              "USD": 2599,
+              "NZD": 4519,
+              "GBP": 1959,
+              "EUR": 2229,
+              "CAD": 3639,
+              "AUD": 3959
             }
           }
         },
@@ -21995,60 +21094,26 @@
               "AUD": 550
             },
             "main": {
-              "USD": 2569,
-              "NZD": 4459,
-              "GBP": 1929,
-              "EUR": 2219,
-              "CAD": 3589,
-              "AUD": 3899
+              "USD": 2599,
+              "NZD": 4519,
+              "GBP": 1959,
+              "EUR": 2229,
+              "CAD": 3639,
+              "AUD": 3959
             }
           }
         },
         {
           "date": "19 Apr - 1 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": 2569,
-              "NZD": 4459,
-              "GBP": 1929,
-              "EUR": 2219,
-              "CAD": 3589,
-              "AUD": 3899
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "26 Apr - 8 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "3 May - 15 May 2026 - Book Now",
@@ -22076,30 +21141,13 @@
         {
           "date": "10 May - 22 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "17 May - 29 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -22122,25 +21170,8 @@
         {
           "date": "24 May - 5 Jun 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "31 May - 12 Jun 2026 - Book Now",
@@ -22168,25 +21199,8 @@
         {
           "date": "7 Jun - 19 Jun 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "14 Jun - 26 Jun 2026 - Book Now",
@@ -22260,25 +21274,8 @@
         {
           "date": "5 Jul - 17 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "12 Jul - 24 Jul 2026 - Book Now",
@@ -22306,25 +21303,8 @@
         {
           "date": "19 Jul - 31 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "26 Jul - 7 Aug 2026 - Book Now",
@@ -22352,25 +21332,8 @@
         {
           "date": "2 Aug - 14 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "9 Aug - 21 Aug 2026 - Book Now",
@@ -22398,25 +21361,8 @@
         {
           "date": "16 Aug - 28 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "23 Aug - 4 Sep 2026 - Book Now",
@@ -22444,25 +21390,8 @@
         {
           "date": "30 Aug - 11 Sep 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "6 Sep - 18 Sep 2026 - Book Now",
@@ -22697,25 +21626,8 @@
         {
           "date": "15 Nov - 27 Nov 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "22 Nov - 4 Dec 2026 - Book Now",
@@ -22743,25 +21655,8 @@
         {
           "date": "29 Nov - 11 Dec 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "6 Dec - 18 Dec 2026 - Book Now",
@@ -22788,12 +21683,12 @@
         }
       ],
       "price": {
-        "price_USD": 2299,
-        "price_NZD": 3989,
-        "price_GBP": 1719,
-        "price_EUR": 1979,
-        "price_CAD": 3199,
-        "price_AUD": 3499
+        "price_USD": 2399,
+        "price_NZD": 4159,
+        "price_GBP": 1789,
+        "price_EUR": 2059,
+        "price_CAD": 3349,
+        "price_AUD": 3649
       }
     },
     {
@@ -23005,30 +21900,13 @@
         {
           "date": "17 Oct - 30 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "4 Nov - 17 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 3,
+          "available_spaces": 2,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -23051,7 +21929,7 @@
         {
           "date": "22 Nov - 5 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 1,
+          "available_spaces": 3,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -23062,63 +21940,17 @@
               "AUD": 550
             },
             "main": {
-              "USD": 3255,
-              "NZD": 5655,
-              "GBP": 2385,
-              "EUR": 2815,
-              "CAD": 4575,
-              "AUD": 4965
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
         {
           "date": "9 Dec - 22 Dec 2025 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 9,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "3 Jan - 16 Jan 2026 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 7,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
-        },
-        {
-          "date": "23 Jan - 5 Feb 2026 - Book Now",
           "status": "Book Now",
           "available_spaces": 8,
           "prices": {
@@ -23141,9 +21973,55 @@
           }
         },
         {
+          "date": "3 Jan - 16 Jan 2026 - Book Now",
+          "status": "Book Now",
+          "available_spaces": 6,
+          "prices": {
+            "deposit": {
+              "USD": 350,
+              "NZD": 600,
+              "GBP": 250,
+              "EUR": 300,
+              "CAD": 500,
+              "AUD": 550
+            },
+            "main": {
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
+            }
+          }
+        },
+        {
+          "date": "23 Jan - 5 Feb 2026 - Book Now",
+          "status": "Book Now",
+          "available_spaces": 7,
+          "prices": {
+            "deposit": {
+              "USD": 350,
+              "NZD": 600,
+              "GBP": 250,
+              "EUR": 300,
+              "CAD": 500,
+              "AUD": 550
+            },
+            "main": {
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
+            }
+          }
+        },
+        {
           "date": "11 Feb - 24 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -23155,11 +22033,11 @@
             },
             "main": {
               "USD": 2575,
-              "NZD": 4475,
+              "NZD": 4455,
               "GBP": 1885,
-              "EUR": 2235,
-              "CAD": 3615,
-              "AUD": 3925
+              "EUR": 2215,
+              "CAD": 3585,
+              "AUD": 3915
             }
           }
         },
@@ -23178,18 +22056,18 @@
             },
             "main": {
               "USD": 2575,
-              "NZD": 4475,
+              "NZD": 4455,
               "GBP": 1885,
-              "EUR": 2235,
-              "CAD": 3615,
-              "AUD": 3925
+              "EUR": 2215,
+              "CAD": 3585,
+              "AUD": 3915
             }
           }
         },
         {
           "date": "23 Mar - 5 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -23224,11 +22102,11 @@
             },
             "main": {
               "USD": 2575,
-              "NZD": 4475,
+              "NZD": 4455,
               "GBP": 1885,
-              "EUR": 2235,
-              "CAD": 3615,
-              "AUD": 3925
+              "EUR": 2215,
+              "CAD": 3585,
+              "AUD": 3915
             }
           }
         },
@@ -23247,18 +22125,18 @@
             },
             "main": {
               "USD": 2575,
-              "NZD": 4475,
+              "NZD": 4455,
               "GBP": 1885,
-              "EUR": 2235,
-              "CAD": 3615,
-              "AUD": 3925
+              "EUR": 2215,
+              "CAD": 3585,
+              "AUD": 3915
             }
           }
         },
         {
           "date": "18 May - 31 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -23270,11 +22148,11 @@
             },
             "main": {
               "USD": 2575,
-              "NZD": 4475,
+              "NZD": 4455,
               "GBP": 1885,
-              "EUR": 2235,
-              "CAD": 3615,
-              "AUD": 3925
+              "EUR": 2215,
+              "CAD": 3585,
+              "AUD": 3915
             }
           }
         },
@@ -23293,11 +22171,11 @@
             },
             "main": {
               "USD": 2575,
-              "NZD": 4475,
+              "NZD": 4455,
               "GBP": 1885,
-              "EUR": 2235,
-              "CAD": 3615,
-              "AUD": 3925
+              "EUR": 2215,
+              "CAD": 3585,
+              "AUD": 3915
             }
           }
         },
@@ -23315,12 +22193,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2575,
+              "NZD": 4455,
+              "GBP": 1885,
+              "EUR": 2215,
+              "CAD": 3585,
+              "AUD": 3915
             }
           }
         },
@@ -23350,7 +22228,7 @@
         {
           "date": "1 Aug - 14 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 15,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -23465,7 +22343,7 @@
         {
           "date": "4 Nov - 17 Nov 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -23533,12 +22411,12 @@
         }
       ],
       "price": {
-        "price_USD": 3139,
-        "price_NZD": 5439,
+        "price_USD": 3119,
+        "price_NZD": 5419,
         "price_GBP": 2289,
         "price_EUR": 2699,
         "price_CAD": 4389,
-        "price_AUD": 4779
+        "price_AUD": 4759
       }
     },
     {
@@ -23798,94 +22676,26 @@
         {
           "date": "10 Oct - 26 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 5,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "20 Oct - 5 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 1,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "25 Oct - 10 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "31 Oct - 16 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "5 Nov - 21 Nov 2025 - Book Now",
@@ -23925,18 +22735,18 @@
             },
             "main": {
               "USD": 3385,
-              "NZD": 5895,
+              "NZD": 5865,
               "GBP": 2485,
-              "EUR": 2925,
-              "CAD": 4765,
-              "AUD": 5175
+              "EUR": 2905,
+              "CAD": 4715,
+              "AUD": 5155
             }
           }
         },
         {
           "date": "8 Jan - 24 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
+          "available_spaces": 1,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -23948,18 +22758,18 @@
             },
             "main": {
               "USD": 3385,
-              "NZD": 5895,
+              "NZD": 5865,
               "GBP": 2485,
-              "EUR": 2925,
-              "CAD": 4765,
-              "AUD": 5175
+              "EUR": 2905,
+              "CAD": 4715,
+              "AUD": 5155
             }
           }
         },
         {
           "date": "11 Jan - 27 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24005,7 +22815,7 @@
         {
           "date": "17 Jan - 2 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 14,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24017,11 +22827,11 @@
             },
             "main": {
               "USD": 3045,
-              "NZD": 5305,
+              "NZD": 5275,
               "GBP": 2245,
-              "EUR": 2645,
-              "CAD": 4285,
-              "AUD": 4655
+              "EUR": 2615,
+              "CAD": 4245,
+              "AUD": 4635
             }
           }
         },
@@ -24039,19 +22849,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 3045,
+              "NZD": 5275,
+              "GBP": 2245,
+              "EUR": 2615,
+              "CAD": 4245,
+              "AUD": 4635
             }
           }
         },
         {
           "date": "4 Feb - 20 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24062,19 +22872,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 3045,
+              "NZD": 5275,
+              "GBP": 2245,
+              "EUR": 2615,
+              "CAD": 4245,
+              "AUD": 4635
             }
           }
         },
         {
           "date": "7 Feb - 23 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 9,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24097,7 +22907,7 @@
         {
           "date": "10 Feb - 26 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 11,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24120,7 +22930,7 @@
         {
           "date": "16 Feb - 4 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 11,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24143,7 +22953,7 @@
         {
           "date": "19 Feb - 7 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24166,7 +22976,7 @@
         {
           "date": "25 Feb - 13 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
+          "available_spaces": 12,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24212,7 +23022,7 @@
         {
           "date": "9 Mar - 25 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24235,7 +23045,7 @@
         {
           "date": "18 Mar - 3 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 12,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24258,7 +23068,7 @@
         {
           "date": "24 Mar - 9 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24281,7 +23091,7 @@
         {
           "date": "30 Mar - 15 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24327,7 +23137,7 @@
         {
           "date": "8 Apr - 24 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -24626,7 +23436,7 @@
         {
           "date": "8 Sep - 24 Sep 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -25016,12 +23826,12 @@
         }
       ],
       "price": {
-        "price_USD": 3279,
-        "price_NZD": 5679,
+        "price_USD": 3249,
+        "price_NZD": 5649,
         "price_GBP": 2389,
         "price_EUR": 2799,
         "price_CAD": 4579,
-        "price_AUD": 4989
+        "price_AUD": 4969
       }
     },
     {
@@ -25213,25 +24023,8 @@
         {
           "date": "17 Oct - 26 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": 1789,
-              "NZD": 3099,
-              "GBP": 1279,
-              "EUR": 1529,
-              "CAD": 2499,
-              "AUD": 2719
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "7 Nov - 16 Nov 2025 - Book Now",
@@ -25247,12 +24040,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 1789,
-              "NZD": 3099,
+              "USD": 1779,
+              "NZD": 3079,
               "GBP": 1279,
               "EUR": 1529,
               "CAD": 2499,
-              "AUD": 2719
+              "AUD": 2699
             }
           }
         },
@@ -25270,19 +24063,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": 1429,
-              "NZD": 2479,
-              "GBP": 1029,
-              "EUR": 1229,
-              "CAD": 1999,
-              "AUD": 2179
+              "USD": 1779,
+              "NZD": 3079,
+              "GBP": 1279,
+              "EUR": 1529,
+              "CAD": 2499,
+              "AUD": 2699
             }
           }
         },
         {
           "date": "23 Jan - 1 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -25351,7 +24144,7 @@
         {
           "date": "17 Apr - 26 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -25374,7 +24167,7 @@
         {
           "date": "15 May - 24 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -25603,12 +24396,12 @@
         }
       ],
       "price": {
-        "price_USD": 1859,
-        "price_NZD": 3229,
+        "price_USD": 1849,
+        "price_NZD": 3199,
         "price_GBP": 1339,
         "price_EUR": 1599,
         "price_CAD": 2599,
-        "price_AUD": 2839
+        "price_AUD": 2819
       }
     },
     {
@@ -25817,53 +24610,19 @@
         {
           "date": "13 Oct - 24 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "19 Oct - 30 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "31 Oct - 11 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 1,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -25909,7 +24668,7 @@
         {
           "date": "18 Nov - 29 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -25932,7 +24691,7 @@
         {
           "date": "24 Nov - 5 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 3,
+          "available_spaces": 5,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -25955,7 +24714,7 @@
         {
           "date": "3 Dec - 14 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -25978,7 +24737,7 @@
         {
           "date": "9 Dec - 20 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -26036,18 +24795,18 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
         {
           "date": "22 Jan - 2 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 11,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -26059,11 +24818,11 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
@@ -26082,11 +24841,11 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
@@ -26105,16 +24864,39 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
         {
           "date": "21 Feb - 4 Mar 2026 - Book Now",
+          "status": "Book Now",
+          "available_spaces": 10,
+          "prices": {
+            "deposit": {
+              "USD": 350,
+              "NZD": 600,
+              "GBP": 250,
+              "EUR": 300,
+              "CAD": 500,
+              "AUD": 550
+            },
+            "main": {
+              "USD": 2375,
+              "NZD": 4105,
+              "GBP": 1735,
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
+            }
+          }
+        },
+        {
+          "date": "27 Feb - 10 Mar 2026 - Book Now",
           "status": "Book Now",
           "available_spaces": 14,
           "prices": {
@@ -26128,41 +24910,18 @@
             },
             "main": {
               "USD": 2375,
-              "NZD": 4115,
+              "NZD": 4105,
               "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
-            }
-          }
-        },
-        {
-          "date": "27 Feb - 10 Mar 2026 - Book Now",
-          "status": "Book Now",
-          "available_spaces": 15,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": 2375,
-              "NZD": 4115,
-              "GBP": 1735,
-              "EUR": 2045,
-              "CAD": 3335,
-              "AUD": 3615
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
         {
           "date": "11 Mar - 22 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 2,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -26173,12 +24932,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2855,
+              "NZD": 4925,
+              "GBP": 2095,
+              "EUR": 2435,
+              "CAD": 3955,
+              "AUD": 4325
             }
           }
         },
@@ -26196,19 +24955,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 2375,
+              "NZD": 4105,
+              "GBP": 1735,
+              "EUR": 2035,
+              "CAD": 3295,
+              "AUD": 3605
             }
           }
         },
         {
           "date": "29 Mar - 9 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
+          "available_spaces": 1,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -26220,11 +24979,11 @@
             },
             "main": {
               "USD": 2855,
-              "NZD": 4945,
+              "NZD": 4925,
               "GBP": 2095,
-              "EUR": 2455,
-              "CAD": 4005,
-              "AUD": 4345
+              "EUR": 2435,
+              "CAD": 3955,
+              "AUD": 4325
             }
           }
         },
@@ -26438,7 +25197,7 @@
         {
           "date": "27 Jun - 8 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 16,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -26668,7 +25427,7 @@
         {
           "date": "25 Sep - 6 Oct 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 15,
+          "available_spaces": 13,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -26874,12 +25633,12 @@
         }
       ],
       "price": {
-        "price_USD": 2729,
-        "price_NZD": 4729,
+        "price_USD": 2699,
+        "price_NZD": 4699,
         "price_GBP": 1989,
         "price_EUR": 2349,
         "price_CAD": 3799,
-        "price_AUD": 4159
+        "price_AUD": 4139
       }
     },
     {
@@ -27391,48 +26150,14 @@
         {
           "date": "20 Oct - 31 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "3 Nov - 14 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "10 Nov - 21 Nov 2025 - Book Now",
@@ -27460,7 +26185,7 @@
         {
           "date": "17 Nov - 28 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 4,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -27483,7 +26208,7 @@
         {
           "date": "24 Nov - 5 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 14,
+          "available_spaces": 12,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -27506,7 +26231,7 @@
         {
           "date": "1 Dec - 12 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 11,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -27529,7 +26254,7 @@
         {
           "date": "8 Dec - 19 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 18,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -27552,25 +26277,8 @@
         {
           "date": "14 Dec - 25 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "23 Dec - 3 Jan 2026 - Book Now",
@@ -27587,7 +26295,7 @@
         {
           "date": "5 Jan - 16 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 14,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -27633,7 +26341,7 @@
         {
           "date": "12 Jan - 23 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 18,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -27679,7 +26387,7 @@
         {
           "date": "19 Jan - 30 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 18,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -27725,7 +26433,7 @@
         {
           "date": "26 Jan - 6 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 21,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -27909,7 +26617,7 @@
         {
           "date": "23 Feb - 6 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -28024,7 +26732,7 @@
         {
           "date": "16 Mar - 27 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -28116,7 +26824,7 @@
         {
           "date": "30 Mar - 10 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -28668,7 +27376,7 @@
         {
           "date": "22 Jun - 3 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -29633,7 +28341,7 @@
         }
       ],
       "price": {
-        "price_USD": 1759,
+        "price_USD": 1749,
         "price_NZD": 3049,
         "price_GBP": 1299,
         "price_EUR": 1499,
@@ -30492,122 +29200,37 @@
         {
           "date": "12 Oct - 23 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 13,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "14 Oct - 25 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 15,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "18 Oct - 29 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 3,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "20 Oct - 31 Oct 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 0,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "26 Oct - 6 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 8,
-          "prices": {
-            "deposit": {
-              "USD": 350,
-              "NZD": 600,
-              "GBP": 250,
-              "EUR": 300,
-              "CAD": 500,
-              "AUD": 550
-            },
-            "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
-            }
-          }
+          "available_spaces": null,
+          "prices": null
         },
         {
           "date": "1 Nov - 12 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
+          "available_spaces": 1,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30653,7 +29276,7 @@
         {
           "date": "7 Nov - 18 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30676,7 +29299,7 @@
         {
           "date": "11 Nov - 22 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30699,7 +29322,7 @@
         {
           "date": "13 Nov - 24 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30722,7 +29345,7 @@
         {
           "date": "17 Nov - 28 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 8,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30745,7 +29368,7 @@
         {
           "date": "19 Nov - 30 Nov 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 7,
+          "available_spaces": 6,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30768,7 +29391,7 @@
         {
           "date": "21 Nov - 2 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 10,
+          "available_spaces": 9,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30791,7 +29414,7 @@
         {
           "date": "23 Nov - 4 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 14,
+          "available_spaces": 12,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30837,7 +29460,7 @@
         {
           "date": "29 Nov - 10 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 16,
+          "available_spaces": 11,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30860,7 +29483,7 @@
         {
           "date": "1 Dec - 12 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 9,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30906,7 +29529,7 @@
         {
           "date": "5 Dec - 16 Dec 2025 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 11,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30929,7 +29552,7 @@
         {
           "date": "5 Jan - 16 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 2,
+          "available_spaces": 1,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -30941,11 +29564,11 @@
             },
             "main": {
               "USD": 1825,
-              "NZD": 3185,
+              "NZD": 3165,
               "GBP": 1335,
               "EUR": 1575,
-              "CAD": 2575,
-              "AUD": 2795
+              "CAD": 2545,
+              "AUD": 2785
             }
           }
         },
@@ -30998,7 +29621,7 @@
         {
           "date": "17 Jan - 28 Jan 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31021,7 +29644,7 @@
         {
           "date": "21 Jan - 1 Feb 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31033,11 +29656,11 @@
             },
             "main": {
               "USD": 1825,
-              "NZD": 3185,
+              "NZD": 3165,
               "GBP": 1335,
               "EUR": 1575,
-              "CAD": 2575,
-              "AUD": 2795
+              "CAD": 2545,
+              "AUD": 2785
             }
           }
         },
@@ -31056,11 +29679,11 @@
             },
             "main": {
               "USD": 1825,
-              "NZD": 3185,
+              "NZD": 3165,
               "GBP": 1335,
               "EUR": 1575,
-              "CAD": 2575,
-              "AUD": 2795
+              "CAD": 2545,
+              "AUD": 2785
             }
           }
         },
@@ -31090,7 +29713,7 @@
         {
           "date": "28 Feb - 11 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 1,
+          "available_spaces": 0,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31102,11 +29725,11 @@
             },
             "main": {
               "USD": 1825,
-              "NZD": 3185,
+              "NZD": 3165,
               "GBP": 1335,
               "EUR": 1575,
-              "CAD": 2575,
-              "AUD": 2795
+              "CAD": 2545,
+              "AUD": 2785
             }
           }
         },
@@ -31125,18 +29748,18 @@
             },
             "main": {
               "USD": 1825,
-              "NZD": 3185,
+              "NZD": 3165,
               "GBP": 1335,
               "EUR": 1575,
-              "CAD": 2575,
-              "AUD": 2795
+              "CAD": 2545,
+              "AUD": 2785
             }
           }
         },
         {
           "date": "4 Mar - 15 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 7,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31159,7 +29782,7 @@
         {
           "date": "6 Mar - 17 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31170,12 +29793,12 @@
               "AUD": 550
             },
             "main": {
-              "USD": 1625,
-              "NZD": 2825,
-              "GBP": 1195,
-              "EUR": 1405,
-              "CAD": 2285,
-              "AUD": 2485
+              "USD": null,
+              "NZD": null,
+              "GBP": null,
+              "EUR": null,
+              "CAD": null,
+              "AUD": null
             }
           }
         },
@@ -31228,7 +29851,7 @@
         {
           "date": "16 Mar - 27 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 14,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31251,7 +29874,7 @@
         {
           "date": "18 Mar - 29 Mar 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 17,
+          "available_spaces": 15,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31285,19 +29908,19 @@
               "AUD": 550
             },
             "main": {
-              "USD": null,
-              "NZD": null,
-              "GBP": null,
-              "EUR": null,
-              "CAD": null,
-              "AUD": null
+              "USD": 1625,
+              "NZD": 2815,
+              "GBP": 1195,
+              "EUR": 1395,
+              "CAD": 2265,
+              "AUD": 2465
             }
           }
         },
         {
           "date": "24 Mar - 4 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 6,
+          "available_spaces": 4,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31309,18 +29932,18 @@
             },
             "main": {
               "USD": 1825,
-              "NZD": 3185,
+              "NZD": 3165,
               "GBP": 1335,
               "EUR": 1575,
-              "CAD": 2575,
-              "AUD": 2795
+              "CAD": 2545,
+              "AUD": 2785
             }
           }
         },
         {
           "date": "28 Mar - 8 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 12,
+          "available_spaces": 10,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31389,7 +30012,7 @@
         {
           "date": "5 Apr - 16 Apr 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 19,
+          "available_spaces": 18,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31550,7 +30173,7 @@
         {
           "date": "25 Apr - 6 May 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 18,
+          "available_spaces": 17,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -31918,7 +30541,7 @@
         {
           "date": "22 Jun - 3 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -32056,7 +30679,7 @@
         {
           "date": "14 Jul - 25 Jul 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 21,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -32148,7 +30771,7 @@
         {
           "date": "26 Jul - 6 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 22,
+          "available_spaces": 20,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -32240,7 +30863,7 @@
         {
           "date": "7 Aug - 18 Aug 2026 - Book Now",
           "status": "Book Now",
-          "available_spaces": 20,
+          "available_spaces": 19,
           "prices": {
             "deposit": {
               "USD": 350,
@@ -33090,12 +31713,12 @@
         }
       ],
       "price": {
-        "price_USD": 1699,
-        "price_NZD": 2959,
+        "price_USD": 1689,
+        "price_NZD": 2939,
         "price_GBP": 1239,
         "price_EUR": 1469,
         "price_CAD": 2379,
-        "price_AUD": 2599
+        "price_AUD": 2589
       }
     },
     {
@@ -33488,5 +32111,5 @@
       }
     }
   ],
-  "last_updated": "2025-10-06"
+  "last_updated": "2025-10-16"
 }

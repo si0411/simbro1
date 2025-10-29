@@ -46,13 +46,29 @@ def cleanup_old_versions():
         print("✅ Only one file exists, no cleanup needed")
         return True
 
-    # Keep the most recent file
-    newest_file, newest_time = all_files[0]
-    print(f"\n🎯 Keeping newest file: {newest_file}")
+    # ALWAYS preserve enhanced JSON (contains pricing data from CSV merge)
+    # Find the newest file excluding enhanced JSON
+    files_to_consider = [(f, t) for f, t in all_files if f != 'group_tours_frontend_enhanced.json']
 
-    # Remove all other files
+    if not files_to_consider:
+        print("✅ Only enhanced JSON exists, no cleanup needed")
+        return True
+
+    newest_file, newest_time = files_to_consider[0]
+    print(f"\n🎯 Keeping newest scraped file: {newest_file}")
+
+    if os.path.exists('group_tours_frontend_enhanced.json'):
+        print(f"🔒 Preserving enhanced JSON (contains pricing data)")
+
+    # Remove old files but NEVER delete enhanced JSON
     removed_count = 0
     for file_path, mtime in all_files[1:]:
+        # Skip enhanced JSON - it must always be preserved for CSV merge
+        if file_path == 'group_tours_frontend_enhanced.json':
+            continue
+        # Skip the newest file
+        if file_path == newest_file:
+            continue
         try:
             os.remove(file_path)
             print(f"🗑️ Removed: {file_path}")
