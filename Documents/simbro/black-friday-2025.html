@@ -65,13 +65,12 @@
         .video-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 315px;
             margin: 2rem auto;
-            padding-bottom: 177.78%; /* 9:16 aspect ratio for shorts */
-            height: 0;
-            overflow: hidden;
+            aspect-ratio: 9 / 16;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
         }
 
         .video-container iframe {
@@ -80,6 +79,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
         }
 
         .deals-section {
@@ -154,6 +154,51 @@
             font-weight: 600;
             color: #6c49ff;
             display: inline-block;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .promo-code:hover {
+            background: #6c49ff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(108, 73, 255, 0.3);
+        }
+
+        .promo-code:active {
+            transform: translateY(0);
+        }
+
+        .promo-code.copied {
+            background: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .copy-feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-weight: 600;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         @media (max-width: 768px) {
@@ -171,8 +216,7 @@
             }
 
             .video-container {
-                max-width: 350px;
-                padding-bottom: 155%; /* Adjusted for mobile */
+                max-width: 280px;
             }
 
             .deals-section {
@@ -206,18 +250,8 @@
             </p>
         </div>
 
-        <div class="video-container">
-            <iframe
-                src="https://www.youtube.com/embed/muMWDqyz_N0"
-                title="Black Friday 2025"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-
         <div class="deals-section">
-            <h2>Black Friday Tour Deals</h2>
+            <h2>Promo Codes</h2>
 
             <table class="deals-table">
                 <thead>
@@ -230,41 +264,257 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Thailand Island Hopper - 10 Days</td>
-                        <td><span class="discount-badge">Save £150</span></td>
-                        <td>Jan 15 - Jan 24, 2025<br>Feb 10 - Feb 19, 2025</td>
-                        <td><span class="promo-code">BF2025TH</span></td>
+                        <td>Backpacking Thailand - Classic</td>
+                        <td><span class="discount-badge">30%</span></td>
+                        <td>04 Dec 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
                     </tr>
                     <tr>
-                        <td>Vietnam Adventure - 14 Days</td>
-                        <td><span class="discount-badge">Save £200</span></td>
-                        <td>Jan 20 - Feb 2, 2025<br>Mar 5 - Mar 18, 2025</td>
-                        <td><span class="promo-code">BF2025VN</span></td>
+                        <td>Backpacking Thailand Island Paradise</td>
+                        <td><span class="discount-badge">30%</span></td>
+                        <td>09 Dec 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
                     </tr>
                     <tr>
-                        <td>Cambodia Explorer - 7 Days</td>
-                        <td><span class="discount-badge">Save £100</span></td>
-                        <td>Feb 1 - Feb 7, 2025<br>Feb 15 - Feb 21, 2025</td>
-                        <td><span class="promo-code">BF2025KH</span></td>
+                        <td>Backpacking Thailand - Classic</td>
+                        <td><span class="discount-badge">25%</span></td>
+                        <td>5 Mar 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE25')">SAVE25</span></td>
                     </tr>
                     <tr>
-                        <td>Laos Discovery - 12 Days</td>
-                        <td><span class="discount-badge">Save £175</span></td>
-                        <td>Jan 10 - Jan 21, 2025<br>Feb 20 - Mar 3, 2025</td>
-                        <td><span class="promo-code">BF2025LA</span></td>
+                        <td>Backpacking Thailand Island Paradise</td>
+                        <td><span class="discount-badge">25%</span></td>
+                        <td>10 Mar 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE25')">SAVE25</span></td>
                     </tr>
                     <tr>
-                        <td>Southeast Asia Grand Tour - 21 Days</td>
-                        <td><span class="discount-badge">Save £300</span></td>
-                        <td>Jan 5 - Jan 25, 2025<br>Feb 15 - Mar 7, 2025</td>
-                        <td><span class="promo-code">BF2025SEA</span></td>
+                        <td>Backpacking Thailand - Classic</td>
+                        <td><span class="discount-badge">15%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Thailand Island Paradise</td>
+                        <td><span class="discount-badge">15%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Vietnam: Northern Adventures</td>
+                        <td><span class="discount-badge">20%</span></td>
+                        <td>09 Mar 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE20')">SAVE20</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Vietnam: Northern Adventures</td>
+                        <td><span class="discount-badge">15%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Vietnam</td>
+                        <td><span class="discount-badge">15%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Bali</td>
+                        <td><span class="discount-badge">15%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Bali: Express Adventure</td>
+                        <td><span class="discount-badge">15%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Sri Lanka</td>
+                        <td><span class="discount-badge">15%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Sri Lanka: Express Adventure</td>
+                        <td><span class="discount-badge">30%</span></td>
+                        <td>8 Dec 2025</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Sri Lanka: Express Adventure</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking India</td>
+                        <td><span class="discount-badge">30%</span></td>
+                        <td>5 Jan 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking India & Nepal</td>
+                        <td><span class="discount-badge">30%</span></td>
+                        <td>19 Jan 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking India</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking India & Nepal</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking India 2026</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking India & Nepal 2026</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Japan</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Japan: Essentials</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking South Korea</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Morocco</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Philippines</td>
+                        <td><span class="discount-badge">30%</span></td>
+                        <td>11 Dec 2025</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Philippines</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>Backpacking Philippines: Expedition</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>All Volunteer Programs</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
+                    </tr>
+                    <tr>
+                        <td>All Private Tours</td>
+                        <td><span class="discount-badge">10%</span></td>
+                        <td>2025 - 2026</td>
+                        <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/muMWDqyz_N0"
+                title="Black Friday 2025"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
     <script>
+        // Copy promo code to clipboard
+        function copyPromoCode(element, code) {
+            // Copy to clipboard
+            navigator.clipboard.writeText(code).then(function() {
+                // Add copied class
+                element.classList.add('copied');
+
+                // Show feedback notification
+                showCopyFeedback(code);
+
+                // Remove copied class after animation
+                setTimeout(function() {
+                    element.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy:', err);
+                // Fallback for older browsers
+                fallbackCopyToClipboard(code);
+                showCopyFeedback(code);
+            });
+        }
+
+        // Fallback copy method for older browsers
+        function fallbackCopyToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // Show copy feedback notification
+        function showCopyFeedback(code) {
+            // Remove existing feedback if any
+            const existingFeedback = document.querySelector('.copy-feedback');
+            if (existingFeedback) {
+                existingFeedback.remove();
+            }
+
+            // Create feedback element
+            const feedback = document.createElement('div');
+            feedback.className = 'copy-feedback';
+            feedback.textContent = `Copied "${code}" to clipboard!`;
+            document.body.appendChild(feedback);
+
+            // Remove after 3 seconds
+            setTimeout(function() {
+                feedback.style.opacity = '0';
+                setTimeout(function() {
+                    feedback.remove();
+                }, 300);
+            }, 3000);
+        }
+
         // Send page-visit event to parent window for GTM tracking
         function notifyParentPageVisit() {
             // Check if we're in an iframe
