@@ -43,23 +43,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .header-section {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .header-section h1 {
-            font-family: 'Mikado', sans-serif;
-            font-size: 2.5rem;
-            color: #1a1a1a;
-            margin-bottom: 1rem;
+            padding: 0;
         }
 
         .video-container {
@@ -84,7 +68,7 @@
 
         .deals-section {
             background: white;
-            border-radius: 12px;
+            border-radius: 0;
             padding: 2rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
@@ -95,6 +79,17 @@
             color: #1a1a1a;
             margin-bottom: 1.5rem;
             text-align: center;
+        }
+
+        .tour-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .tour-link:hover {
+            color: #6c49ff;
+            text-decoration: underline;
         }
 
         .deals-table {
@@ -203,16 +198,7 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 1rem 0.5rem;
-            }
-
-            .header-section {
-                border-radius: 0;
-                padding: 1.5rem 1rem;
-            }
-
-            .header-section h1 {
-                font-size: 1.8rem;
+                padding: 0;
             }
 
             .video-container {
@@ -243,13 +229,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="header-section">
-            <h1>Black Friday 2025 Deals</h1>
-            <p style="font-size: 1.1rem; color: #666; margin-top: 0.5rem;">
-                Limited time offers on our most popular tours
-            </p>
-        </div>
-
         <div class="deals-section">
             <h2>Promo Codes</h2>
 
@@ -264,163 +243,163 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Backpacking Thailand - Classic</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-thailand-19days" class="tour-link" target="_blank">Backpacking Thailand - Classic</a></td>
                         <td><span class="discount-badge">30%</span></td>
                         <td>04 Dec 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Thailand Island Paradise</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise" class="tour-link" target="_blank">Backpacking Thailand Island Paradise</a></td>
                         <td><span class="discount-badge">30%</span></td>
                         <td>09 Dec 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Thailand - Classic</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-thailand-19days" class="tour-link" target="_blank">Backpacking Thailand - Classic</a></td>
                         <td><span class="discount-badge">25%</span></td>
                         <td>5 Mar 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE25')">SAVE25</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Thailand Island Paradise</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise" class="tour-link" target="_blank">Backpacking Thailand Island Paradise</a></td>
                         <td><span class="discount-badge">25%</span></td>
                         <td>10 Mar 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE25')">SAVE25</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Thailand - Classic</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-thailand-19days" class="tour-link" target="_blank">Backpacking Thailand - Classic</a></td>
                         <td><span class="discount-badge">15%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Thailand Island Paradise</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise" class="tour-link" target="_blank">Backpacking Thailand Island Paradise</a></td>
                         <td><span class="discount-badge">15%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Vietnam: Northern Adventures</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-vietnam" class="tour-link" target="_blank">Backpacking Vietnam: Northern Adventures</a></td>
                         <td><span class="discount-badge">20%</span></td>
                         <td>09 Mar 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE20')">SAVE20</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Vietnam: Northern Adventures</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-vietnam" class="tour-link" target="_blank">Backpacking Vietnam: Northern Adventures</a></td>
                         <td><span class="discount-badge">15%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Vietnam</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-vietnam-23days" class="tour-link" target="_blank">Backpacking Vietnam</a></td>
                         <td><span class="discount-badge">15%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Bali</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-bali" class="tour-link" target="_blank">Backpacking Bali</a></td>
                         <td><span class="discount-badge">15%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Bali: Express Adventure</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-bali-12days" class="tour-link" target="_blank">Backpacking Bali: Express Adventure</a></td>
                         <td><span class="discount-badge">15%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Sri Lanka</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-sri-lanka" class="tour-link" target="_blank">Backpacking Sri Lanka</a></td>
                         <td><span class="discount-badge">15%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE15')">SAVE15</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Sri Lanka: Express Adventure</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-sri-lanka-12days" class="tour-link" target="_blank">Backpacking Sri Lanka: Express Adventure</a></td>
                         <td><span class="discount-badge">30%</span></td>
                         <td>8 Dec 2025</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Sri Lanka: Express Adventure</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-sri-lanka-12days" class="tour-link" target="_blank">Backpacking Sri Lanka: Express Adventure</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking India</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india" class="tour-link" target="_blank">Backpacking India</a></td>
                         <td><span class="discount-badge">30%</span></td>
                         <td>5 Jan 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking India & Nepal</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india-nepal" class="tour-link" target="_blank">Backpacking India & Nepal</a></td>
                         <td><span class="discount-badge">30%</span></td>
                         <td>19 Jan 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking India</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india" class="tour-link" target="_blank">Backpacking India</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking India & Nepal</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india-nepal" class="tour-link" target="_blank">Backpacking India & Nepal</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking India 2026</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-india-12days" class="tour-link" target="_blank">Backpacking India 2026</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking India & Nepal 2026</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-india-nepal-18days" class="tour-link" target="_blank">Backpacking India & Nepal 2026</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Japan</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-japan" class="tour-link" target="_blank">Backpacking Japan</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Japan: Essentials</td>
+                        <td><a href="https://www.backpackingtours.com/group-tour-japan-13days" class="tour-link" target="_blank">Backpacking Japan: Essentials</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking South Korea</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-south-korea" class="tour-link" target="_blank">Backpacking South Korea</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Morocco</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-morocco" class="tour-link" target="_blank">Backpacking Morocco</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Philippines</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines" class="tour-link" target="_blank">Backpacking Philippines</a></td>
                         <td><span class="discount-badge">30%</span></td>
                         <td>11 Dec 2025</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE30')">SAVE30</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Philippines</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines" class="tour-link" target="_blank">Backpacking Philippines</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
                     </tr>
                     <tr>
-                        <td>Backpacking Philippines: Expedition</td>
+                        <td><a href="https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines-expedition" class="tour-link" target="_blank">Backpacking Philippines: Expedition</a></td>
                         <td><span class="discount-badge">10%</span></td>
                         <td>2025 - 2026</td>
                         <td><span class="promo-code" onclick="copyPromoCode(this, 'SAVE10')">SAVE10</span></td>
