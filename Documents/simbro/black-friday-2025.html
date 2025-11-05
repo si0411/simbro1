@@ -460,8 +460,9 @@
     </div>
 
     <script>
-        // Global observer reference
+        // Global observer reference and notification flag
         let observer = null;
+        let isShowingNotification = false;
 
         // Copy promo code to clipboard
         function copyPromoCode(element, code, event) {
@@ -518,6 +519,9 @@
                 existingFeedback.remove();
             }
 
+            // Set flag to prevent ALL height updates
+            isShowingNotification = true;
+
             // Temporarily disconnect the observer to prevent height updates
             if (typeof observer !== 'undefined' && observer) {
                 observer.disconnect();
@@ -535,6 +539,9 @@
                 feedback.style.transform = 'translateX(-50%) translateY(-100px)';
                 setTimeout(function() {
                     feedback.remove();
+
+                    // Clear flag to allow height updates again
+                    isShowingNotification = false;
 
                     // Reconnect the observer after notification is removed
                     if (typeof observer !== 'undefined' && observer) {
@@ -592,6 +599,11 @@
 
         // Function to send height to parent
         function sendHeightToParent() {
+            // Don't send height updates while showing notification
+            if (isShowingNotification) {
+                return;
+            }
+
             const height = document.documentElement.scrollHeight || document.body.scrollHeight;
 
             // Send height to parent window
