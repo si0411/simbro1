@@ -460,6 +460,9 @@
     </div>
 
     <script>
+        // Global observer reference
+        let observer = null;
+
         // Copy promo code to clipboard
         function copyPromoCode(element, code, event) {
             // Prevent default behavior and stop propagation
@@ -515,6 +518,11 @@
                 existingFeedback.remove();
             }
 
+            // Temporarily disconnect the observer to prevent height updates
+            if (typeof observer !== 'undefined' && observer) {
+                observer.disconnect();
+            }
+
             // Create feedback element
             const feedback = document.createElement('div');
             feedback.className = 'copy-feedback';
@@ -527,6 +535,14 @@
                 feedback.style.transform = 'translateX(-50%) translateY(-100px)';
                 setTimeout(function() {
                     feedback.remove();
+
+                    // Reconnect the observer after notification is removed
+                    if (typeof observer !== 'undefined' && observer) {
+                        observer.observe(document.body, {
+                            childList: true,
+                            subtree: true
+                        });
+                    }
                 }, 300);
             }, 2500);
         }
@@ -597,7 +613,7 @@
         window.addEventListener('resize', sendHeightToParent);
 
         // Monitor for content changes with MutationObserver
-        const observer = new MutationObserver(sendHeightToParent);
+        observer = new MutationObserver(sendHeightToParent);
         observer.observe(document.body, {
             childList: true,
             subtree: true
