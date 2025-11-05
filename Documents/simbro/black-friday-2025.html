@@ -188,34 +188,6 @@
             color: white;
         }
 
-        .copy-feedback {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #28a745;
-            color: white;
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            font-weight: 600;
-            z-index: 1000;
-            animation: slideDown 0.3s ease-out;
-            pointer-events: none;
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateX(-50%) translateY(-100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 0;
@@ -460,9 +432,8 @@
     </div>
 
     <script>
-        // Global observer reference and notification flag
+        // Global observer reference
         let observer = null;
-        let isShowingNotification = false;
 
         // Copy promo code to clipboard
         function copyPromoCode(element, code, event) {
@@ -477,9 +448,6 @@
                 // Add copied class
                 element.classList.add('copied');
 
-                // Show feedback notification
-                showCopyFeedback(code);
-
                 // Remove copied class after animation
                 setTimeout(function() {
                     element.classList.remove('copied');
@@ -488,7 +456,6 @@
                 console.error('Failed to copy:', err);
                 // Fallback for older browsers
                 fallbackCopyToClipboard(code);
-                showCopyFeedback(code);
             });
 
             return false;
@@ -511,48 +478,6 @@
             document.body.removeChild(textArea);
         }
 
-        // Show copy feedback notification
-        function showCopyFeedback(code) {
-            // Remove existing feedback if any
-            const existingFeedback = document.querySelector('.copy-feedback');
-            if (existingFeedback) {
-                existingFeedback.remove();
-            }
-
-            // Set flag to prevent ALL height updates
-            isShowingNotification = true;
-
-            // Temporarily disconnect the observer to prevent height updates
-            if (typeof observer !== 'undefined' && observer) {
-                observer.disconnect();
-            }
-
-            // Create feedback element
-            const feedback = document.createElement('div');
-            feedback.className = 'copy-feedback';
-            feedback.textContent = `Copied "${code}" to clipboard!`;
-            document.body.appendChild(feedback);
-
-            // Remove after 2.5 seconds
-            setTimeout(function() {
-                feedback.style.opacity = '0';
-                feedback.style.transform = 'translateX(-50%) translateY(-100px)';
-                setTimeout(function() {
-                    feedback.remove();
-
-                    // Clear flag to allow height updates again
-                    isShowingNotification = false;
-
-                    // Reconnect the observer after notification is removed
-                    if (typeof observer !== 'undefined' && observer) {
-                        observer.observe(document.body, {
-                            childList: true,
-                            subtree: true
-                        });
-                    }
-                }, 300);
-            }, 2500);
-        }
 
         // Send page-visit event to parent window for GTM tracking
         function notifyParentPageVisit() {
@@ -599,11 +524,6 @@
 
         // Function to send height to parent
         function sendHeightToParent() {
-            // Don't send height updates while showing notification
-            if (isShowingNotification) {
-                return;
-            }
-
             const height = document.documentElement.scrollHeight || document.body.scrollHeight;
 
             // Send height to parent window
