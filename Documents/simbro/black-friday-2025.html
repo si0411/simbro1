@@ -190,25 +190,28 @@
 
         .copy-feedback {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             background: #28a745;
             color: white;
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1.25rem;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             font-weight: 600;
             z-index: 1000;
-            animation: slideIn 0.3s ease-out;
+            animation: slideDown 0.3s ease-out;
+            pointer-events: none;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
         }
 
-        @keyframes slideIn {
+        @keyframes slideDown {
             from {
-                transform: translateX(400px);
+                transform: translateX(-50%) translateY(-100px);
                 opacity: 0;
             }
             to {
-                transform: translateX(0);
+                transform: translateX(-50%) translateY(0);
                 opacity: 1;
             }
         }
@@ -518,13 +521,14 @@
             feedback.textContent = `Copied "${code}" to clipboard!`;
             document.body.appendChild(feedback);
 
-            // Remove after 3 seconds
+            // Remove after 2.5 seconds
             setTimeout(function() {
                 feedback.style.opacity = '0';
+                feedback.style.transform = 'translateX(-50%) translateY(-100px)';
                 setTimeout(function() {
                     feedback.remove();
                 }, 300);
-            }, 3000);
+            }, 2500);
         }
 
         // Send page-visit event to parent window for GTM tracking
