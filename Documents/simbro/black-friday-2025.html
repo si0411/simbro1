@@ -92,6 +92,23 @@
             text-decoration: underline;
         }
 
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 0.75rem;
+            margin: 0 auto 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            display: block;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #6c49ff;
+            box-shadow: 0 0 0 3px rgba(108, 73, 255, 0.1);
+        }
+
         .deals-table {
             width: 100%;
             border-collapse: collapse;
@@ -211,6 +228,12 @@
                 overflow-x: auto;
             }
 
+            .search-box {
+                max-width: 100%;
+                border-radius: 0;
+                font-size: 0.95rem;
+            }
+
             .deals-section h2 {
                 font-size: 1.5rem;
             }
@@ -231,6 +254,8 @@
     <div class="container">
         <div class="deals-section">
             <h2>Promo Codes</h2>
+
+            <input type="text" class="search-box" id="searchInput" placeholder="Search tours..." />
 
             <table class="deals-table">
                 <thead>
@@ -513,6 +538,29 @@
         // Fire immediately and also on load
         notifyParentPageVisit();
         window.addEventListener('load', notifyParentPageVisit);
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const tableRows = document.querySelectorAll('.deals-table tbody tr');
+
+            tableRows.forEach(function(row) {
+                const tourName = row.querySelector('td:first-child').textContent.toLowerCase();
+
+                if (tourName.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            // Update height after filtering
+            setTimeout(function() {
+                if (typeof sendHeightToParent === 'function') {
+                    sendHeightToParent();
+                }
+            }, 50);
+        });
 
         // Function to send height to parent
         function sendHeightToParent() {
