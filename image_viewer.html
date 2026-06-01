@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+        }
+        .logo {
+            height: 80px;
+            margin-bottom: 1rem;
+            width: auto;
+            max-width: 100%;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+            margin: 30px 0 25px 0;
+            padding-bottom: 8px;
+        }
+        h2#gallery {
+            margin-top: 60px;
+        }
+        .day-section {
+            margin-bottom: 25px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .image-item {
+            text-align: center;
+            background: #fafafa;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+        img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .itinerary-image {
+            aspect-ratio: 15 / 6.45;
+            height: auto;
+        }
+        .gallery-image {
+            height: 120px;
+        }
+        .view-btn {
+            padding: 0.75rem 1.5rem;
+            background: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+
+        .view-btn:hover {
+            background: #0056CC;
+        }
+
+        .copy-btn {
+            padding: 0.25rem 0.5rem;
+            background: #6c49ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: #5a3de6;
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        .filename {
+            font-size: 9px;
+            color: #888;
+            margin-top: 4px;
+            word-break: break-all;
+        }
+        .alt-text {
+            font-size: 10px;
+            color: #666;
+            margin-top: 4px;
+            font-style: italic;
+            line-height: 1.2;
+            text-align: left;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 18px;
+            color: #666;
+        }
+        .anchor-nav {
+            text-align: center;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .nav-section-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .anchor-nav a {
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            color: white;
+            white-space: nowrap;
+        }
+        .itinerary-nav {
+            background: rgba(108, 73, 255, 0.7);
+        }
+        .itinerary-nav:hover {
+            background: #5a3de6;
+        }
+        .gallery-nav {
+            background: rgba(15, 186, 104, 0.7);
+        }
+        .gallery-nav:hover {
+            background: #0da856;
+        }
+        .download-json-btn {
+            padding: 0.75rem 1.5rem;
+            background: #0fba68;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .download-json-btn:hover {
+            background: #0da856;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="assets/image_viewer_1.svg" alt="Image Viewer" class="logo">
+        </div>
+        <div id="loading" class="loading">
+            Loading images...
+        </div>
+        <div id="content" style="display: none;">
+            <!-- Images will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 1500);
+            }).catch(() => {
+                alert('Failed to copy to clipboard');
+            });
+        }
+
+        // Global variable to store tour data for download
+        let tourData = null;
+
+        function downloadJSON() {
+            if (tourData) {
+                const dataStr = JSON.stringify(tourData, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `${tourData.tour_name.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_images.json`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        function createThumbnail(fullUrl) {
+            // Use imgix CDN for lightweight thumbnails
+            // Strip existing query params first to avoid double ? in URL
+            const cleanUrl = fullUrl.split('?')[0];
+            // Strip any domain (handles both www.backpackingtours.com and backpacking-tours.imgix.net)
+            const path = cleanUrl.replace(/^https?:\/\/[^\/]+/, '');
+            return 'https://backpacking-tours.imgix.net' + path + '?w=200&h=150&fit=crop&auto=format,compress&q=60';
+        }
+
+        function getShortUrl(fullUrl) {
+            // Return relative path (short URL) without query params
+            const cleanUrl = fullUrl.split('?')[0];
+            // Strip any domain (handles both www.backpackingtours.com and backpacking-tours.imgix.net)
+            return cleanUrl.replace(/^https?:\/\/[^\/]+/, '');
+        }
+
+        function displayImages(data) {
+            // Store data globally for download function
+            tourData = data;
+
+            const loadingDiv = document.getElementById('loading');
+            const contentDiv = document.getElementById('content');
+
+            loadingDiv.style.display = 'none';
+            contentDiv.style.display = 'block';
+
+            document.title = `Images for ${data.tour_name}`;
+
+            let htmlContent = `<h1>Images for ${data.tour_name}</h1>`;
+
+            // Add link to original tour page and download button
+            if (data.url) {
+                htmlContent += `<div style="text-align: center; margin: 10px 0 20px 0;">
+                    <a href="${data.url}" target="_blank" class="view-btn" style="margin-right: 20px; text-decoration: none;">
+                        View Tour
+                    </a>
+                    <button onclick="downloadJSON()" class="download-json-btn">
+                        Download
+                    </button>
+                </div>`;
+            }
+
+            // Add navigation links
+            let navigationHtml = '';
+
+            if ((data.itinerary && Object.keys(data.itinerary).length > 0) || (data.gallery && Object.keys(data.gallery).length > 0)) {
+                navigationHtml += '<div class="anchor-nav">';
+
+                // Itinerary navigation
+                if (data.itinerary && Object.keys(data.itinerary).length > 0) {
+                    navigationHtml += '<div class="nav-row">';
+                    navigationHtml += '<a href="#itinerary" class="itinerary-nav">Itinerary Images</a>';
+                    // Add day navigation for itinerary
+                    const itineraryDays = Object.keys(data.itinerary).sort((a, b) => {
+                        const dayA = parseInt(a.replace('Day ', ''));
+                        const dayB = parseInt(b.replace('Day ', ''));
+                        return dayA - dayB;
+                    });
+                    itineraryDays.forEach(day => {
+                        const dayId = day.toLowerCase().replace(' ', '-');
+                        navigationHtml += `<a href="#${dayId}" class="itinerary-nav">${day}</a>`;
+                    });
+                    navigationHtml += '</div>';
+                }
+
+                // Gallery navigation
+                if (data.gallery && Object.keys(data.gallery).length > 0) {
+                    navigationHtml += '<div class="nav-row">';
+                    navigationHtml += '<a href="#gallery" class="gallery-nav">Gallery Images</a>';
+                    // Add day navigation for gallery
+                    const galleryDays = Object.keys(data.gallery).sort((a, b) => {
+                        const dayA = parseInt(a.replace('Day ', ''));
+                        const dayB = parseInt(b.replace('Day ', ''));
+                        return dayA - dayB;
+                    });
+                    galleryDays.forEach(day => {
+                        const dayId = 'gallery-' + day.toLowerCase().replace(' ', '-');
+                        navigationHtml += `<a href="#${dayId}" class="gallery-nav">${day}</a>`;
+                    });
+                    navigationHtml += '</div>';
+                }
+
+                navigationHtml += '</div>';
+                htmlContent += navigationHtml;
+            }
+
+            // Display itinerary images
+            if (data.itinerary && Object.keys(data.itinerary).length > 0) {
+                htmlContent += '<h2 id="itinerary">Itinerary Images</h2>';
+                for (const [day, dayData] of Object.entries(data.itinerary)) {
+                    const dayId = day.toLowerCase().replace(' ', '-');
+                    htmlContent += `<div class="day-section">`;
+                    htmlContent += `<h3 id="${dayId}">${day}</h3>`;
+                    htmlContent += `<div class="image-grid">`;
+
+                    const urls = dayData.full_URL || dayData;
+                    const descriptions = dayData.description || [];
+                    if (Array.isArray(urls)) {
+                        urls.forEach((url, index) => {
+                            const filename = url.split('?')[0].split('/').pop();
+                            const thumbnailUrl = createThumbnail(url);
+                            const shortUrl = getShortUrl(url);
+                            const description = descriptions[index] || '';
+
+                            htmlContent += `
+                                <div class="image-item">
+                                    <img src="${thumbnailUrl}"
+                                         alt="${description || day + ' image'}"
+                                         class="itinerary-image"
+                                         onerror="this.style.display='none'">
+                                    <button class="copy-btn"
+                                            onclick="copyToClipboard('${shortUrl}', this)">
+                                        Copy
+                                    </button>
+                                    <div class="filename">${filename}</div>
+                                    ${description ? `<div class="alt-text">${description}</div>` : ''}
+                                </div>
+                            `;
+                        });
+                    }
+
+                    htmlContent += '</div></div>';
+                }
+            }
+
+            // Display gallery images
+            if (data.gallery && Object.keys(data.gallery).length > 0) {
+                htmlContent += '<h2 id="gallery">Gallery Images</h2>';
+                for (const [day, dayData] of Object.entries(data.gallery)) {
+                    const galleryDayId = 'gallery-' + day.toLowerCase().replace(' ', '-');
+                    htmlContent += `<div class="day-section">`;
+                    htmlContent += `<h3 id="${galleryDayId}">${day}</h3>`;
+                    htmlContent += `<div class="image-grid">`;
+
+                    const urls = dayData.full_URL || dayData;
+                    const descriptions = dayData.description || [];
+                    if (Array.isArray(urls)) {
+                        urls.forEach((url, index) => {
+                            const filename = url.split('?')[0].split('/').pop();
+                            const thumbnailUrl = createThumbnail(url);
+                            const shortUrl = getShortUrl(url);
+                            const description = descriptions[index] || '';
+
+                            htmlContent += `
+                                <div class="image-item">
+                                    <img src="${thumbnailUrl}"
+                                         alt="${description || day + ' image'}"
+                                         class="gallery-image"
+                                         onerror="this.style.display='none'">
+                                    <button class="copy-btn"
+                                            onclick="copyToClipboard('${shortUrl}', this)">
+                                        Copy
+                                    </button>
+                                    <div class="filename">${filename}</div>
+                                    ${description ? `<div class="alt-text">${description}</div>` : ''}
+                                </div>
+                            `;
+                        });
+                    }
+
+                    htmlContent += '</div></div>';
+                }
+            }
+
+            contentDiv.innerHTML = htmlContent;
+        }
+
+        // Get URL parameters to load image data
+        const urlParams = new URLSearchParams(window.location.search);
+        const tourUrl = urlParams.get('url');
+
+        if (tourUrl) {
+            // Fetch images from the server
+            fetch('BT_scraping/scrape_api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: tourUrl })
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    displayImages(result);
+                } else {
+                    document.getElementById('loading').innerHTML = 'Error: ' + result.error;
+                }
+            })
+            .catch(error => {
+                document.getElementById('loading').innerHTML = 'Error loading images: ' + error.message;
+            });
+        } else {
+            document.getElementById('loading').innerHTML = 'No tour URL provided';
+        }
+    </script>
+</body>
+</html>

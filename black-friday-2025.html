@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/red_favicon.png">
+    <title>Black Friday 2025 - Backpacking Tours</title>
+    <style>
+        @font-face {
+            font-family: 'Mikado';
+            src: url('assets/Copy of HVD Fonts - MikadoBlack.otf') format('opentype');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'MikadoMedium';
+            src: url('assets/Copy of HVD Fonts - MikadoMedium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'MikadoMedium', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.4;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 315px;
+            margin: 2rem auto;
+            aspect-ratio: 9 / 16;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .deals-section {
+            background: white;
+            border-radius: 0;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .deals-section h2 {
+            font-family: 'Mikado', sans-serif;
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .tour-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tour-link:hover {
+            color: #6c49ff;
+            text-decoration: underline;
+        }
+
+        .tour-image {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 0.75rem;
+            margin: 0 auto 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            display: block;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #6c49ff;
+            box-shadow: 0 0 0 3px rgba(108, 73, 255, 0.1);
+        }
+
+        .deals-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .deals-table thead {
+            background: #6c49ff;
+            color: white;
+        }
+
+        .deals-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-bottom: 2px solid #5a3de6;
+        }
+
+        .deals-table th:first-child {
+            width: 35%;
+        }
+
+        .deals-table td:first-child {
+            width: auto;
+        }
+
+        /* Hide mobile layout on desktop */
+        .tour-info-mobile,
+        .mobile-col {
+            display: none;
+        }
+
+        .tour-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .deals-table tbody tr {
+            border-bottom: 1px solid #e9ecef;
+            transition: background-color 0.2s;
+        }
+
+        .deals-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .deals-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .deals-table td {
+            padding: 1rem;
+            font-size: 0.95rem;
+            color: #333;
+            vertical-align: middle;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #d4edda;
+            color: #155724;
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Different shades of red for each discount tier - brightest for highest % */
+        .discount-badge.discount-30 {
+            background: #dc3545;
+            color: #ffffff;
+        }
+
+        .discount-badge.discount-25 {
+            background: #e85663;
+            color: #ffffff;
+        }
+
+        .discount-badge.discount-20 {
+            background: #f37481;
+            color: #ffffff;
+        }
+
+        .discount-badge.discount-15 {
+            background: #ff91a0;
+            color: #ffffff;
+        }
+
+        .discount-badge.discount-10 {
+            background: #ffadb9;
+            color: #ffffff;
+        }
+
+        .discount-badge.tba {
+            background: #e2e3e5;
+            color: #41464b;
+        }
+
+        .promo-code {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            border: 1px dashed #6c49ff;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #6c49ff;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .promo-code:hover {
+            background: #6c49ff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(108, 73, 255, 0.3);
+        }
+
+        .promo-code:active {
+            transform: translateY(0);
+        }
+
+        .promo-code.copied {
+            background: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .no-code {
+            font-style: italic;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .discount-section {
+            margin: 20px 0 10px;
+            display: none; /* Hidden on desktop */
+        }
+
+        .discount-header {
+            background-color: #f94171;
+            color: #ffffff;
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .discount-header.tba {
+            background-color: #856404;
+        }
+
+        .discount-section-row {
+            display: none; /* Hidden on desktop */
+        }
+
+        .tour-link:hover,
+        .tour-name-mobile a:hover {
+            color: #6c49ff !important;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0;
+            }
+
+            .video-container {
+                max-width: 280px;
+            }
+
+            .deals-section {
+                border-radius: 0;
+                padding: 1rem;
+                overflow-x: visible;
+            }
+
+            .search-box {
+                max-width: 100%;
+                border-radius: 0;
+                font-size: 0.95rem;
+            }
+
+            .deals-section h2 {
+                font-size: 1.5rem;
+            }
+
+            /* Convert table to horizontal cards like email */
+            .deals-table {
+                border: 0;
+            }
+
+            .deals-table thead {
+                display: none;
+            }
+
+            .deals-table tbody {
+                display: block;
+            }
+
+            .deals-table tbody tr {
+                display: flex;
+                margin: 0 1rem 12px 1rem;
+                border: 0;
+                background: #ffffff;
+                gap: 0;
+            }
+
+            .deals-table tbody tr.discount-section-row {
+                display: block !important;
+                margin-left: -1rem !important;
+                margin-right: -1rem !important;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                width: auto !important;
+            }
+
+            .deals-table tbody tr.discount-section-row td {
+                padding: 0 !important;
+                width: 100vw !important;
+                position: relative;
+                left: 0;
+            }
+
+            .deals-section {
+                padding: 1rem;
+                overflow: visible;
+            }
+
+            .search-box {
+                margin: 0 0 1.5rem 0;
+            }
+
+            .deals-section h2 {
+                margin: 0 0 1.5rem 0;
+            }
+
+            .deals-table {
+                margin: 0;
+                overflow: visible;
+            }
+
+            .discount-section {
+                margin: 20px 0 10px 0;
+                display: block !important;
+            }
+
+            .deals-table tbody tr:first-child .discount-section {
+                margin-top: 10px;
+            }
+
+            .discount-header {
+                width: 100%;
+            }
+
+            .deals-table tbody tr:hover {
+                background: #ffffff;
+            }
+
+            .deals-table td {
+                padding: 0;
+                border: 0;
+            }
+
+            /* Image column - fixed width on left, hide text */
+            .deals-table td:nth-child(1) {
+                width: 100px;
+                flex-shrink: 0;
+                padding: 0;
+            }
+
+            .deals-table td:nth-child(1) .tour-link {
+                display: block;
+                height: 100%;
+            }
+
+            .deals-table td:nth-child(1) .tour-link span,
+            .deals-table td:nth-child(1) span {
+                display: none;
+            }
+
+            .tour-image {
+                width: 100px;
+                height: 80px;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Show mobile layout column, hide desktop columns */
+            .deals-table td:nth-child(2) {
+                display: flex !important;
+                flex-direction: column;
+                margin-left: 12px;
+            }
+
+            .deals-table td:nth-child(3),
+            .deals-table td:nth-child(4),
+            .deals-table td:nth-child(5) {
+                display: none;
+            }
+
+            /* Tour name */
+            .tour-name-mobile {
+                font-size: 15px;
+                font-weight: 500;
+                color: #1a1a1a;
+                line-height: 1.3;
+                margin-bottom: 8px;
+            }
+
+            .tour-info-mobile {
+                flex: 1;
+                padding: 10px 12px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .promo-box-mobile {
+                background-color: #f8f9fa;
+                padding: 8px 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-top: auto;
+            }
+
+            .promo-box-mobile .code-section,
+            .promo-box-mobile .date-section {
+                flex: 1;
+            }
+
+            .promo-box-mobile .date-section {
+                text-align: right;
+            }
+
+            .promo-box-mobile .label {
+                font-size: 11px;
+                color: #666666;
+                margin-bottom: 3px;
+            }
+
+            .promo-box-mobile .promo-code {
+                font-family: 'Courier New', monospace;
+                font-size: 15px;
+                font-weight: 700;
+                color: #6c49ff;
+                padding: 0;
+                background: none;
+                border: none;
+            }
+
+            .promo-box-mobile .no-code {
+                font-size: 13px;
+            }
+
+            .promo-box-mobile .date-text {
+                font-size: 11px;
+                color: #666666;
+            }
+
+            .promo-box-mobile .discount-badge {
+                font-size: 11px;
+                padding: 0.25rem 0.6rem;
+                margin-bottom: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="deals-section">
+            <h2>Promo Codes</h2>
+
+            <input type="text" class="search-box" id="searchInput" placeholder="Search tours..." />
+
+            <div id="loading-state" class="loading">Loading tours...</div>
+
+            <table class="deals-table" id="deals-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Tour</th>
+                        <th class="mobile-col">Info</th>
+                        <th>Promo Code</th>
+                        <th>Discount Amount</th>
+                        <th>Dates Available</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/muMWDqyz_N0"
+                title="Black Friday 2025"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        // All deals organized by discount - matching email structure
+        const dealsByDiscount = {
+            '30% OFF': [
+                {name: 'Backpacking Thailand: Classic', url: 'https://www.backpackingtours.com/group-tour-thailand-19days', code: 'BLKFRIDEC4', date: '04 Dec 2026'},
+                {name: 'Backpacking Thailand: Island Paradise', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise', code: 'BLKFRIDEC9', date: '09 Dec 2026'},
+                {name: 'Backpacking Sri Lanka: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-sri-lanka-12days', code: 'BLKFRIDEC8', date: '8 Dec 2025'},
+                {name: 'Backpacking India', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india', code: 'BLKFRIJAN5', date: '5 Jan 2026'},
+                {name: 'Backpacking India & Nepal', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india-nepal', code: 'BLKFRIJAN19', date: '19 Jan 2026'},
+                {name: 'Backpacking Philippines', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines', code: 'BLKFRIDEC11', date: '11 Dec 2025'},
+                {name: 'Backpacking Philippines: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-philippines-10days', code: 'BLKFRIFEB4', date: '4 Feb 2026'},
+                {name: 'Backpacking Indonesia', url: 'https://www.backpackingtours.com/group-tour-indonesia-26days', code: null, date: '2025 - 2026', noCode: true},
+                {name: 'Backpacking Indonesia: Komodo Island Hopping', url: 'https://www.backpackingtours.com/group-tour-indonesia-9days', code: null, date: '2025 - 2026', noCode: true},
+                {name: 'Backpacking Indonesia: Sumatra Adventure', url: 'https://www.backpackingtours.com/group-tour-indonesia-sumatra-9days', code: null, date: '2025 - 2026', noCode: true},
+                {name: 'Backpacking Peru', url: 'https://www.backpackingtours.com/group-tour-peru-10days', code: null, date: '2025 - 2026', noCode: true},
+                {name: 'Backpacking Colombia', url: 'https://www.backpackingtours.com/group-tour-colombia-9days', code: null, date: '2025 - 2026', noCode: true},
+                {name: 'Backpacking Brazil', url: 'https://www.backpackingtours.com/group-tour-brazil-9days', code: null, date: '2025 - 2026', noCode: true},
+            ],
+            '25% OFF': [
+                {name: 'Backpacking Thailand: Classic', url: 'https://www.backpackingtours.com/group-tour-thailand-19days', code: 'BLKFRIMAR5', date: '5 Mar 2026'},
+                {name: 'Backpacking Thailand: Island Paradise', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise', code: 'BLKFRIMAR10', date: '10 Mar 2026'},
+            ],
+            '20% OFF': [
+                {name: 'Backpacking Vietnam: Northern Adventures', url: 'https://www.backpackingtours.com/group-tour-vietnam', code: 'BLKFRIMAR9', date: '09 Mar 2026'},
+            ],
+            '15% OFF': [
+                {name: 'Backpacking Thailand: Classic', url: 'https://www.backpackingtours.com/group-tour-thailand-19days', code: 'BLKFRITH', date: '2025 - 2026'},
+                {name: 'Backpacking Thailand: Island Paradise', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise', code: 'BLKFRITHI', date: '2025 - 2026'},
+                {name: 'Backpacking Thailand: Expedition', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-expedition', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Vietnam: Northern Adventures', url: 'https://www.backpackingtours.com/group-tour-vietnam', code: 'BLKFRIVN', date: '2025 - 2026'},
+                {name: 'Backpacking Vietnam', url: 'https://www.backpackingtours.com/group-tour-vietnam-23days', code: 'BLKFRIVNN', date: '2025 - 2026'},
+                {name: 'Backpacking Vietnam: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-vietnam-12days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Bali', url: 'https://www.backpackingtours.com/group-tour-bali', code: 'BLKFRIBL', date: '2025 - 2026'},
+                {name: 'Backpacking Bali: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-bali-12days', code: 'BLKFRIBLE', date: '2025 - 2026'},
+                {name: 'Backpacking Sri Lanka', url: 'https://www.backpackingtours.com/group-tour-sri-lanka', code: 'BLKFRISR', date: '2025 - 2026'},
+                {name: 'Backpacking South Africa', url: 'https://www.backpackingtours.com/group-tour-south-africa-12days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Croatia: Sailing Adventure', url: 'https://www.backpackingtours.com/group-tour-croatia-10days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Costa Rica', url: 'https://www.backpackingtours.com/group-tour-costa-rica-13days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Mexico', url: 'https://www.backpackingtours.com/group-tour-mexico-14days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Central America', url: 'https://www.backpackingtours.com/group-tour-central-america-18days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Cambodia', url: 'https://www.backpackingtours.com/group-tour-cambodia-10days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Australia', url: 'https://www.backpackingtours.com/group-tour-australia-10days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Australia: East Coast', url: 'https://www.backpackingtours.com/group-tour-australia-28days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking New Zealand', url: 'https://www.backpackingtours.com/group-tour-new-zealand-17days', code: 'BLKFRI', date: '2025 - 2026'},
+            ],
+            '10% OFF': [
+                {name: 'All Volunteer Programs', url: null, code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'All Private Tours', url: null, code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Sri Lanka: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-sri-lanka-12days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking India', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking India & Nepal', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india-nepal', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking India 2026', url: 'https://www.backpackingtours.com/group-tour-india-12days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking India & Nepal 2026', url: 'https://www.backpackingtours.com/group-tour-india-nepal-18days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Japan', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-japan', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Japan: Essentials', url: 'https://www.backpackingtours.com/group-tour-japan-13days', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking South Korea', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-south-korea', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Morocco', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-morocco', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Philippines', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Philippines: Expedition', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines-expedition', code: 'BLKFRI', date: '2025 - 2026'},
+                {name: 'Backpacking Philippines: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-philippines-10days', code: 'BLKFRI', date: '2025 - 2026'},
+            ]
+        };
+
+        // Flatten for backward compatibility with search
+        const allDeals = [
+            {name: 'All Volunteer Programs', url: null, code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'All Private Tours', url: null, code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking Thailand: Classic', url: 'https://www.backpackingtours.com/group-tour-thailand-19days', code: 'BLKFRIDEC4', discount: '30%', date: '04 Dec 2026'},
+            {name: 'Backpacking Thailand: Island Paradise', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise', code: 'BLKFRIDEC9', discount: '30%', date: '09 Dec 2026'},
+            {name: 'Backpacking Thailand: Classic', url: 'https://www.backpackingtours.com/group-tour-thailand-19days', code: 'BLKFRIMAR5', discount: '25%', date: '5 Mar 2026'},
+            {name: 'Backpacking Thailand: Island Paradise', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise', code: 'BLKFRIMAR10', discount: '25%', date: '10 Mar 2026'},
+            {name: 'Backpacking Thailand: Classic', url: 'https://www.backpackingtours.com/group-tour-thailand-19days', code: 'BLKFRITH', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Thailand: Island Paradise', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-island-paradise', code: 'BLKFRITHI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Vietnam: Northern Adventures', url: 'https://www.backpackingtours.com/group-tour-vietnam', code: 'BLKFRIMAR9', discount: '20%', date: '09 Mar 2026'},
+            {name: 'Backpacking Vietnam: Northern Adventures', url: 'https://www.backpackingtours.com/group-tour-vietnam', code: 'BLKFRIVN', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Vietnam', url: 'https://www.backpackingtours.com/group-tour-vietnam-23days', code: 'BLKFRIVNN', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Bali', url: 'https://www.backpackingtours.com/group-tour-bali', code: 'BLKFRIBL', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Bali: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-bali-12days', code: 'BLKFRIBLE', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Sri Lanka', url: 'https://www.backpackingtours.com/group-tour-sri-lanka', code: 'BLKFRISR', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Sri Lanka: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-sri-lanka-12days', code: 'BLKFRIDEC8', discount: '30%', date: '8 Dec 2025'},
+            {name: 'Backpacking Sri Lanka: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-sri-lanka-12days', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking India', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india', code: 'BLKFRIJAN5', discount: '30%', date: '5 Jan 2026'},
+            {name: 'Backpacking India & Nepal', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india-nepal', code: 'BLKFRIJAN19', discount: '30%', date: '19 Jan 2026'},
+            {name: 'Backpacking India', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking India & Nepal', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-india-nepal', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking India 2026', url: 'https://www.backpackingtours.com/group-tour-india-12days', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking India & Nepal 2026', url: 'https://www.backpackingtours.com/group-tour-india-nepal-18days', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking Japan', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-japan', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking Japan: Essentials', url: 'https://www.backpackingtours.com/group-tour-japan-13days', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking South Korea', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-south-korea', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking Morocco', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-morocco', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking Philippines', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines', code: 'BLKFRIDEC11', discount: '30%', date: '11 Dec 2025'},
+            {name: 'Backpacking Philippines', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking Philippines: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-philippines-10days', code: 'BLKFRIFEB4', discount: '30%', date: '4 Feb 2026'},
+            {name: 'Backpacking Philippines: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-philippines-10days', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking Philippines: Expedition', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-philippines-expedition', code: 'BLKFRI', discount: '10%', date: '2025 - 2026'},
+            {name: 'Backpacking Indonesia', url: 'https://www.backpackingtours.com/group-tour-indonesia-26days', code: null, discount: 'Up to 30%', date: '2025 - 2026', noCode: true},
+            {name: 'Backpacking Indonesia: Komodo Island Hopping', url: 'https://www.backpackingtours.com/group-tour-indonesia-9days', code: null, discount: 'Up to 30%', date: '2025 - 2026', noCode: true},
+            {name: 'Backpacking Indonesia: Sumatra Adventure', url: 'https://www.backpackingtours.com/group-tour-indonesia-sumatra-9days', code: null, discount: 'Up to 30%', date: '2025 - 2026', noCode: true},
+            {name: 'Backpacking Peru', url: 'https://www.backpackingtours.com/group-tour-peru-10days', code: null, discount: 'Up to 30%', date: '2025 - 2026', noCode: true},
+            {name: 'Backpacking Colombia', url: 'https://www.backpackingtours.com/group-tour-colombia-9days', code: null, discount: 'Up to 30%', date: '2025 - 2026', noCode: true},
+            {name: 'Backpacking Brazil', url: 'https://www.backpackingtours.com/group-tour-brazil-9days', code: null, discount: 'Up to 30%', date: '2025 - 2026', noCode: true},
+            {name: 'Backpacking Thailand: Expedition', url: 'https://www.backpackingtours.com/book-a-backpacking-tour/backpacking-thailand-expedition', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Vietnam: Express Adventure', url: 'https://www.backpackingtours.com/group-tour-vietnam-12days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking South Africa', url: 'https://www.backpackingtours.com/group-tour-south-africa-12days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Croatia: Sailing Adventure', url: 'https://www.backpackingtours.com/group-tour-croatia-10days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Costa Rica', url: 'https://www.backpackingtours.com/group-tour-costa-rica-13days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Mexico', url: 'https://www.backpackingtours.com/group-tour-mexico-14days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Central America', url: 'https://www.backpackingtours.com/group-tour-central-america-18days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Cambodia', url: 'https://www.backpackingtours.com/group-tour-cambodia-10days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Australia', url: 'https://www.backpackingtours.com/group-tour-australia-10days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking Australia: East Coast', url: 'https://www.backpackingtours.com/group-tour-australia-28days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+            {name: 'Backpacking New Zealand', url: 'https://www.backpackingtours.com/group-tour-new-zealand-17days', code: 'BLKFRI', discount: '15%', date: '2025 - 2026'},
+        ];
+
+        let tourImages = {};
+
+        // Load tour images
+        async function loadTourImages() {
+            try {
+                const response = await fetch('BT_scraping/listing_images/grouptour_main_images.json?' + new Date().getTime());
+                const data = await response.json();
+                data.forEach(img => {
+                    tourImages[img.tour_name] = img.image_url;
+                });
+            } catch (error) {
+                console.error('Failed to load tour images:', error);
+            }
+        }
+
+        // Copy promo code to clipboard
+        function copyPromoCode(element, code, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            navigator.clipboard.writeText(code).then(function() {
+                element.classList.add('copied');
+                setTimeout(function() {
+                    element.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy:', err);
+            });
+
+            return false;
+        }
+
+        // Render table with grouped sections
+        function renderTable() {
+            const tbody = document.getElementById('table-body');
+            let html = '';
+
+            // Render by discount groups
+            for (const [discount, deals] of Object.entries(dealsByDiscount)) {
+                // Section header row
+                html += '<tr class="discount-section-row">';
+                html += '<td colspan="5" style="padding: 0;">';
+                html += `<div class="discount-section">`;
+                html += `<div class="discount-header${discount === 'TBA' ? ' tba' : ''}">${discount}</div>`;
+                html += '</div>';
+                html += '</td>';
+                html += '</tr>';
+
+                // Render tours in this section
+                deals.forEach(deal => {
+                    const tourImage = tourImages[deal.name];
+                    // Only add imgix parameters to imgix URLs
+                    const imageSrc = tourImage ?
+                        (tourImage.includes('imgix.net') ? `${tourImage}?w=160&h=120&fit=crop&auto=format` : tourImage)
+                        : '';
+
+                    html += '<tr>';
+
+                    // Column 1: Tour name with image (desktop) / Image only (mobile)
+                    html += '<td>';
+                    if (deal.url) {
+                        html += `<a href="${deal.url}" class="tour-link">`;
+                        if (imageSrc) {
+                            html += `<img src="${imageSrc}" alt="${deal.name}" class="tour-image">`;
+                        }
+                        html += `<span>${deal.name}</span></a>`;
+                    } else {
+                        // For non-linked items (All Volunteer Programs, All Private Tours)
+                        html += '<div class="tour-link">';
+                        if (imageSrc) {
+                            html += `<img src="${imageSrc}" alt="${deal.name}" class="tour-image">`;
+                        }
+                        html += `<span>${deal.name}</span></div>`;
+                    }
+                    html += '</td>';
+
+                    // Column 2: Tour name + mobile info box (hidden on desktop, shown on mobile)
+                    html += '<td class="tour-info-mobile">';
+                    // Tour name
+                    html += '<div class="tour-name-mobile">';
+                    if (deal.url) {
+                        html += `<a href="${deal.url}" style="color: #1a1a1a; text-decoration: none;">${deal.name}</a>`;
+                    } else {
+                        html += deal.name;
+                    }
+                    html += '</div>';
+                    // Promo box (like email layout)
+                    html += '<div class="promo-box-mobile">';
+                    html += '<div class="code-section">';
+                    html += '<div class="label">CODE:</div>';
+                    if (deal.noCode) {
+                        html += '<div class="no-code">No Code Needed!</div>';
+                    } else {
+                        html += `<div class="promo-code" onclick="copyPromoCode(this, '${deal.code}', event)">${deal.code}</div>`;
+                    }
+                    html += '</div>';
+                    html += '<div class="date-section">';
+                    html += '<div class="label">TOUR(S):</div>';
+                    html += `<div class="date-text">${deal.date}</div>`;
+                    html += '</div>';
+                    html += '</div>'; // close promo-box-mobile
+                    html += '</td>';
+
+                    // Column 3: Desktop promo code
+                    html += '<td>';
+                    if (deal.noCode) {
+                        html += '<span class="no-code">No Code Needed!</span>';
+                    } else {
+                        html += `<span class="promo-code" onclick="copyPromoCode(this, '${deal.code}', event)">${deal.code}</span>`;
+                    }
+                    html += '</td>';
+
+                    // Column 4: Desktop discount
+                    html += '<td>';
+                    // Extract percentage number for color class
+                    const discountPercent = discount.replace(' OFF', '').replace('%', '');
+                    const discountClass = deal.tba ? 'tba' : `discount-${discountPercent}`;
+                    // Add "Up to " prefix if no code needed (but not for TBA)
+                    const discountText = (deal.noCode && !deal.tba) ? `Up to ${discount.replace(' OFF', '')}` : discount.replace(' OFF', '');
+                    html += `<span class="discount-badge ${discountClass}">${discountText}</span>`;
+                    html += '</td>';
+
+                    // Column 5: Desktop date
+                    html += '<td>' + deal.date + '</td>';
+
+                    html += '</tr>';
+                });
+            }
+
+            tbody.innerHTML = html;
+            document.getElementById('loading-state').style.display = 'none';
+            document.getElementById('deals-table').style.display = 'table';
+
+            // Trigger height update
+            setTimeout(sendHeightToParent, 100);
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const tableRows = document.querySelectorAll('.deals-table tbody tr');
+
+            tableRows.forEach(function(row) {
+                const tourName = row.querySelector('td:first-child').textContent.toLowerCase();
+
+                if (tourName.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            setTimeout(sendHeightToParent, 50);
+        });
+
+        // Send page-visit event to parent window for GTM tracking
+        function notifyParentPageVisit() {
+            if (window.parent !== window) {
+                try {
+                    window.parent.postMessage({
+                        type: 'page-visit',
+                        source: 'black-friday-iframe'
+                    }, 'https://www.backpackingtours.com');
+                } catch (e) {
+                    // Silent error handling
+                }
+            }
+        }
+
+        // Intercept tour link clicks for Barba.js navigation
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('.tour-link');
+            if (link) {
+                e.preventDefault();
+                const tourUrl = link.getAttribute('href');
+
+                if (window.parent !== window) {
+                    window.parent.postMessage({
+                        type: 'barba-navigate',
+                        url: tourUrl
+                    }, 'https://www.backpackingtours.com');
+                } else {
+                    window.location.href = tourUrl;
+                }
+            }
+        });
+
+        // Function to send height to parent
+        function sendHeightToParent() {
+            const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+            window.parent.postMessage({
+                type: 'resize',
+                height: height
+            }, '*');
+        }
+
+        // Initialize
+        async function init() {
+            await loadTourImages();
+            renderTable();
+            notifyParentPageVisit();
+        }
+
+        init();
+
+        // Send height updates
+        window.addEventListener('load', sendHeightToParent);
+        window.addEventListener('resize', sendHeightToParent);
+        const observer = new MutationObserver(sendHeightToParent);
+        observer.observe(document.body, { childList: true, subtree: true });
+        setInterval(sendHeightToParent, 1000);
+    </script>
+</body>
+</html>
